@@ -40,6 +40,9 @@
                 <li class="nav__item">
                     <a href="#" class="nav__link">Contact Me</a>
                 </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Profile</a>
+                </li>
             </ul>
 
             <!-- Phone -->
