@@ -15,5 +15,12 @@
         FROM user
         WHERE username = #{username}
     </select>
-
+    <insert id="setEmail">
+        INSERT INTO user (email) VALUES (#{email});
+    </insert>
+    <update id="setVery">
+        UPDATE user
+        SET Verification = #{very}, Verification_time = #{time}
+        WHERE email = #{email};
+    </update>
 </mapper>

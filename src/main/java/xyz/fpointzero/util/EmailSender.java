@@ -1,25 +1,41 @@
 package xyz.fpointzero.util;
 
+import org.apache.ibatis.session.SqlSession;
+import xyz.fpointzero.mapper.UserMapper;
+import xyz.fpointzero.model.User;
+
 import javax.mail.*;
 import javax.mail.internet.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
+import java.util.Random;
 
 public class EmailSender {
-    public static void main(String[] args) {
-        // 邮箱账户信息
-        String senderEmail = "781381449@qq.com";
-        String senderPassword = "wsnazaxxnkalbfeb";
+    // 邮箱账户信息
+    private static String senderEmail = "781381449@qq.com";
+    private static String senderPassword = "wsnazaxxnkalbfeb";
 
+    // 邮件服务器配置
+    private static String smtpHost = "smtp.qq.com";
+    private static int smtpPort = 587;
+
+    // 验证码范围
+    private static int min = 100000; // 最小值
+    private static int max = 999999; // 最大值
+
+    public static void sendEmail(String email) {
         // 收件人信息
-        String recipientEmail = args[0];
+        String recipientEmail = email;
+
+        // 创建随机数生成器
+        Random random = new Random();
+        // 生成6位验证码
+        int randomNumber = random.nextInt(max - min + 1) + min;
 
         // 邮件主题和内容
         String emailSubject = "验证码";
-        String emailContent = args[1];
-
-        // 邮件服务器配置
-        String smtpHost = "smtp.qq.com";
-        int smtpPort = 587;
+        String emailContent = String.valueOf(randomNumber);
 
         try {
             // 设置邮件服务器属性
@@ -46,12 +62,34 @@ public class EmailSender {
             message.setSubject(emailSubject);
             message.setText(emailContent);
 
-            // 发送邮件
-            Transport.send(message);
+            try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+                UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+                // 调用数据访问接口的方法进行数据操作
+                try{
+                    mapper.setEmail(email);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-            System.out.println("Email sent successfully.");
+                // 获取当前时间
+                LocalDateTime currentTime = LocalDateTime.now();
+                // 定义日期时间格式
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                // 格式化当前时间为指定格式
+                String formattedDateTime = currentTime.format(formatter);
+
+                mapper.setVery(String.valueOf(randomNumber), formattedDateTime, email);
+
+                sqlSession.commit();
+
+                // 发送邮件
+                //Transport.send(message);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
+
 }

@@ -2,13 +2,20 @@ package xyz.fpointzero.model;
 
 import org.apache.ibatis.session.SqlSession;
 import xyz.fpointzero.mapper.UserMapper;
+import xyz.fpointzero.util.EmailSender;
 import xyz.fpointzero.util.MyBatisUtil;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 public class User {
     private String username;
     private String password;
     private String email;
     private String phoneNumber;
+    private String very;
+    private String time;
 
     public boolean login() {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
