@@ -14,6 +14,7 @@ public class User {
     private String password;
     private String email;
     private String phoneNumber;
+    private String avatar;
     private String very;
     private String time;
 
@@ -29,13 +30,33 @@ public class User {
                 user = mapper.getByUsername(username);
 
 //            System.out.println(user.password + "-" + password);
-            if (user.password.equals(password))
+            if (user.getPassword().equals(password)) {
+                this.username = user.username;
+                this.phoneNumber = user.phoneNumber;
+                this.email = user.email;
+                this.avatar = user.avatar;
+                this.password = null;
                 return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
         return false;
+    }
+
+    public boolean updateAvatar(String avatar) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            mapper.setAvatar(avatar, username);
+            sqlSession.commit();
+            setAvatar(avatar);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void setUsername(String username) {
@@ -68,5 +89,13 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatar() {
+        return avatar;
     }
 }

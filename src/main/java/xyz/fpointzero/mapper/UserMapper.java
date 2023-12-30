@@ -9,4 +9,5 @@ public interface UserMapper {
     void setEmail(@Param("email")String email);
     void setVery(@Param("very")String very, @Param("time")String time, @Param("email")String email);
     User getByUsername(String username);
+    void setAvatar(@Param("avatar") String avatar, @Param("username") String username);
 }

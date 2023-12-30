@@ -15,6 +15,12 @@
         FROM user
         WHERE username = #{username}
     </select>
+    <update id="setAvatar">
+        UPDATE user
+        SET user.avatar = #{avatar}
+        WHERE username = #{username}
+    </update>
+
     <insert id="setEmail">
         INSERT INTO user (email) VALUES (#{email});
     </insert>
