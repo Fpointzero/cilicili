@@ -24,9 +24,19 @@
     <insert id="setEmail">
         INSERT INTO user (email) VALUES (#{email});
     </insert>
+    <update id="setUsername">
+        UPDATE user
+        SET  username = #{username}
+        WHERE email = #{email};
+    </update>
+    <update id="setPassword">
+        UPDATE user
+        SET password = #{password}
+        WHERE email = #{email};
+    </update>
     <update id="setVery">
         UPDATE user
-        SET Verification = #{very}, Verification_time = #{time}
+        SET verification = #{very}, verificationTime = #{time}
         WHERE email = #{email};
     </update>
 </mapper>

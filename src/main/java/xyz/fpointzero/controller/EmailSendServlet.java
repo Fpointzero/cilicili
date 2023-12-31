@@ -14,7 +14,7 @@ public class EmailSendServlet extends MyHttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String emali = req.getParameter("email");
-        EmailSender.sendEmail(emali);
+        String email = req.getParameter("email");
+        EmailSender.sendEmail(email);
     }
 }

@@ -15,8 +15,8 @@ public class User {
     private String email;
     private String phoneNumber;
     private String avatar;
-    private String very;
-    private String time;
+    private String verification;
+    private String verificationTime;
 
     public boolean login() {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
@@ -89,6 +89,14 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getVerification() {
+        return verification;
+    }
+
+    public String getVerificationTime() {
+        return verificationTime;
     }
 
     public void setAvatar(String avatar) {
