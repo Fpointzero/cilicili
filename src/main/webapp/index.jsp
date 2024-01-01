@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: FPoint
-  Date: 2023/12/29
-  Time: 14:38
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
@@ -14,141 +7,192 @@
 
     <!--=============== REMIXICONS ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-
+    <script src="https://unpkg.com/vue@next"></script>
     <link rel="stylesheet" href="static/css/index.css">
 
     <title>C哩C哩</title>
 </head>
 
 <body>
-<!--==================== HEADER ====================-->
-<header class="header" id="header">
-    <nav class="nav container">
-        <a href="#" class="nav__logo">CiliCili</a>
+<div id="app">
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">CiliCili</a>
 
-        <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list">
-                <li class="nav__item">
-                    <a href="#" class="nav__link">Home</a>
-                </li>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Home</a>
+                    </li>
 
-                <li class="nav__item">
-                    <a href="#" class="nav__link">About Us</a>
-                </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">About Us</a>
+                    </li>
 
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Profile</a>
+                    </li>
+                </ul>
 
-                <li class="nav__item">
-                    <a href="#" class="nav__link">Contact Me</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__link">Profile</a>
-                </li>
-            </ul>
-
-            <!-- Phone -->
-            <div class="nav__close" id="nav-close">
-                <i class="ri-close-line"></i>
-            </div>
-        </div>
-
-        <div class="nav__actions">
-            <i class="ri-search-line nav__search" id="search-btn"></i>
-            <i class="ri-user-line nav__login" id="login-btn"></i>
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line"></i>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<!--==================== SEARCH ====================-->
-<div class="search" id="search">
-    <form action="" class="search__form">
-        <i class="ri-search-line search__icon"></i>
-        <input type="search" placeholder="What are you looking for?" class="search__input">
-    </form>
-
-    <i class="ri-close-line search__close" id="search-close"></i>
-</div>
-
-<!--==================== LOGIN ====================-->
-<div class="login" id="login">
-    <form action="" class="login__form">
-        <h2 class="login__title">Log In</h2>
-
-        <div class="login__group">
-            <div>
-                <label for="login-email" class="login__label">Email</label>
-                <input type="email" placeholder="Write your email" id="login-email" class="login__input">
-            </div>
-
-            <div>
-                <label for="login-password" class="login__label">Password</label>
-                <input type="password" placeholder="Enter your password" id="login-password" class="login__input">
-            </div>
-        </div>
-
-        <div>
-            <p class="login__signup">
-                You do not have an account? <a href="#" id="login-signup">Sign up</a>
-            </p>
-
-            <a href="#" class="login__forgot">
-                You forgot your password
-            </a>
-
-            <button type="submit" class="login__button">Log In</button>
-        </div>
-    </form>
-
-    <i class="ri-close-line login__close" id="login-close"></i>
-</div>
-<!--==================== Register ====================-->
-<div class="register" id="register">
-    <form action="" class="register__form">
-        <h2 class="register__title">Sign Up</h2>
-
-        <div class="register__group">
-            <div>
-                <label for="register-email" class="register__label">Email</label>
-                <input type="email" placeholder="Write your email" id="register-email" class="register__input">
-            </div>
-            <div>
-                <label for="name" class="register__label">Name</label>
-                <input type="name" placeholder="Write your name" id="name" class="register__input">
-            </div>
-            <div>
-                <label for="register-password" class="register__label">Password</label>
-                <input type="password" placeholder="Enter your password" id="register-password" class="register__input">
-            </div>
-            <div>
-                <label for="code" class="register__label">Code</label>
-                <div class="send_box">
-                    <input type="code" placeholder="Check Your Email For Code" id="code" class="register__input">
-                    <button class="send_codeBtn" id="send_codeBtn">send</button>
+                <!-- Phone -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
                 </div>
             </div>
-        </div>
 
-        <div>
-            <p class="register__login">
-                Already have an account <a href="#" id="register-login">Log In</a>
-            </p>
+            <div class="nav__actions">
+                <i class="ri-search-line nav__search" id="search-btn"></i>
+                <i class="ri-user-line nav__login" id="login-btn"></i>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-            <button type="submit" class="register__button">Sign Up</button>
-        </div>
-    </form>
+    <!--==================== SEARCH ====================-->
+    <div class="search" id="search">
+        <form action="" class="search_form">
+            <i class="ri-search-line search__icon"></i>
+            <input type="search" placeholder="What are you looking for?" class="search_input">
+        </form>
 
-    <i class="ri-close-line register__close" id="register-close"></i>
+        <i class="ri-close-line action_close" id="search-close"></i>
+    </div>
+
+    <!--==================== LOGIN ====================-->
+    <div class="login" id="login">
+        <form action="" class="action_form">
+            <h2 class="action_title">Log In</h2>
+
+            <div class="action_group">
+                <div>
+                    <label for="login-email" class="action_label">Email</label>
+                    <input type="email" placeholder="Write your email" id="login-email" class="action_input">
+                </div>
+
+                <div>
+                    <label for="login-password" class="action_label">Password</label>
+                    <input type="password" placeholder="Enter your password" id="login-password" class="action_input">
+                </div>
+            </div>
+
+            <div>
+                <p class="action_signup">
+                    You do not have an account? <a href="#" id="login-signup">Sign up</a>
+                </p>
+
+                <a href="#" class="action_forgot" id="login-forget">
+                    You forgot your password
+                </a>
+
+                <button type="submit" class="action_button">Log In</button>
+            </div>
+        </form>
+
+        <i class="ri-close-line action_close" id="login-close"></i>
+    </div>
+    <!--==================== Register ====================-->
+    <div class="register" id="register">
+        <form action="" class="action_form">
+            <h2 class="action_title">Sign Up</h2>
+
+            <div class="action_group">
+                <div>
+                    <label for="register-email" class="action_label">Email</label>
+                    <input type="email" placeholder="Write your email" id="register-email" class="action_input">
+                </div>
+                <div>
+                    <label for="name" class="action_label">Name</label>
+                    <input type="name" placeholder="Write your name" id="name" class="action_input">
+                </div>
+                <div>
+                    <label for="register-password" class="action_label">Password</label>
+                    <input type="password" placeholder="Enter your password" id="register-password"
+                           class="action_input">
+                </div>
+                <div>
+                    <label for="register-code" class="action_label">Code</label>
+                    <div class="send_box">
+                        <input type="code" placeholder="Check Your Email For Code" id="register-code"
+                               class="action_input">
+                        <button class="send_codeBtn" id="register-codeBtn">send</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p class="action_login">
+                    Already have an account <a href="#" id="register-login">Log In</a>
+                </p>
+
+                <button type="submit" class="action_button">Sign Up</button>
+            </div>
+        </form>
+
+        <i class="ri-close-line action_close" id="register-close"></i>
+    </div>
+    <!--==================== Forget ====================-->
+    <div class="forget" id="forget">
+        <form action="" class="action_form">
+            <h2 class="action_title">Change Passwd</h2>
+
+            <div class="action_group">
+                <div>
+                    <label for="register-email" class="action_label">Email</label>
+                    <input type="email" placeholder="Write your email" id="forget-email" class="action_input">
+                </div>
+                <div>
+                    <label for="register-password" class="action_label">Password</label>
+                    <input type="password" placeholder="Enter your new password" id="forget-password"
+                           class="action_input">
+                </div>
+                <div>
+                    <label for="forget-code" class="action_label">Code</label>
+                    <div class="send_box">
+                        <input type="code" placeholder="Check Your Email For Code" id="forget-code"
+                               class="action_input">
+                        <button class="send_codeBtn" id="forget_codeBtn">send</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p class="action_login">
+                    Already remember account <a href="#" id="forget-login">Log In</a>
+                </p>
+
+                <button type="submit" class="action_button">Change</button>
+            </div>
+        </form>
+
+        <i class="ri-close-line action_close" id="forget-close"></i>
+    </div>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <img src="static/image/bg-image.png" alt="image" class="main__bg">
+    </main>
 </div>
 
-<!--==================== MAIN ====================-->
-<main class="main">
-    <img src="static/image/bg-image.png" alt="image" class="main__bg">
-</main>
-
-<!--=============== MAIN JS ===============-->
 <script src="static/js/index.js"></script>
-</body>
 
+<script>
+    const {createApp} = Vue;
+
+    createApp({
+        data() {
+            return {
+            };
+        },
+        mounted() {
+
+        },
+        methods: {
+
+        }
+    }).mount('#app');
+</script>
+</body>
 </html>

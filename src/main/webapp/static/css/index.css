@@ -103,36 +103,6 @@ img {
     z-index: -1;
 }
 
-.search,
-.login,
-.register {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: var(--z-modal);
-    background-color: hsla(230, 75%, 15%, .1);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    /* For safari */
-    padding: 8rem 1.5rem 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .4s;
-}
-
-.search__close,
-.login__close,
-.register__close {
-    position: absolute;
-    top: -2rem;
-    right: 2rem;
-    font-size: 1.5rem;
-    color: var(--title-color);
-    cursor: pointer;
-}
-
 /*=============== HEADER & NAV ===============*/
 .header {
     position: fixed;
@@ -215,8 +185,38 @@ img {
     top: 0;
 }
 
-/*=============== SEARCH ===============*/
-.search__form {
+/*=============== search ===============*/
+
+.search,
+.login,
+.register,
+.forget {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-modal);
+    background-color: hsla(230, 75%, 15%, .1);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    /* For safari */
+    padding: 8rem 1.5rem 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s;
+}
+
+.action_close {
+    position: absolute;
+    top: -2rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    color: var(--title-color);
+    cursor: pointer;
+}
+
+.search_form {
     display: flex;
     align-items: center;
     column-gap: .5rem;
@@ -228,12 +228,12 @@ img {
     transition: transform .4s;
 }
 
-.search__icon {
+.search_icon {
     font-size: 1.25rem;
     color: var(--title-color);
 }
 
-.search__input {
+.search_input {
     width: 100%;
     padding-block: 1rem;
     background-color: var(--container-color);
@@ -244,23 +244,13 @@ img {
     color: var(--text-color);
 }
 
-/* Show search */
-.show-search {
-    opacity: 1;
-    pointer-events: initial;
-}
-
-.show-search .search__form {
-    transform: translateY(0);
-}
-
-/*=============== LOGIN ===============*/
-.login__form,
-.login__group {
+/*=============== action ===============*/
+.action_form,
+.action_group {
     display: grid;
 }
 
-.login__form {
+.action_form {
     background-color: var(--container-color);
     padding: 2rem 1.5rem 2.5rem;
     box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
@@ -271,16 +261,16 @@ img {
     transition: transform .4s;
 }
 
-.login__title {
+.action_title {
     font-size: var(--h2-font-size);
     color: var(--title-color);
 }
 
-.login__group {
+.action_group {
     row-gap: 1rem;
 }
 
-.login__label {
+.action_label {
     display: block;
     text-align: initial;
     color: var(--title-color);
@@ -288,7 +278,7 @@ img {
     margin-bottom: .25rem;
 }
 
-.login__input {
+.action_input {
     width: 100%;
     background-color: var(--container-color);
     border: 2px solid var(--border-color);
@@ -297,27 +287,26 @@ img {
     color: var(--text-color);
 }
 
-.login__input::placeholder {
+.action_input::placeholder {
     color: var(--text-color);
 }
 
-.login__signup,
-.register__login {
+.action_signup,
+.action_login {
     margin-bottom: .5rem;
 }
 
-.login__signup a {
+.action_signup a {
     color: var(--first-color);
 }
 
-.login__forgot {
+.action_forgot {
     display: inline-block;
     color: var(--first-color);
     margin-bottom: 1.25rem;
 }
 
-.login__button,
-.register__button {
+.action_button {
     display: inline-block;
     background-color: var(--first-color);
     width: 100%;
@@ -329,89 +318,30 @@ img {
     transition: box-shadow .4s;
 }
 
-.login__button:hover {
+.action_close {
+    width: max-content;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    font-size: 2rem;
+}
+
+.action_button:hover {
     box-shadow: 0 4px 24px hsla(230, 75%, 40%, .4);
 }
 
-/* Show login */
-.show-login {
+.show-action {
     opacity: 1;
     pointer-events: initial;
 }
 
-.show-login .login__form {
+.show-action .action_form {
     transform: translateY(0);
 }
 
-/*=============== REGISTER ===============*/
 
-.register__form,
-.register__group {
-    display: grid;
-}
-
-.register__form {
-    background-color: var(--container-color);
-    padding: 2rem 1.5rem 2.5rem;
-    box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
-    border-radius: 1rem;
-    row-gap: 1.25rem;
-    text-align: center;
-    transform: translateY(-1rem);
-    transition: transform .4s;
-}
-
-.register__title {
-    font-size: var(--h2-font-size);
-    color: var(--title-color);
-}
-
-.register__group {
-    row-gap: 1rem;
-}
-
-.register__label {
-    display: block;
-    text-align: initial;
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-    margin-bottom: .25rem;
-}
-
-.register__input {
-    width: 100%;
-    background-color: var(--container-color);
-    border: 2px solid var(--border-color);
-    padding: 1rem;
-    border-radius: .5rem;
-    color: var(--text-color);
-}
-
-.register__input::placeholder {
-    color: var(--text-color);
-}
-
-.register__signup,
-.register__register {
-    margin-bottom: .5rem;
-}
-
-.register__signup a {
-    color: var(--first-color);
-}
-
-.register__forgot {
-    display: inline-block;
-    color: var(--first-color);
-    margin-bottom: 1.25rem;
-}
-
-
-.register__button:hover {
-    box-shadow: 0 4px 24px hsla(230, 75%, 40%, .4);
-}
-
-#code {
+#register-code, #forget-code {
     width: 80%;
     display: inline-block;
     border: none;
@@ -436,15 +366,6 @@ img {
     color: var(--text-color);
 }
 
-/* Show register */
-.show-register {
-    opacity: 1;
-    pointer-events: initial;
-}
-
-.show-register .register__form {
-    transform: translateY(0);
-}
 
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
@@ -452,28 +373,17 @@ img {
 
     .search,
     .login,
-    .register {
+    .register,
+    .forget {
         padding-top: 10rem;
     }
 
-    .search__form {
+    .search_form {
         max-width: 450px;
         margin-inline: auto;
     }
 
-    .search__close,
-    .login__close,
-    .register__close {
-        width: max-content;
-        top: 5rem;
-        left: 0;
-        right: 0;
-        margin-inline: auto;
-        font-size: 2rem;
-    }
-
-    .login__form,
-    .register__form {
+    .action_form {
         max-width: 400px;
         margin-inline: auto;
     }
@@ -500,8 +410,7 @@ img {
         column-gap: 3rem;
     }
 
-    .login__form,
-    .register__form {
+    .action_form {
         padding: 3rem 2rem 3.5rem;
     }
 }

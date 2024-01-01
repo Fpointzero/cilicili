@@ -20,12 +20,12 @@ const search = document.getElementById('search'),
 
 /* Search show */
 searchBtn.addEventListener('click', () => {
-    search.classList.add('show-search')
+    search.classList.add('show-action')
 })
 
 /* Search hidden */
 searchClose.addEventListener('click', () => {
-    search.classList.remove('show-search')
+    search.classList.remove('show-action')
 })
 
 /*=============== LOGIN ===============*/
@@ -33,15 +33,16 @@ const login = document.getElementById('login'),
     loginBtn = document.getElementById('login-btn'),
     loginClose = document.getElementById('login-close')
 loginSignup = document.getElementById('login-signup')
+loginForget = document.getElementById('login-forget')
 
 /* Login show */
 loginBtn.addEventListener('click', () => {
-    login.classList.add('show-login')
+    login.classList.add('show-action')
 })
 
 /* Login hidden */
 loginClose.addEventListener('click', () => {
-    login.classList.remove('show-login')
+    login.classList.remove('show-action')
 })
 
 /*=============== Register ===============*/
@@ -51,16 +52,38 @@ registerLogin = document.getElementById('register-login')
 
 /* Register show */
 loginSignup.addEventListener('click', () => {
-    register.classList.add('show-register')
-    login.classList.remove('show-login')
+    register.classList.add('show-action')
+    login.classList.remove('show-action')
 })
 
+/* Register -> Login */
 registerLogin.addEventListener('click', () => {
-    login.classList.add('show-login')
-    register.classList.remove('show-register')
+    login.classList.add('show-action')
+    register.classList.remove('show-action')
 })
 
 /* Register hidden */
 registerClose.addEventListener('click', () => {
-    register.classList.remove('show-register')
+    register.classList.remove('show-action')
+})
+
+/*=============== FORGET ===============*/
+const forget = document.getElementById('forget'),
+    forgetClose = document.getElementById('forget-close')
+forgetLogin = document.getElementById('forget-login')
+
+/* Forget show */
+loginForget.addEventListener('click', () => {
+    forget.classList.add('show-action')
+    login.classList.remove('show-action')
+})
+/* Forget -> Login */
+forgetLogin.addEventListener('click', () => {
+    login.classList.add('show-action')
+    forget.classList.remove('show-action')
+})
+
+/* Forget hidden */
+forgetClose.addEventListener('click', () => {
+    forget.classList.remove('show-action')
 })
