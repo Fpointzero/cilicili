@@ -15,5 +15,6 @@
     <mappers>
         <!-- 配置映射文件的位置 -->
         <mapper resource="xyz/fpointzero/mapper/UserMapper.xml" />
+        <mapper resource="xyz/fpointzero/mapper/VideoMapper.xml" />
     </mappers>
 </configuration>
