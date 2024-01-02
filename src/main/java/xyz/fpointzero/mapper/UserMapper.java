@@ -12,4 +12,5 @@ public interface UserMapper {
     void setPassword(@Param("password")String password, @Param("email")String email);
     void setVery(@Param("very")String very, @Param("time")String time, @Param("email")String email);
     void setAvatar(@Param("avatar") String avatar, @Param("username") String username);
+    void setAll(User user);
 }

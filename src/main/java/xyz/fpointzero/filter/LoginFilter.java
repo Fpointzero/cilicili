@@ -25,7 +25,8 @@ public class LoginFilter implements Filter {
         if (user == null) {
 //            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
 //            dispatcher.forward(httpRequest, httpResponse);
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/index.jsp");
+            httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "请先登录");
+//            httpResponse.sendRedirect(httpRequest.getContextPath() + "/index.jsp");
             return;
         }
         chain.doFilter(request, response);

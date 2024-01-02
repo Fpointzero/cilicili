@@ -39,4 +39,8 @@
         SET verification = #{very}, verificationTime = #{time}
         WHERE email = #{email};
     </update>
+    <update id="setAll" parameterType="xyz.fpointzero.model.User">
+        UPDATE user SET user.username = #{username}, user.email = #{email}, user.phone_number = #{phoneNumber}
+        WHERE username = #{username}
+    </update>
 </mapper>

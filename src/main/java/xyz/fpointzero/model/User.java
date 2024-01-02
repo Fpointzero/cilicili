@@ -31,11 +31,12 @@ public class User {
 
 //            System.out.println(user.password + "-" + password);
             if (user.getPassword().equals(password)) {
-                this.username = user.username;
-                this.phoneNumber = user.phoneNumber;
-                this.email = user.email;
-                this.avatar = user.avatar;
-                this.password = null;
+//                this.username = user.username;
+//                this.phoneNumber = user.phoneNumber;
+//                this.email = user.email;
+//                this.avatar = user.avatar;
+//                this.password = null;
+                setUser(user);
                 return true;
             }
         } catch (Exception e) {
@@ -57,6 +58,32 @@ public class User {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean updateAll(User user) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            mapper.setAll(user);
+            sqlSession.commit();
+            setUser(user);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void setUser(User user) {
+        if (user.username != null)
+            this.username = user.username;
+        if (user.phoneNumber != null)
+            this.phoneNumber = user.phoneNumber;
+        if (user.email != null)
+            this.email = user.email;
+        if (user.avatar != null)
+            this.avatar = user.avatar;
+        this.password = null;
     }
 
     public void setUsername(String username) {
