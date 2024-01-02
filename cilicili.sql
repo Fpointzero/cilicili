@@ -25,17 +25,17 @@ CREATE TABLE `user` (
   `username` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   `password` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
-  `phone_number` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
+  `phoneNumber` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   `avatar` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
-  `Verification` char(6) COLLATE utf8mb3_bin DEFAULT NULL,
-  `Verification_time` datetime DEFAULT NULL,
+  `verification` char(6) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
+  `verificationTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `EMAIL` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`username`,`password`,`email`,`phone_number`,`avatar`,`Verification`,`Verification_time`) values 
+insert  into `user`(`id`,`username`,`password`,`email`,`phoneNumber`,`avatar`,`verification`,`verificationTime`) values 
 (1,'Ogawa Yota','T1q8aWio1U','yotaogawa5@hotmail.com','(20) 2923 7574',NULL,NULL,NULL),
 (2,'Gladys Butler','xl85yhmVlu','gladysbutle@gmail.com','20-429-6125',NULL,NULL,NULL),
 (3,'Mario Cooper','j5a4ZBB6jk','mcooper@gmail.com','183-1608-1321',NULL,NULL,NULL),
@@ -46,7 +46,7 @@ insert  into `user`(`id`,`username`,`password`,`email`,`phone_number`,`avatar`,`
 (8,'Loui Hok Yau','pff8fNQ6Ev','lohokyau@gmail.com','52-922-5860',NULL,NULL,NULL),
 (9,'Chin Hok Yau','oKfU4LTMUk','chin1993@yahoo.com','(1223) 09 5718',NULL,NULL,NULL),
 (10,'Angela Richardson','AQbH1yelAP','richa@gmail.com','80-3316-5719',NULL,NULL,NULL),
-(59,NULL,NULL,'1@qq.com',NULL,NULL,'460231','2023-12-30 19:51:57');
+(59,'2','1','1@qq.com',NULL,NULL,NULL,'2023-12-31 19:10:14');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
