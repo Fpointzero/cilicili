@@ -10,18 +10,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/search")
 public class SearchServlet extends MyHttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        msg = new Msg<User>(400, null, "搜索失败");
+        msg = new Msg<List<Video>>(400, null, "搜索失败");
         String keyword = req.getParameter("keyword");
 
         Video video = new Video();
         video.setTitle(keyword);
-        if(video.search()){
-            msg.setAll(200, video, "搜索成功");
+        List<Video> videoList = null;
+        videoList = video.search();
+        if(videoList != null){
+            msg.setAll(200, videoList, "搜索成功");
             resp.getWriter().println(msg.toJSONString());
         } else {
             resp.getWriter().println(msg.toJSONString());

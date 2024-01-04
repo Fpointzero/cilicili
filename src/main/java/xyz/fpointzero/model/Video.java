@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import xyz.fpointzero.mapper.VideoMapper;
 import xyz.fpointzero.util.MyBatisUtil;
 
+import java.util.List;
+
 public class Video {
     private Integer id;
     private String videoPath;
@@ -14,22 +16,20 @@ public class Video {
     private String playNumber;
     public String videoTime;
 
-    public boolean search(){
+    public List<Video> search(){
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
-            Video video = null;
-            video = mapper.getByTitle("%"+title+"%");
-            if (video == null){
-                return false;
-            } else {
-                setVideo(video);
-                return true;
+            List<Video> videoList = null;
+            videoList = mapper.getByTitle("%"+title+"%");
+            if (videoList.size() != 0){
+                return videoList;
             }
 
         }catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
+        return null;
     }
 
     private void setVideo(Video video) {
