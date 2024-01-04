@@ -5,11 +5,14 @@ import xyz.fpointzero.mapper.VideoMapper;
 import xyz.fpointzero.util.MyBatisUtil;
 
 public class Video {
+    private Integer id;
     private String videoPath;
     private String coverPath;
     private String title;
     private String subtitle;
-    private String likeNumber;
+    private String starNumber;
+    private String playNumber;
+    public String videoTime;
 
     public boolean search(){
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
@@ -34,7 +37,7 @@ public class Video {
         this.coverPath = video.coverPath;
         this.title = video.title;
         this.subtitle = video.subtitle;
-        this.likeNumber = video.likeNumber;
+        this.starNumber = video.starNumber;
     }
 
     public String getVideoPath() {
@@ -70,10 +73,34 @@ public class Video {
     }
 
     public String getLikeNumber() {
-        return likeNumber;
+        return starNumber;
     }
 
     public void setLikeNumber(String likeNumber) {
-        this.likeNumber = likeNumber;
+        this.starNumber = likeNumber;
+    }
+
+    public String getStarNumber() {
+        return starNumber;
+    }
+
+    public void setStarNumber(String starNumber) {
+        this.starNumber = starNumber;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getPlayNumber() {
+        return playNumber;
+    }
+
+    public void setPlayNumber(String playNumber) {
+        this.playNumber = playNumber;
     }
 }

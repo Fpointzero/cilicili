@@ -1,0 +1,8 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.fpointzero.mapper.StarMapper">
+    <select id="getStarList" resultType="xyz.fpointzero.model.Star">
+        SELECT *
+        FROM star left join video as v on star.vid = v.id
+        WHERE star.uid like #{uid}
+    </select>
+</mapper>

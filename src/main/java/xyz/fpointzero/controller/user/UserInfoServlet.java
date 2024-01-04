@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/user/userInfo")
+@WebServlet(urlPatterns = {
+        "/user/userInfo",
+        "/user/changeUserInfo"
+})
 public class UserInfoServlet extends MyHttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

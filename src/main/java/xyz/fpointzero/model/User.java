@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class User {
+    private Integer id;
     private String username;
     private String password;
     private String email;
@@ -75,6 +76,8 @@ public class User {
     }
 
     public void setUser(User user) {
+        if (user.id != null)
+            this.id = user.id;
         if (user.username != null)
             this.username = user.username;
         if (user.phoneNumber != null)
@@ -84,6 +87,14 @@ public class User {
         if (user.avatar != null)
             this.avatar = user.avatar;
         this.password = null;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setUsername(String username) {

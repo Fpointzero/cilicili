@@ -8,11 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 public class Msg<T> {
+    public static final int ERROR = 400;
+    public static final int SUCCESS = 200;
     private int status;
     private T data;
     private String msg;
 
-    public Msg(){}
+    public Msg() {
+    }
 
     public Msg(int status, T data, String msg) {
         this.status = status;
@@ -20,7 +23,16 @@ public class Msg<T> {
         this.msg = msg;
     }
 
-    public String toJSONString(){
+    public Msg(int status, T data) {
+        this.status = status;
+        this.data = data;
+        if (status == SUCCESS)
+            this.msg = "请求成功";
+        else
+            this.msg = "请求失败";
+    }
+
+    public String toJSONString() {
         return JSON.toJSONString(this);
     }
 
@@ -48,9 +60,10 @@ public class Msg<T> {
         this.msg = msg;
     }
 
-    public void setAll(int status, T data, String msg) {
+    public Msg setAll(int status, T data, String msg) {
         this.status = status;
         this.data = data;
         this.msg = msg;
+        return this;
     }
 }
