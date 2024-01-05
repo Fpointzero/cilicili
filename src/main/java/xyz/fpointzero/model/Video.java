@@ -32,7 +32,19 @@ public class Video {
         return null;
     }
 
+    public void play(){
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            Video video = new Video();
+            video = mapper.getById(String.valueOf(id));
+            setVideo(video);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void setVideo(Video video) {
+        this.id=video.id;
         this.videoPath = video.videoPath;
         this.coverPath = video.coverPath;
         this.title = video.title;

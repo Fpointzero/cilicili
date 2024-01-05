@@ -1,0 +1,19 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.fpointzero.mapper.HistoryMapper">
+    <select id="getHistoryList" resultType="xyz.fpointzero.model.History">
+        SELECT *
+        FROM history left join video as v on history.vid = v.id
+        WHERE history.uid like #{uid}
+    </select>
+    <insert id="setHistory">
+        INSERT INTO history (uid,vid,time) VALUES (#{uid},#{vid},CURRENT_TIMESTAMP());
+    </insert>
+    <delete id="delHistory">
+        DELETE FROM history
+        WHERE uid = #{uid} AND vid = #{vid};
+    </delete>
+    <delete id="delAll">
+        DELETE FROM history
+        WHERE uid = #{uid};
+    </delete>
+</mapper>

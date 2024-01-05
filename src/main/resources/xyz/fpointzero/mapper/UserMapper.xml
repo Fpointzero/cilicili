@@ -36,7 +36,7 @@
     </update>
     <update id="setVery">
         UPDATE user
-        SET verification = #{very}, verificationTime = #{time}
+        SET verification = #{very}, verificationTime = CURRENT_TIMESTAMP()
         WHERE email = #{email};
     </update>
     <update id="setAll" parameterType="xyz.fpointzero.model.User">

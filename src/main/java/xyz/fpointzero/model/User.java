@@ -2,9 +2,12 @@ package xyz.fpointzero.model;
 
 import org.apache.ibatis.session.SqlSession;
 import xyz.fpointzero.mapper.UserMapper;
+import xyz.fpointzero.util.DataUtil;
 import xyz.fpointzero.util.EmailSender;
+import xyz.fpointzero.util.Msg;
 import xyz.fpointzero.util.MyBatisUtil;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -45,6 +48,41 @@ public class User {
             return false;
         }
         return false;
+    }
+
+    public String signIn(String code){
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+            User user = mapper.getByEmail(email);
+            String very = user.getVerification();
+            String time = user.getVerificationTime();
+
+            Duration duration = DataUtil.getDurationTime(time);
+
+            if(!very.equals("null")) {
+                if (duration.toMinutes() < 5) {
+                    if (code.equals(very)) {
+                        mapper.setUsername(username, email);
+                        mapper.setPassword(password, email);
+                        mapper.setVery("null", email);
+                        sqlSession.commit();
+                        setUser(user);
+                        return "注册成功";
+                    } else {
+                        return "验证码错误";
+                    }
+                } else {
+                    return "验证码失效";
+                }
+            } else{
+                return "请先申请验证码";
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            return "MyBatisUtil加载错误";
+        }
     }
 
     public boolean updateAvatar(String avatar) {

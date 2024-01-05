@@ -71,14 +71,7 @@ public class EmailSender {
                     e.printStackTrace();
                 }
 
-                // 获取当前时间
-                LocalDateTime currentTime = LocalDateTime.now();
-                // 定义日期时间格式
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                // 格式化当前时间为指定格式
-                String formattedDateTime = currentTime.format(formatter);
-
-                mapper.setVery(String.valueOf(randomNumber), formattedDateTime, email);
+                mapper.setVery(String.valueOf(randomNumber), email);
 
                 sqlSession.commit();
 

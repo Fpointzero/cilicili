@@ -5,4 +5,9 @@
         FROM video
         WHERE title like #{keyword}
     </select>
+    <select id="getById" resultType="xyz.fpointzero.model.Video">
+        SELECT *
+        FROM video
+        WHERE id like #{id}
+    </select>
 </mapper>

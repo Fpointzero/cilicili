@@ -17,5 +17,7 @@
         <mapper resource="xyz/fpointzero/mapper/UserMapper.xml" />
         <mapper resource="xyz/fpointzero/mapper/VideoMapper.xml" />
         <mapper resource="xyz/fpointzero/mapper/StarMapper.xml" />
+        <mapper resource="xyz/fpointzero/mapper/HistoryMapper.xml" />
+        <mapper resource="xyz/fpointzero/mapper/FanMapper.xml" />
     </mappers>
 </configuration>
