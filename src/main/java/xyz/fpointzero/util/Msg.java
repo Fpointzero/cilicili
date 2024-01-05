@@ -2,6 +2,8 @@ package xyz.fpointzero.util;
 
 import com.alibaba.fastjson.JSON;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,5 +67,18 @@ public class Msg<T> {
         this.data = data;
         this.msg = msg;
         return this;
+    }
+    public Msg setAll(int status, T data) {
+        this.status = status;
+        this.data = data;
+        if (status == SUCCESS)
+            this.msg = "请求成功";
+        else
+            this.msg = "请求失败";
+        return this;
+    }
+
+    public void send(HttpServletResponse httpServletResponse) throws IOException {
+        httpServletResponse.getWriter().println(this.toJSONString());
     }
 }

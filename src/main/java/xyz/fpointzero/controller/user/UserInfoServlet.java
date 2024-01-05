@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {
-        "/user/userInfo",
+        "/user/getUserInfo",
         "/user/changeUserInfo"
 })
 public class UserInfoServlet extends MyHttpServlet {

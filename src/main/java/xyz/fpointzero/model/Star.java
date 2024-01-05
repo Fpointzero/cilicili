@@ -7,11 +7,12 @@ import xyz.fpointzero.util.MyBatisUtil;
 import java.util.List;
 
 public class Star {
-    private Integer uid;
-    private Integer vid;
-    public String createDate;
+    public Integer uid;
+    public Integer vid;
+    public String group = "default";
+    public String createTime;
 
-//    Video video;
+    //    Video video;
     private String videoPath;
     private String coverPath;
     private String title;
@@ -19,10 +20,40 @@ public class Star {
     public String playNumber;
     public String videoTime;
 
-    public static List<Star> getStarList(User user) {
+    public static boolean setStar(Star star) {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             StarMapper starMapper = sqlSession.getMapper(StarMapper.class);
-            List<Star> starList = starMapper.getStarList(user.getId());
+            if (star.group == null) {
+                starMapper.insertStarDefault(star);
+            }
+            else
+                starMapper.insertStar(star);
+            sqlSession.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean unsetStar(Star star) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            StarMapper starMapper = sqlSession.getMapper(StarMapper.class);
+            starMapper.updateStar(star);
+            sqlSession.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static List<Star> getStarList(User user, String group) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            StarMapper starMapper = sqlSession.getMapper(StarMapper.class);
+            List<Star> starList = starMapper.getStarList(user.getId(), group);
             return starList;
         } catch (Exception e) {
             e.printStackTrace();

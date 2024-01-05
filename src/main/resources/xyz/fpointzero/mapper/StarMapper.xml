@@ -2,7 +2,19 @@
 <mapper namespace="xyz.fpointzero.mapper.StarMapper">
     <select id="getStarList" resultType="xyz.fpointzero.model.Star">
         SELECT *
-        FROM star left join video as v on star.vid = v.id
-        WHERE star.uid like #{uid}
+        FROM star
+                 left join video as v on star.vid = v.id
+        WHERE star.uid like #{uid} AND star.`group` = #{group}
     </select>
+    <insert id="insertStar" parameterType="xyz.fpointzero.model.Star">
+        INSERT INTO star (star.uid, star.vid, star.group)
+        values (#{uid}, #{vid}, #{group});
+    </insert>
+    <insert id="insertStarDefault" parameterType="xyz.fpointzero.model.Star">
+        INSERT INTO star (star.uid, star.vid)
+        values (#{uid}, #{vid});
+    </insert>
+    <delete id="updateStar" parameterType="xyz.fpointzero.model.Star">
+        DELETE FROM star WHERE uid = #{uid} and vid = #{vid};
+    </delete>
 </mapper>
