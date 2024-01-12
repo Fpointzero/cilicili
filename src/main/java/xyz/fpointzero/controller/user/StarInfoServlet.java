@@ -1,5 +1,6 @@
 package xyz.fpointzero.controller.user;
 
+import com.alibaba.fastjson.JSONObject;
 import xyz.fpointzero.controller.MyHttpServlet;
 import xyz.fpointzero.model.Star;
 import xyz.fpointzero.model.User;
@@ -31,12 +32,19 @@ public class StarInfoServlet extends MyHttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         msg = new Msg<Star>(Msg.ERROR, null);
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = req.getReader().readLine()) != null) {
+            content.append(line);
+        }
+        JSONObject json = JSONObject.parseObject(content.toString());
+        String action = json.getString("action");
         User user = (User) req.getSession().getAttribute("user");
         Star star = new Star();
-        star.vid = Integer.valueOf(req.getParameter("vid"));
+        star.vid = Integer.valueOf(json.getString("vid"));
         star.uid = user.getId();
-        star.group = req.getParameter("group");
-        String action = req.getParameter("action");
+        star.group = json.getString("group");
+
         if (action.equals("set")) {
             if (Star.setStar(star)) {
                 msg.setAll(Msg.SUCCESS, star);

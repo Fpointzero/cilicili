@@ -1,5 +1,6 @@
 package xyz.fpointzero.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import xyz.fpointzero.model.History;
 import xyz.fpointzero.model.User;
 import xyz.fpointzero.model.Video;
@@ -16,7 +17,13 @@ public class GetVideoServlet extends MyHttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         msg = new Msg<Video>(400, null, "视频获取失败");
-        String vid = req.getParameter("vid");
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = req.getReader().readLine()) != null) {
+            content.append(line);
+        }
+        JSONObject json = JSONObject.parseObject(content.toString());
+        String vid = json.getString("vid");
         User user = (User) req.getSession().getAttribute("user");
 
         if(History.setHistory(user, Integer.valueOf(vid))) {
