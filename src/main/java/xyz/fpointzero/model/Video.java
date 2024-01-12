@@ -15,6 +15,8 @@ public class Video {
     private String starNumber;
     private String playNumber;
     public String videoTime;
+    public Integer uid;
+    public String createTime;
 
     public List<Video> search(){
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
@@ -41,6 +43,18 @@ public class Video {
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean uploadVideo() {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            mapper.insertVideo(this);
+            sqlSession.commit();
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     private void setVideo(Video video) {

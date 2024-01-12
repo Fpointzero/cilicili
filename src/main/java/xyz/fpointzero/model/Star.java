@@ -40,7 +40,7 @@ public class Star {
     public static boolean unsetStar(Star star) {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             StarMapper starMapper = sqlSession.getMapper(StarMapper.class);
-            starMapper.updateStar(star);
+            starMapper.delete(star);
             sqlSession.commit();
             return true;
         } catch (Exception e) {

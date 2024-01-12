@@ -43,7 +43,7 @@ public class StarInfoServlet extends MyHttpServlet {
             }
         } else if (action.equals("unset")) {
             if (Star.unsetStar(star)) {
-
+                msg.setAll(Msg.SUCCESS, star);
             }
         }
 

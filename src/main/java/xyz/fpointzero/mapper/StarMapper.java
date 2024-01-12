@@ -12,5 +12,5 @@ public interface StarMapper {
 
     void insertStar(Star star);
 
-    void updateStar(Star star);
+    void delete(Star star);
 }

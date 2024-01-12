@@ -10,4 +10,8 @@
         FROM video
         WHERE id = #{id}
     </select>
+    <insert id="insertVideo" parameterType="xyz.fpointzero.model.Video">
+        INSERT INTO `video` (videoPath, uid)
+        VALUES (#{videoPath}, #{uid})
+    </insert>
 </mapper>

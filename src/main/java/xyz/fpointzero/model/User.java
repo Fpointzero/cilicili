@@ -45,7 +45,7 @@ public class User {
         return false;
     }
 
-    public String signIn(String code){
+    public String signIn(String code) {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 
@@ -55,7 +55,7 @@ public class User {
 
             Duration duration = DateUtil.getDurationTime(time);
 
-            if(!very.equals("null")) {
+            if (!very.equals("null")) {
                 if (duration.toMinutes() < 5) {
                     if (code.equals(very)) {
                         mapper.setUsername(username, email);
@@ -70,14 +70,33 @@ public class User {
                 } else {
                     return "验证码失效";
                 }
-            } else{
+            } else {
                 return "请先申请验证码";
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return "MyBatisUtil加载错误";
         }
+    }
+
+    public boolean changePassword(String code, String password) {
+        boolean ret = false;
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            User user = userMapper.getByEmail(email);
+
+            if (code.equals(user.verification) && DateUtil.getDurationTime(user.verificationTime).toMinutes() < 5) {
+                userMapper.setPassword(password, email);
+                ret = true;
+            }
+
+            sqlSession.commit();
+        } catch (
+                Exception e) {
+            e.printStackTrace();
+        }
+        return ret;
     }
 
     public boolean updateAvatar(String avatar) {

@@ -6,6 +6,7 @@ import xyz.fpointzero.model.Video;
 import java.util.List;
 
 public interface VideoMapper {
-    List<Video> getByTitle(@Param("keyword")String keyword);
-    Video getById(@Param("id")String id);
+    List<Video> getByTitle(@Param("keyword") String keyword);
+    Video getById(@Param("id") String id);
+    void insertVideo(Video video);
 }
