@@ -37,8 +37,15 @@ public class History {
             sqlSession.commit();
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+            try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+                HistoryMapper HistoryMapper = sqlSession.getMapper(HistoryMapper.class);
+                HistoryMapper.updateHistory(user.getId(), vid);
+                sqlSession.commit();
+                return true;
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                return false;
+            }
         }
     }
 

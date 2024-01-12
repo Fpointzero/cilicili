@@ -1,22 +1,18 @@
 package xyz.fpointzero.controller;
 
-import xyz.fpointzero.mapper.HistoryMapper;
 import xyz.fpointzero.model.History;
-import xyz.fpointzero.model.Star;
 import xyz.fpointzero.model.User;
 import xyz.fpointzero.model.Video;
 import xyz.fpointzero.util.Msg;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet("/play")
-public class PlayServlet extends MyHttpServlet {
+@WebServlet("/getVideo")
+public class GetVideoServlet extends MyHttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         msg = new Msg<Video>(400, null, "视频获取失败");
