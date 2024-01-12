@@ -3,11 +3,16 @@
     <select id="getHistoryList" resultType="xyz.fpointzero.model.History">
         SELECT *
         FROM history left join video as v on history.vid = v.id
-        WHERE history.uid like #{uid}
+        WHERE history.uid = #{uid}
     </select>
     <insert id="setHistory">
         INSERT INTO history (uid,vid,time) VALUES (#{uid},#{vid},CURRENT_TIMESTAMP());
     </insert>
+    <update id="updateHistory">
+        UPDATE history
+        SET  time = CURRENT_TIMESTAMP()
+        WHERE uid = #{uid} AND vid = #{vid};
+    </update>
     <delete id="delHistory">
         DELETE FROM history
         WHERE uid = #{uid} AND vid = #{vid};

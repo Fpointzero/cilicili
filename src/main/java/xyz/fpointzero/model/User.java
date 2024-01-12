@@ -2,15 +2,10 @@ package xyz.fpointzero.model;
 
 import org.apache.ibatis.session.SqlSession;
 import xyz.fpointzero.mapper.UserMapper;
-import xyz.fpointzero.util.DataUtil;
-import xyz.fpointzero.util.EmailSender;
-import xyz.fpointzero.util.Msg;
+import xyz.fpointzero.util.DateUtil;
 import xyz.fpointzero.util.MyBatisUtil;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Random;
 
 public class User {
     private Integer id;
@@ -58,7 +53,7 @@ public class User {
             String very = user.getVerification();
             String time = user.getVerificationTime();
 
-            Duration duration = DataUtil.getDurationTime(time);
+            Duration duration = DateUtil.getDurationTime(time);
 
             if(!very.equals("null")) {
                 if (duration.toMinutes() < 5) {

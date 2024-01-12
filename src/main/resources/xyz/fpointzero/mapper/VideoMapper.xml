@@ -8,6 +8,6 @@
     <select id="getById" resultType="xyz.fpointzero.model.Video">
         SELECT *
         FROM video
-        WHERE id like #{id}
+        WHERE id = #{id}
     </select>
 </mapper>

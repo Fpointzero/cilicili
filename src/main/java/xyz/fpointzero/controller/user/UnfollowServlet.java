@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/user/follow")
-public class FollowServlet extends MyHttpServlet {
+@WebServlet("/user/unfollow")
+public class UnfollowServlet extends MyHttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        msg = new Msg<List<Fan>>(Msg.ERROR,  null, "关注失败");
+        msg = new Msg<List<Fan>>(Msg.ERROR,  null, "取关失败");
         String uid = req.getParameter("uid");
         User user = (User) req.getSession().getAttribute("user");
-        if(Fan.follow(user, Integer.valueOf(uid))) {
-            resp.getWriter().println(msg.setAll(200, null, "关注成功").toJSONString());
+        if(Fan.unfollow(user, Integer.valueOf(uid))) {
+            resp.getWriter().println(msg.setAll(200, null, "取关成功").toJSONString());
         } else{
             resp.getWriter().println(msg.toJSONString());
         }

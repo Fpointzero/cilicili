@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class DataUtil {
+public class DateUtil {
     //获取当前时间
     public static String getCurrentTime() {
         // 获取当前时间
