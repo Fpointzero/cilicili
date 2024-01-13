@@ -19,7 +19,8 @@ import java.util.List;
 
 @WebServlet("/user/upload")
 public class UploadServlet extends MyHttpServlet {
-    private static String UPLOAD_PATH = "/WEB-INF/upload";
+//    public static String UPLOAD_PATH = "/WEB-INF/upload";
+    public static String UPLOAD_PATH = "D:/cilicili_files";
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user= (User) req.getSession().getAttribute("user");
@@ -42,8 +43,9 @@ public class UploadServlet extends MyHttpServlet {
         upload.setSizeMax(1024L * 1024 * 1024); // 允许最大上传1G视频
         String userUploadPath = UPLOAD_PATH + "/" + user.getId();
         // 设置上传路径
-        String uploadPath = req.getServletContext().getRealPath(userUploadPath);
-
+//        String uploadPath = req.getServletContext().getRealPath(userUploadPath);
+        String uploadPath = userUploadPath;
+//        System.out.println(uploadPath);
         try {
             @SuppressWarnings("unchecked")
             List<FileItem> formItems = upload.parseRequest(req);
@@ -66,7 +68,7 @@ public class UploadServlet extends MyHttpServlet {
                         }
 //                        String filePath = uploadPath + File.separator + timestamp + File.separator + fileName;
                         String newFileName = timestamp + FileUtil.getFileExtension(fileName); // 上传后文件内容
-                        String filePath = uploadPath + File.separator + newFileName;
+                        String filePath = uploadPath + FileUtil.urlSeparator + newFileName;
                         // 在控制台输出文件的上传路径
                         System.out.println(filePath);
 
@@ -74,7 +76,8 @@ public class UploadServlet extends MyHttpServlet {
                         // 保存文件到硬盘
                         item.write(storeFile);
 
-                        video.setVideoPath(userUploadPath + FileUtil.urlSeparator + newFileName);
+//                        video.setVideoPath(userUploadPath + FileUtil.urlSeparator + newFileName);
+                        video.setVideoPath(filePath);
                         video.uid = user.getId();
                         video.uploadVideo();
 //                        FileUtil.saveFileToDatabase(fileName, filePath);

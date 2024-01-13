@@ -57,6 +57,16 @@ public class Video {
         return false;
     }
 
+    public static Video getVideo(Integer vid) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            return mapper.getById(String.valueOf(vid));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private void setVideo(Video video) {
         this.id=video.id;
         this.videoPath = video.videoPath;
