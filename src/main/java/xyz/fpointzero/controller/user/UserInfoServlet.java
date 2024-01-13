@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {
-        "/user/getUserInfo",
-        "/user/changeUserInfo"
+        "/user/userInfo"
 })
 public class UserInfoServlet extends MyHttpServlet {
     @Override
@@ -46,8 +45,7 @@ public class UserInfoServlet extends MyHttpServlet {
             req.getSession().setAttribute("user", user);
             msg.setAll(200, user, "修改成功");
             resp.getWriter().println(msg.toJSONString());
-        }
-        else
+        } else
             resp.getWriter().println(msg.toJSONString());
     }
 }

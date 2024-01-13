@@ -29,7 +29,7 @@ public class VideoEndpoint {
     public void handleMessage(String message, Session session) throws IOException {
         if (message.equals("get")) {
 //            session.getBasicRemote().sendText("test");
-            ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024 * 10);
+            ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024 * 10 * 4);
             try {
                 FileChannel channel = FileChannel.open(Paths.get(video.getVideoPath()));
 

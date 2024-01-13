@@ -12,26 +12,26 @@ import java.util.Map;
 public class Msg<T> {
     public static final int ERROR = 400;
     public static final int SUCCESS = 200;
-    private int status;
+    private int code;
     private T data;
-    private String msg;
+    private String message;
 
     public Msg() {
     }
 
     public Msg(int status, T data, String msg) {
-        this.status = status;
+        this.code = status;
         this.data = data;
-        this.msg = msg;
+        this.message = msg;
     }
 
     public Msg(int status, T data) {
-        this.status = status;
+        this.code = status;
         this.data = data;
         if (status == SUCCESS)
-            this.msg = "请求成功";
+            this.message = "请求成功";
         else
-            this.msg = "请求失败";
+            this.message = "请求失败";
     }
 
     public String toJSONString() {
@@ -43,11 +43,11 @@ public class Msg<T> {
     }
 
     public int getStatus() {
-        return status;
+        return code;
     }
 
     public void setStatus(int status) {
-        this.status = status;
+        this.code = status;
     }
 
     public void setData(T data) {
@@ -55,26 +55,26 @@ public class Msg<T> {
     }
 
     public String getMsg() {
-        return msg;
+        return message;
     }
 
     public void setMsg(String msg) {
-        this.msg = msg;
+        this.message = msg;
     }
 
     public Msg setAll(int status, T data, String msg) {
-        this.status = status;
+        this.code = status;
         this.data = data;
-        this.msg = msg;
+        this.message = msg;
         return this;
     }
     public Msg setAll(int status, T data) {
-        this.status = status;
+        this.code = status;
         this.data = data;
         if (status == SUCCESS)
-            this.msg = "请求成功";
+            this.message = "请求成功";
         else
-            this.msg = "请求失败";
+            this.message = "请求失败";
         return this;
     }
 

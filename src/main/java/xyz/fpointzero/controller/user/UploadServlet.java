@@ -41,10 +41,9 @@ public class UploadServlet extends MyHttpServlet {
         factory.setRepository(tempDirectory);
 
         upload.setSizeMax(1024L * 1024 * 1024); // 允许最大上传1G视频
-        String userUploadPath = UPLOAD_PATH + "/" + user.getId();
+        String uploadPath = UPLOAD_PATH + "/" + user.getId(); // 设置用户文件上传路径
         // 设置上传路径
 //        String uploadPath = req.getServletContext().getRealPath(userUploadPath);
-        String uploadPath = userUploadPath;
 //        System.out.println(uploadPath);
         try {
             @SuppressWarnings("unchecked")
@@ -67,8 +66,8 @@ public class UploadServlet extends MyHttpServlet {
                                 return;
                         }
 //                        String filePath = uploadPath + File.separator + timestamp + File.separator + fileName;
-                        String newFileName = timestamp + FileUtil.getFileExtension(fileName); // 上传后文件内容
-                        String filePath = uploadPath + FileUtil.urlSeparator + newFileName;
+                        String newFileName = timestamp + FileUtil.getFileExtension(fileName); // 上传新文件名字
+                        String filePath = uploadPath + FileUtil.urlSeparator + newFileName; // 上传完以后全部名字
                         // 在控制台输出文件的上传路径
                         System.out.println(filePath);
 
@@ -77,7 +76,8 @@ public class UploadServlet extends MyHttpServlet {
                         item.write(storeFile);
 
 //                        video.setVideoPath(userUploadPath + FileUtil.urlSeparator + newFileName);
-                        video.setVideoPath(filePath);
+                        video.setVideoPath(user.getId() + FileUtil.urlSeparator + newFileName);
+//                        video.setVideoPath(filePath);
                         video.uid = user.getId();
                         video.uploadVideo();
 //                        FileUtil.saveFileToDatabase(fileName, filePath);

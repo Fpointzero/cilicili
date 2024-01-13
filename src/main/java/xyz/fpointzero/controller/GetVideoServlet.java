@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import xyz.fpointzero.model.History;
 import xyz.fpointzero.model.User;
 import xyz.fpointzero.model.Video;
+import xyz.fpointzero.util.FileUtil;
+import xyz.fpointzero.util.JSONUtil;
 import xyz.fpointzero.util.Msg;
 
 import javax.servlet.ServletException;
@@ -14,27 +16,23 @@ import java.io.IOException;
 
 @WebServlet("/getVideo")
 public class GetVideoServlet extends MyHttpServlet {
+    private static String FILE_SERVER = "http://localhost:8000";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         msg = new Msg<Video>(400, null, "视频获取失败");
-        StringBuilder content = new StringBuilder();
-        String line;
-        while ((line = req.getReader().readLine()) != null) {
-            content.append(line);
-        }
-        JSONObject json = JSONObject.parseObject(content.toString());
-        String vid = json.getString("vid");
+        JSONObject json = JSONUtil.getParamsJSON(req);
+        Integer vid = Integer.valueOf(json.getString("video_id"));
         User user = (User) req.getSession().getAttribute("user");
-
-        if(History.setHistory(user, Integer.valueOf(vid))) {
-            Video video = new Video();
-            video.setId(Integer.valueOf(vid));
-            video.play();
-            msg.setAll(200, video, "视频获取成功");
-            resp.getWriter().println(msg.toJSONString());
-        } else{
-            msg = new Msg<Video>(400, null, "历史记录设置失败");
-            resp.getWriter().println(msg.toJSONString());
+        try {
+            Video video = Video.getVideo(vid);
+            video.setVideoPath(FILE_SERVER + FileUtil.urlSeparator + video.getVideoPath());
+            msg.setAll(Msg.SUCCESS, video, "视频获取成功");
+            if (user != null)
+                History.setHistory(user, vid);
+        } catch (Exception e) {
+            msg.setAll(400, null, "视频获取失败");
         }
+        msg.send(resp);
     }
 }
