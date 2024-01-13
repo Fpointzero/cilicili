@@ -1,5 +1,6 @@
 package xyz.fpointzero.controller.user;
 
+import com.alibaba.fastjson.JSONObject;
 import xyz.fpointzero.controller.MyHttpServlet;
 import xyz.fpointzero.model.User;
 import xyz.fpointzero.util.Msg;
@@ -25,15 +26,19 @@ public class UserInfoServlet extends MyHttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         msg = new Msg<User>(400, null, "修改失败");
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = req.getReader().readLine()) != null) {
+            content.append(line);
+        }
+        JSONObject json = JSONObject.parseObject(content.toString());
+        String username = json.getString("username");
+        String phoneNumber = json.getString("phoneNumber");
+        String avatar = json.getString("avatar");
         User user = (User) req.getSession().getAttribute("user");
-        User userChange = new User();
 
-        String username = req.getParameter("username");
-//        String email = req.getParameter("email");
-        String phoneNumber = req.getParameter("phoneNumber");
-        String avatar = req.getParameter("avatar");
+        User userChange = new User();
         userChange.setUsername(username);
-//        userChange.setEmail(email);
         userChange.setPhoneNumber(phoneNumber);
         userChange.setAvatar(avatar);
 
