@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会员购</title>
+    <link rel="stylesheet" href="css/vShoppingCss.css">
+</head>
+<body>
+<!--导航栏-->
+<div class="nav">
+    <div>
+        <div class="nav-left">
+            <img src="images/会员购.png">
+            <div>
+                <a href="Index.html"><img src="images/哔哩哔哩粉色.png">主站</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-right-search">
+                <input type="text" placeholder="活动、嘉宾、场馆">
+                <img src="images/搜索.png" id="search-icon">
+            </div>
+            <!--头像box-->
+            <div class="head-box">
+                <img src="images/虹夏.jpg">
+                <div class="head-info-box">
+                    <p>吃松鼠的松子</p>
+                    <div>
+                        <a><img src="images/个人中心.png">个人中心</a>
+                        <a><img src="images/订单.png">订单中心</a>
+                    </div>
+                    <a href="LoginAndRegist.html">退出登录</a>
+                </div>
+            </div>
+            <a><img src="images/订单.png">订单中心</a>
+        </div>
+    </div>
+</div>
+<!--主体部分box-->
+<div class="main-box">
+    <div class="header-channel">
+        <div class="header-channel-select">
+            <a onclick="selectOne()">漫展演出</a>
+            <a onclick="selectTwo()">B站周边</a>
+        </div>
+    </div>
+    <div class="all-content-box">
+        <!--内容box-->
+        <div class="content-box1">
+            <div class="show-card">
+                <img src="images/漫展.png">
+                <div>
+                    <p>北京·万游引力国潮动漫嘉年华s3</p>
+                    <p>2023.08.19 - 08.20</p>
+                    <p>北京市&nbsp;壹川影视(双树云店)</p>
+                    <p><span><span>￥</span>70</span>起<a>独家</a></p>
+                </div>
+            </div>
+            <div class="show-card">
+                <img src="//images.weserv.nl/?url=https://i1.hdslb.com/bfs/openplatform/202307/AuDjADRV1689069624876.jpeg@350w_466h.jpeg">
+                <div>
+                    <p>南宁·北极光动漫展</p>
+                    <p>2023.08.19 - 08.20</p>
+                    <p>南宁市&nbsp;南宁国际会展中心</p>
+                    <p><span><span>￥</span>65</span>起<a>独家</a></p>
+                </div>
+            </div>
+            <div class="show-card">
+                <img src="//images.weserv.nl/?url=https://i1.hdslb.com/bfs/openplatform/202303/wJXSqk7Q1678763387691.jpeg@350w_466h.jpeg">
+                <div>
+                    <p>广州·第八届初物语动漫展</p>
+                    <p>2023.08.18 - 08.20</p>
+                    <p>广州市&nbsp;琶洲·保利世贸博览馆</p>
+                    <p><span><span>￥</span>72</span>起<a>独家</a></p>
+                </div>
+            </div>
+            <div class="show-card">
+                <img src="//images.weserv.nl/?url=https://i2.hdslb.com/bfs/openplatform/202307/e1kdKPBD1690339951916.jpeg@350w_466h.jpeg">
+                <div>
+                    <p>马鞍山·Mo宁国风动漫嘉年华</p>
+                    <p>2023.08.19 - 08.19</p>
+                    <p>马鞍山市&nbsp;马鞍山市体育会展中心</p>
+                    <p><span><span>￥</span>54</span>起<a>独家</a></p>
+                </div>
+            </div>
+            <div class="show-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/openplatform/202308/MDPBMVTt1691751702108.png@350w_466h.jpeg">
+                <div>
+                    <p>上海·音波狂潮 X 过载纪元</p>
+                    <p>2023.08.25 - 08.26</p>
+                    <p>上海市&nbsp;上海金融街购物中心</p>
+                    <p><span><span>￥</span>380</span>起<a>独家</a></p>
+                </div>
+            </div>
+            <div class="show-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/openplatform/202308/Yvb18hf11691752879544.jpeg@350w_466h.jpeg">
+                <div>
+                    <p>成都·ISPxCGK0.5动漫游戏嘉年华</p>
+                    <p>2023.08.19 - 08.20</p>
+                    <p>成都市&nbsp;西村艺术展览中心</p>
+                    <p><span><span>￥</span>9.9</span>起<a>独家</a></p>
+                </div>
+            </div>
+            <div class="show-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/openplatform/202308/Z1g6wB2v1691647668257.jpeg@350w_466h.jpeg">
+                <div>
+                    <p>成都·YELLOW MINE</p>
+                    <p>2023.08.19 - 08.19</p>
+                    <p>成都市&nbsp;梵木创艺区· 正火艺术中心</p>
+                    <p><span><span>￥</span>288</span>起<a>独家</a></p>
+                </div>
+            </div>
+            <div class="show-card">
+                <img src="//images.weserv.nl/?url=https://i1.hdslb.com/bfs/openplatform/202305/bU5YduR21683775577418.jpeg@350w_466h.jpeg">
+                <div>
+                    <p>杭州·第二届漫行社动漫嘉年华</p>
+                    <p>2023.08.20 - 08.20</p>
+                    <p>杭州市&nbsp;杭州运河文化发布中心</p>
+                    <p><span><span>￥</span>65</span>起<a>独家</a></p>
+                </div>
+            </div>
+        </div>
+        <!--内容box2-->
+        <div class="content-box2">
+            <div class="goods-card">
+                <img src="images/goods1.png">
+                <p>BILIBILIGOODS 小电视 壬寅虎年系列 趴趴毛绒</p>
+                <p><span>￥</span>39</p>
+            </div>
+            <div class="goods-card">
+                <img src="images/goods2.png">
+                <p>哔哩哔哩 12周年小电视积木 拼装模型</p>
+                <p><span>￥</span>129</p>
+            </div>
+            <div class="goods-card">
+                <img src="images/goods3.png">
+                <p>BANPRESTO ESPRESTO系列 哔哩哔哩 22 33 小电视 景品手办 附独家特典</p>
+                <p><span>￥</span>299</p>
+            </div>
+            <div class="goods-card">
+                <img src="images/goods4.png">
+                <p>BILIBILIGOODS 小电视 TWS真无线蓝牙耳机 X2 白色款</p>
+                <p><span>￥</span>199</p>
+            </div>
+            <div class="goods-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/mall/vendor/d4/69/d469489e1a3767bd2d1c7814b5b2c45d.png">
+                <p>BILIBILIGOODS 2233 时空战姬系列 方形靠枕</p>
+                <p><span>￥</span>69</p>
+            </div>
+            <div class="goods-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/mall/mall/fa/7f/fa7fe3171b9ae4ba9d023f3220862706.png">
+                <p>BILIBILIGOODS 2233 小电视 机甲风无线鼠标</p>
+                <p><span>￥</span>69</p>
+            </div>
+            <div class="goods-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/mall/mall/82/22/82225826578c28b69074ab93be0b53d9.png">
+                <p>敦煌伎乐天系列 高帮帆布鞋 44码进阶大礼包</p>
+                <p><span>￥</span>404</p>
+            </div>
+            <div class="goods-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/mall/mall/d1/eb/d1eb42fb24232f35122f82a11b71534e.png">
+                <p>哔哩哔哩 2233小电视我要玩系列套娃抱枕 周边</p>
+                <p><span>￥</span>233</p>
+            </div>
+            <div class="goods-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/mall/mall/62/b6/62b6ddacef2e07b51ad90239e444b652.png">
+                <p>哔哩哔哩 2233 D大调卡农 — 献给生命中的每一个时刻 手办</p>
+                <p><span>￥</span>1999</p>
+            </div>
+            <div class="goods-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/mall/mall/d4/ad/d4add944955c7fc4ac5ba1a45433ba0c.png">
+                <p>BeBox 2233×中央芭蕾舞团联名手办 Swan Lake Ver. 附特典 哔哩哔哩独家 含AR展示</p>
+                <p><span>￥</span>899</p>
+            </div>
+            <div class="goods-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/mall/vendor/4b/9f/4b9fb3fedb877a13d1a476d14e6a16bd.png">
+                <p>哔哩哔哩 BilibiliWorld 2233 纪念盒蛋</p>
+                <p><span>￥</span>59</p>
+            </div>
+            <div class="goods-card">
+                <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/mall/mall/1d/57/1d578afb7196db7a8a2888a087d1a476.png">
+                <p>BILIBILIGOODSx敦煌研究院  哔哩哔哩 2233 敦煌伎乐天系列之舞乐合壁主题 手办</p>
+                <p><span>￥</span>1329</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="js/vShoppingJs.js"></script>
+</body>
+</html>
