@@ -1,6 +1,7 @@
 package xyz.fpointzero.controller.video;
 
 import com.alibaba.fastjson.JSONObject;
+import xyz.fpointzero.Setting;
 import xyz.fpointzero.controller.MyHttpServlet;
 import xyz.fpointzero.model.History;
 import xyz.fpointzero.model.User;
@@ -22,7 +23,7 @@ import java.util.List;
         "/api/video/getUserVideo"
 })
 public class GetVideoServlet extends MyHttpServlet {
-    private static String FILE_SERVER = "http://localhost:8000";
+    private static final String FILE_SERVER = Setting.FILE_SERVER;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

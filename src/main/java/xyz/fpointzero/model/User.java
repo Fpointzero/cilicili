@@ -22,7 +22,7 @@ public class User {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
             User user = mapper.getByEmail(email);
-            if(user.verify(code)) {
+            if (user.verify(code)) {
                 user.setUser(user);
                 result = user;
             }
@@ -151,15 +151,14 @@ public class User {
     public boolean updateAll(User user) {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-            mapper.setAll(user);
+            this.setUser(user);
+            mapper.setAll(this);
             sqlSession.commit();
-            setUser(user);
             return true;
-
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     public void setUser(User user) {

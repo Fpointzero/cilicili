@@ -41,6 +41,6 @@
     </update>
     <update id="setAll" parameterType="xyz.fpointzero.model.User">
         UPDATE user SET user.username = #{username}, user.email = #{email}, user.phoneNumber = #{phoneNumber}
-        WHERE username = #{username}
+        WHERE user.id = #{id}
     </update>
 </mapper>

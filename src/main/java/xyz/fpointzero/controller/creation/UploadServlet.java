@@ -1,8 +1,9 @@
-package xyz.fpointzero.controller.user;
+package xyz.fpointzero.controller.creation;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import xyz.fpointzero.Setting;
 import xyz.fpointzero.controller.MyHttpServlet;
 import xyz.fpointzero.model.User;
 import xyz.fpointzero.model.Video;
@@ -17,15 +18,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/api/user/upload")
+@WebServlet("/api/creation/upload")
 public class UploadServlet extends MyHttpServlet {
 //    public static String UPLOAD_PATH = "/WEB-INF/upload";
-    public static String UPLOAD_PATH = "D:/cilicili_files";
+    private static final String[] videoExtensions = {"mp4", "avi", "mkv", "mov", "wmv"};
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user= (User) req.getSession().getAttribute("user");
         msg = new Msg<Video>(Msg.ERROR, null);
-// 配置上传参数
+        // 配置上传参数
         DiskFileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
 
@@ -41,7 +42,7 @@ public class UploadServlet extends MyHttpServlet {
         factory.setRepository(tempDirectory);
 
         upload.setSizeMax(1024L * 1024 * 1024); // 允许最大上传1G视频
-        String uploadPath = UPLOAD_PATH + "/" + user.getId(); // 设置用户文件上传路径
+        String uploadPath = Setting.VIDEO_PATH + "/" + user.getId(); // 设置用户文件上传路径
         // 设置上传路径
 //        String uploadPath = req.getServletContext().getRealPath(userUploadPath);
 //        System.out.println(uploadPath);
@@ -66,7 +67,19 @@ public class UploadServlet extends MyHttpServlet {
                                 return;
                         }
 //                        String filePath = uploadPath + File.separator + timestamp + File.separator + fileName;
-                        String newFileName = timestamp + FileUtil.getFileExtension(fileName); // 上传新文件名字
+                        String ext = FileUtil.getFileExtension(fileName);
+
+                        boolean isVideo = false;
+                        for (String v : videoExtensions) {
+                            if (ext.equalsIgnoreCase(v)) {
+                                isVideo = true;
+                                break;
+                            }
+                        }
+                        if (!isVideo) {
+                            throw new RuntimeException("上传文件非视频文件");
+                        }
+                        String newFileName = timestamp + ext; // 上传新文件名字
                         String filePath = uploadPath + FileUtil.urlSeparator + newFileName; // 上传完以后全部名字
                         // 在控制台输出文件的上传路径
                         System.out.println(filePath);
@@ -86,8 +99,9 @@ public class UploadServlet extends MyHttpServlet {
                 }
             }
         } catch (Exception ex) {
-            req.setAttribute("message", "错误信息: " + ex.getMessage());
-            throw new ServletException(ex);
+//            req.setAttribute("message", "错误信息: " + ex.getMessage());
+//            throw new ServletException(ex);
+            msg.setAll(Msg.ERROR, ex.getMessage());
         }
 
         msg.send(resp);
