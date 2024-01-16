@@ -42,12 +42,12 @@ public class Msg<T> {
         return data;
     }
 
-    public int getStatus() {
+    public int getCode() {
         return code;
     }
 
-    public void setStatus(int status) {
-        this.code = status;
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public void setData(T data) {

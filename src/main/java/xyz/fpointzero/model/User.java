@@ -17,6 +17,21 @@ public class User {
     private String verification;
     private String verificationTime;
 
+    public static User loginByCode(String email, String code) {
+        User result = null;
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            User user = mapper.getByEmail(email);
+            if(user.verify(code)) {
+                user.setUser(user);
+                result = user;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public boolean login() {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
@@ -43,6 +58,26 @@ public class User {
             return false;
         }
         return false;
+    }
+
+    /**
+     * 验证码验证，验证过就失效
+     *
+     * @return
+     */
+    public boolean verify(String code) {
+        boolean result = false;
+        Duration duration = DateUtil.getDurationTime(this.verificationTime);
+        if (!this.verification.equals("null")) {
+            result = duration.toMinutes() < 5 && code.equals(this.verification);
+            if (result) {
+                try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+                    sqlSession.getMapper(UserMapper.class).setVery("null", this.email);
+                    sqlSession.commit();
+                }
+            }
+        }
+        return result;
     }
 
     public String signIn(String code) {
