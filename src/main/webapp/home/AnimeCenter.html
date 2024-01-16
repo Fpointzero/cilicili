@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>番剧</title>
+  <link rel="stylesheet" href="css/animeCss.css">
+</head>
+<body>
+<!--导航栏-->
+<div class="nav">
+  <div class="nav-left">
+    <a href="Index.html"><img src="images/哔哩哔哩.png" class="nav-img">首页</a>
+    <a href="AnimeCenter.html">番剧</a>
+    <a>直播</a>
+    <a href="GameCenter.html">游戏中心</a>
+    <a href="VShopping.html">会员购</a>
+    <a>漫画</a>
+    <a>赛事</a>
+    <a><img src="images/下载.png" class="nav-img">下载客户端</a>
+  </div>
+  <div class="nav-center">
+    <form id="nav-search-form">
+      <input type="text" placeholder="请输入搜索内容">
+      <img src="images/搜索.png" id="search-icon">
+    </form>
+  </div>
+  <div class="nav-right">
+    <div class="head-box">
+      <a href="Mine.html"><img src="images/虹夏.jpg" id="head-img"></a>
+      <div id="head-more-box">
+        <a href="Mine.html" target="_blank" id="head-more-box-title">吃松鼠的松子</a>
+        <div id="head-more-box-money">
+          <a href="#"><span>硬币:</span><span>776.6</span></a>
+          <a href="#"><span>B币:</span><span>0</span></a>
+        </div>
+        <img src="images/level.png">
+        <div id="fans">
+          <a href="#"><span>258</span>关注</a>
+          <a href="#"><span>33</span>粉丝</a>
+          <a href="#"><span>139</span>动态</a>
+        </div>
+        <div id="recommend">
+          <a><span>成为大会员</span><br/>了解更多权益</a>
+          <div>立即开通</div>
+        </div>
+        <div id="more-options">
+          <a href="Mine.html" target="_blank"><img src="images/个人中心.png" width="18">个人中心
+            <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+          </a>
+          <a href="#"><img src="images/视频管理.png" width="18">投稿管理
+            <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+          </a>
+          <a href="#"><img src="images/推荐.png" width="18">推荐服务
+            <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+          </a>
+        </div>
+        <div id="line"></div>
+        <div id="logout">
+          <a href="LoginAndRegist.html"><img src="images/退出登录.png" width="18">退出登录</a>
+        </div>
+      </div>
+    </div>
+    <a><img src="images/大会员.png" class="nav-right-icon">大会员</a>
+    <a><img src="images/消息通知.png" class="nav-right-icon">消息</a>
+    <a><img src="images/动态.png" class="nav-right-icon">动态</a>
+    <a><img src="images/收藏.png" class="nav-right-icon">收藏</a>
+    <a><img src="images/历史.png" class="nav-right-icon">历史</a>
+    <a><img src="images/创作中心.png" class="nav-right-icon">创作中心</a>
+    <button id="upload"><img src="images/上传.png" class="nav-right-icon">投稿</button>
+  </div>
+</div>
+<!--头部-->
+<div class="header-box">
+  <div class="bg-box">
+    <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/4872942951da26b7ae877afe35681f5d837cbf5c.png@5120w_1704h_!web-ogv-anime-banner-bg.webp">
+    <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/f8a2cbbe31d0fece3b6505ce75fe9e8032a703a7.png@5120w_1704h_!web-ogv-anime-banner-bg.webp">
+    <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/8123782eb214631b4618a9d1f34c3127199e7849.png@5120w_1704h_!web-ogv-anime-banner-bg.webp">
+    <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/d515a2dc5695f48ccd10bff1fb6d340b893f0223.png@5120w_1704h_!web-ogv-anime-banner-bg.webp">
+    <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/cf5814f2b3784d5da0c2c123ec91615ab0b3ec5a.png@5120w_1704h_!web-ogv-anime-banner-bg.webp">
+    <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/dfef5f41b121086aa347aedf19cc7868a5958b41.png@5120w_1704h_!web-ogv-anime-banner-bg.webp">
+    <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/36bf4821e82daef234c7eff711ce3fc0488c13fd.png@5120w_1704h_!web-ogv-anime-banner-bg.webp">
+  </div>
+  <div class="items-box">
+    <div>
+      <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/30465390fb48549db7a89a70df6331c4cf4e680e.png@460w_250h_!web-ogv-anime-banner-thumb.webp">
+      <span>鬼灭之刃 刀匠村篇</span>
+    </div>
+    <div>
+      <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/9572365cfc21333df7937fd4dd1a801ce4f372d3.png@460w_250h_!web-ogv-anime-banner-thumb.webp">
+      <span>假面骑士 极狐</span>
+    </div>
+    <div>
+      <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/bb23b689128f343053617c2c518c2365094c3105.png@460w_250h_!web-ogv-anime-banner-thumb.webp">
+      <span>布莱泽奥特曼</span>
+    </div>
+    <div>
+      <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/2e3ee50265b17a357e8d20d64db6475be4270d81.png@460w_250h_!web-ogv-anime-banner-thumb.webp">
+      <span>暴太郎战队咚兄弟</span>
+    </div>
+    <div>
+      <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/a8cd3cc669a3313a4ba2f5c01e393bd48ed592ff.png@460w_250h_!web-ogv-anime-banner-thumb.webp">
+      <span>公司的小小前辈</span>
+    </div>
+    <div>
+      <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/d1cb047d50eac9ee3716c5da779196038a2425da.png@460w_250h_!web-ogv-anime-banner-thumb.webp">
+      <span>赛马娘 巅峰之路</span>
+    </div>
+    <div>
+      <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/3a87b3ff38609c3da3fcd890b46b9b69c8bcb834.png@460w_250h_!web-ogv-anime-banner-thumb.webp">
+      <span>打工吧！魔王大人 第二季</span>
+    </div>
+  </div>
+</div>
+<div class="main-box">
+  <!--头部滑动展示-->
+  <div class="main-channel">
+    <div style="background-image: linear-gradient(to right,rgb(253,240,252),rgb(253,245,253))">
+      <p>番剧索引</p>
+      <div>
+        <a>追番人数</a>
+        <a>最高评分</a>
+        <a>更新时间</a>
+        <a>播放数量</a>
+      </div>
+    </div>
+    <div style="background-image: linear-gradient(to right,rgb(236,249,243),rgb(243,251,247))">
+      <p>类型风格</p>
+      <div>
+        <a>原创</a>
+        <a>小说改</a>
+        <a>特摄</a>
+        <a>热血</a>
+        <a>奇幻</a>
+        <a>漫画改</a>
+        <a>游戏改</a>
+        <a>布袋戏</a>
+        <a>穿越</a>
+        <a>战斗</a>
+      </div>
+    </div>
+    <div style="background-image: linear-gradient(to right,rgb(238,245,253),rgb(243,248,253))">
+      <p>首播时间</p>
+      <div>
+        <a>2023</a>
+        <a>2022</a>
+        <a>2021</a>
+        <a>2020</a>
+        <a>2019</a>
+        <a>2018</a>
+        <a>2017</a>
+        <a>2016</a>
+      </div>
+    </div>
+    <div style="background-image: linear-gradient(to right,rgb(253,239,239),rgb(253,244,244))">
+      <p>热搜</p>
+      <div>
+        <a>鬼灭之刃刀匠村篇</a>
+        <a>布莱泽奥特曼</a>
+        <a>物理魔法使马修</a>
+      </div>
+    </div>
+  </div>
+  <!--热播动漫-->
+  <div class="popular-anime">
+    <p><img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/1ad7635251cc60e8846b269c3218698d9c0321ad.png">番剧热播榜</p>
+    <div class="popular-anime-showBox">
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>1</p>
+          <div>
+            <p>鬼灭之刃 刀匠村篇</p>
+            <span>信念锻刃，尽斩恶鬼</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/8237a3583efc1aeddd0fe87950364f04108ce8c3.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>2</p>
+          <div>
+            <p>物理魔法使-马修-</p>
+            <span>肌肉粉碎所有魔法</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/a54276da024dfbe26e0d08d22724910651ddfb43.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>3</p>
+          <div>
+            <p>布莱泽奥特曼</p>
+            <span>新奥特英雄成长之路</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/c1d15c7787105bbe31b0313690cca6203360b7a6.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>4</p>
+          <div>
+            <p>白圣女与黑牧师</p>
+            <span>笨蛋的双向暗恋</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/38e2a273f528fd01c34f1fc4df0f69c64487efad.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>5</p>
+          <div>
+            <p>名侦探柯南</p>
+            <span>真相永远只有一个</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/ec77b491f5a0dc3d43756fe10726dd8b60172d26.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>6</p>
+          <div>
+            <p>尼尔：自动人形</p>
+            <span>机械生命体的爱与恨</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/ffcb34ba79c7216fe9b0e2f3eb6bcb554772bc72.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>7</p>
+          <div>
+            <p>我的幸福婚姻</p>
+            <span>去把握幸福吧</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/71d54cae830d32a5af776dcc46632146fbdba868.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>8</p>
+          <div>
+            <p>博人传 火影忍者新时代</p>
+            <span>新世代再续火影传奇</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/c20d76288503ebaf2650d1d2e62b242129b40374.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>9</p>
+          <div>
+            <p>假面骑士创骑</p>
+            <span>外挂自己刷</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/e5a6c85d04ddaaf5b65fac1520677a041058ea1b.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>10</p>
+          <div>
+            <p>假面骑士 极狐</p>
+            <span>开局满级谜语人</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/8387efa1aeea33c5dd8f9b6ed2dae2b4e48a65ce.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>11</p>
+          <div>
+            <p>主宰七魔剑</p>
+            <span>向强者发起复仇！</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/eb4f17335f48951945fb9da47e6ee0bc65fa2fbb.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <video src="videos/videoShow.mp4" autoplay loop muted></video>
+        <div>
+          <p>12</p>
+          <div>
+            <p>齐木楠雄的灾难（日播&精选版）</p>
+            <span>超能同学竟在我身边</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div onclick="slidToRight()">
+      <img src="images/右箭头.png">
+    </div>
+    <div onclick="slidToLeft()">
+      <img src="images/左箭头.png">
+    </div>
+  </div>
+  <!--猜你喜欢-->
+  <div class="like-anime">
+    <p>猜你喜欢</p>
+    <div class="like-anime-box">
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/c1d15c7787105bbe31b0313690cca6203360b7a6.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>白圣女与黑牧师</p>
+          <span>笨蛋的双向暗恋</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/8f540cf989b02e2db4e7de1e2fdf1ab2886b4e64.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>漆黑的子弹</p>
+          <span>双枪对抗灭世怪物！</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/e0b1959433cc60eeee7ae8f985c65e748a4b8cf4.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>弹丸论破</p>
+          <span>逃出这个牢笼</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/3004faf93cb5a78aa4d2122e25d914ec8640a273.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>男子高中生的日常</p>
+          <span>真实的高中损友</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/ffcb34ba79c7216fe9b0e2f3eb6bcb554772bc72.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>我的幸福婚姻</p>
+          <span>去把握幸福吧</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/d6f6d0b103d4042e3eb0436914d08862a92a4afd.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>未确认进行式</p>
+          <span>同居生活恋爱喜剧！</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/3944fe0b84a5763cde6b0573773b89ba86b4321d.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>Re：创造主</p>
+          <span>谁都能成为创造主</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/4d55f8a62a717c954c5bc92fc26e0d2dc9e0592e.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>这个美术社大有问题！</p>
+          <span>我只对二次元感兴趣</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/3e688cd89f778968bdf6f6d9ca6f3d20b76f04ea.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>可塑性记忆</p>
+          <span>科幻催泪向动画</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/6dccd70827dd5fe30d13bc002ee06b322334c8c0.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>散华礼弥</p>
+          <span>如果变成僵尸的话…</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/144910805f172d16c5f544f43939a05d8ca20576.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>龙与虎</p>
+          <span>无差评校园恋爱动画</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/e59dd0bbcf46677eaa4a99602ed82cd56be55da2.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>月刊少女野崎君</p>
+          <span>观看就能收获腹肌</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/73fcd288f753d420365962d6622125fdb06fd9c5.jpg@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>EVA 新世纪福音战士新剧场版3.33：Q</p>
+          <span>EVA新剧场版ON</span>
+        </div>
+      </div>
+      <div>
+        <img src="//images.weserv.nl/?url=https://i0.hdslb.com/bfs/bangumi/image/b4946cac2cbb8524541d500854e71e3d1cae6484.png@560w_746h_!web-ogv-anime-ranking-card.webp">
+        <div>
+          <p>怪盗基德</p>
+          <span>“平成鲁邦”参上！</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--工具栏-->
+<div class="tools">
+  <div>
+    <a><img src="images/国创.png">国创</a>
+    <a><img src="images/电影.png">电影</a>
+    <a><img src="images/电视剧.png">电视剧</a>
+    <a><img src="images/纪录片.png">纪录片</a>
+    <a><img src="images/综艺.png">综艺</a>
+    <a><img src="images/客服.png">客服</a>
+  </div>
+  <div onclick="back()">回到顶部</div>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="js/animeJs.js"></script>
+</body>
+</html>

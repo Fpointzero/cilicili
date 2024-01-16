@@ -1,0 +1,305 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.main-box {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/咒术-高清.png);
+    background-size: cover;
+    position: absolute;
+}
+/*登录框box*/
+.login-box {
+    width: 793px;
+    height: 430px;
+    box-sizing: border-box;
+    position: absolute;
+    padding: 50px 65px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: white;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 30% 15% 55%;
+    grid-template-rows: 90% 10%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    transition: all 0.5s ease-in-out;
+}
+.login-box:hover {
+    box-shadow: 5px 5px 10px #3a3939;
+}
+.login-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+}
+.login-left p:nth-child(1) {
+    font-size: 18px;
+    color: #18191C;
+    margin-bottom: 26px;
+}
+.login-left span:nth-child(3) {
+    font-size: 13px;
+    color: #18191C;
+    margin-top: 18px;
+}
+.login-left span:nth-child(3)>a {
+    color: #00AEEC;
+    cursor: pointer;
+}
+.login-left span:nth-child(4) {
+    font-size: 13px;
+    color: #18191C;
+}
+#line {
+    width: 0;
+    height: 80%;
+    border: 1px solid #cccccc;
+}
+.login-right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+}
+.login-right>div:nth-child(1) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.login-right>div:nth-child(1)>a {
+    width: 30%;
+    height: 20px;
+    font-size: 18px;
+    color: #505050;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+.login-right>div:nth-child(1)>a:nth-child(1) {
+    font-size: 18px;
+    color: #4FA5D9;
+    border-right: 1px solid #cccccc;
+}
+/*密码登录部分*/
+.input-msg .login-pwd {
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+.input-msg .login-pwd>div {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    border: 1px solid #e2e4e6;
+}
+.input-msg .login-pwd>div:nth-child(1) {
+    border-radius: 10px 10px 0 0;
+}
+.input-msg .login-pwd>div:nth-child(2) {
+    border-radius: 0 0 10px 10px;
+}
+.input-msg .login-pwd>div>span {
+    font-size: 14px;
+    color: #212121;
+}
+.input-msg .login-pwd>div>input {
+    margin-left: 20px;
+    border: none;
+}
+.input-msg .login-pwd>div>input:focus {
+    outline: none;
+    border: none;
+}
+.input-msg .login-pwd>div>a {
+    color: #00A1D6;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.input-msg .login-pwd>div:nth-child(3) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    margin-top: 20px;
+    padding: 0;
+}
+.input-msg .login-pwd>div:nth-child(3)>a:nth-child(1) {
+    width: 45%;
+    height: 40px;
+    font-size: 14px;
+    color: #18191C;
+    border-radius: 10px;
+    border: 1px solid #e2e4e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+.input-msg .login-pwd>div:nth-child(3)>a:nth-child(2) {
+    width: 45%;
+    height: 40px;
+    font-size: 14px;
+    color: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #e2e4e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7ed5f3;
+}
+.input-msg .login-pwd>div:nth-child(3)>a:nth-child(2):hover {
+    background: #00acea;
+}
+
+
+
+/*短信登录部分*/
+.input-msg .login-phone {
+    display: none;
+    flex-direction: column;
+    float: left;
+}
+.input-msg .login-phone>div {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    border: 1px solid #e2e4e6;
+}
+.input-msg .login-phone>div:nth-child(1) {
+    border-radius: 10px 10px 0 0;
+}
+.input-msg .login-phone>div:nth-child(2) {
+    border-radius: 0 0 10px 10px;
+}
+.input-msg .login-phone>div>span {
+    font-size: 14px;
+    color: #212121;
+}
+.input-msg .login-phone>div>input {
+    margin-left: 20px;
+    border: none;
+}
+.input-msg .login-phone>div>input:focus {
+    outline: none;
+    border: none;
+}
+.input-msg .login-phone>div>a {
+    color: #00A1D6;
+    font-size: 14px;
+    cursor: pointer;
+}
+.input-msg .login-phone>a {
+    width: 194px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin: 20px auto 0;
+    padding: 0;
+    background: #00adeb;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+.login-right>a {
+    font-size: 13px;
+    color: #9499A0;
+    margin-top: 15px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.other-login {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.other-login>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.other-login>div>img {
+    width: 28px;
+    margin-right: 8px;
+    border-radius: 50%;
+}
+.other-login>div>a {
+    font-size: 13px;
+    color: #9499A0;
+}
+/*底部info框*/
+.login-info {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: center;
+    font-size: 13px;
+    color: #999999;
+    cursor: pointer;
+}
+.login-info a{
+    color: #00A1D6;
+}
+/*底部图片效果*/
+.login-box>img{
+    position: absolute;
+    width: 116px;
+    height: 116px;
+}
+.login-box>img:nth-of-type(1),img:nth-of-type(2) {
+    left: 0;
+    bottom: 0;
+    border-radius: 0 80px 0 10px;
+}
+.login-box>img:nth-of-type(3),img:nth-of-type(4) {
+    right: 0;
+    bottom: 0;
+    border-radius: 0 0 10px 0;
+}
+/*流星雨效果*/
+.fall-rain {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+}
+.fall-rain>span {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: yellow;
+    animation: rain 15s infinite linear;
+    animation-duration: calc(30s/var(--speed));
+}
+@keyframes rain {
+    0%{
+        transform: scale(1);
+    }
+    70%{
+        transform: translateY(998px) scale(1);
+    }
+    100% {
+        transform: translateY(998px) scale(0);
+    }
+}

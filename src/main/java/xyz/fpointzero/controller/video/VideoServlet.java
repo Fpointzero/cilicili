@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 
-@WebServlet("/getVideoContent")
+@WebServlet("/api/getVideoContent")
 public class VideoServlet extends MyHttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

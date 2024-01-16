@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/signin")
+@WebServlet("/api/signin")
 public class SignInServlet extends MyHttpServlet{
 
     @Override

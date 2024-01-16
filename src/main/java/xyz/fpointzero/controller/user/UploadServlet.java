@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/user/upload")
+@WebServlet("/api/user/upload")
 public class UploadServlet extends MyHttpServlet {
 //    public static String UPLOAD_PATH = "/WEB-INF/upload";
     public static String UPLOAD_PATH = "D:/cilicili_files";

@@ -2,6 +2,7 @@ package xyz.fpointzero.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import xyz.fpointzero.model.User;
+import xyz.fpointzero.util.JSONUtil;
 import xyz.fpointzero.util.Msg;
 
 import javax.servlet.ServletException;
@@ -10,37 +11,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/login")
+@WebServlet("/api/login")
 public class LoginServlet extends MyHttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         msg = new Msg<User>(400, null, "登录失败");
-        StringBuilder content = new StringBuilder();
-        String line;
-        while ((line = req.getReader().readLine()) != null) {
-            content.append(line);
-        }
-        JSONObject json = JSONObject.parseObject(content.toString());
-        String username = json.getString("username");
-        String password = json.getString("password");
-        String email = "";
+        JSONObject json = JSONUtil.getParamsJSON(req);
+        String type = json.getString("type");
+        User user = null;
+        if (type != null && type.equals("pwd")) {
+            String username = json.getString("username");
+            String password = json.getString("password");
 
-        if (username == null && email == null) {
-            resp.getWriter().println(msg.toJSONString());
-            return;
-        }
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        if (user.login()) {
-            msg.setAll(200, user, "登录成功");
-            resp.getWriter().println(msg.toJSONString());
-        } else {
-            resp.getWriter().println(msg.toJSONString());
+            user = new User();
+            if (username == null) {
+                msg.send(resp);
+                return;
+            }
+            user.setUsername(username);
+            user.setPassword(password);
+            if (user.login()) {
+                msg.setAll(Msg.SUCCESS, user, "登录成功");
+                req.getSession().setAttribute("user", user);
+            }
+
+        } else if (type != null && type.equals("code")) {
+            String email = json.getString("email");
+            String code = json.getString("code");
+            user = User.loginByCode(email, code);
+            if (user != null) {
+                req.getSession().setAttribute("user", user);
+                msg.setAll(Msg.SUCCESS, user, "登录成功");
+            }
         }
 
-        req.getSession().setAttribute("user", user);
+        msg.send(resp);
     }
 
 }

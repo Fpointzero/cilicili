@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/getVideo")
+@WebServlet("/api/getVideo")
 public class GetVideoServlet extends MyHttpServlet {
     private static String FILE_SERVER = "http://localhost:8000";
 
