@@ -6,7 +6,12 @@ window.onscroll = function () {
     changeNav(t);
 }
 window.onload = function () {
-    let data = {"page_info": {"page": 1, "size": 15}}
+    let data = {
+        "page_info": {
+            "page": 1,
+            "size": 15
+        }
+    };
     $.ajax({
         url: "http://124.220.20.83:8080/home/getHomeInfo",
         method: "POST",
@@ -146,5 +151,33 @@ function timeSince(dateString) {
         return pastDate.toLocaleDateString(undefined, {year: 'numeric', month: 'numeric', day: 'numeric'});
     }
 }
+
+// 获取输入框和搜索图标
+const input = document.getElementById('keyword');
+const searchIcon = document.getElementById('search-icon');
+
+// 监听输入框的keydown事件
+input.addEventListener('keydown', function(e) {
+
+    // 检测是否按下了Enter键
+    if(e.key === 'Enter') {
+        // 防止默认行为
+        e.preventDefault();
+        // 模拟点击搜索按钮
+        searchIcon.click();
+    }
+});
+
+// 为搜索图标添加点击事件监听
+searchIcon.addEventListener('click', async () => {
+    // 判断输入框是否有内容
+    if(input.value.trim()) {
+        // 跳转到search页面,同时传递搜索关键词
+        window.location.href = `Search.html?keyword=${input.value.trim()}`;
+    } else {
+        // 输入框无内容,提示用户输入
+        alert('请输入搜索内容');
+    }
+});
 
 
