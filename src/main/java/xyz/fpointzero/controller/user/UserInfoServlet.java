@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {
-        "/user/userInfo"
+        "/api/user/userInfo"
 })
 public class UserInfoServlet extends MyHttpServlet {
     @Override

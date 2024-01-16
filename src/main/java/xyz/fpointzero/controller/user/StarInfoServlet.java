@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = {
-        "/user/starInfo"
+        "/api/user/starInfo"
 })
 public class StarInfoServlet extends MyHttpServlet {
     @Override

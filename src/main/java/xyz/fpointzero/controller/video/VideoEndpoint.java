@@ -13,7 +13,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Paths;
 
-@ServerEndpoint("/video/{vid}")
+@ServerEndpoint("/api/video/{vid}")
 public class VideoEndpoint {
     Video video;
     // 处理连接
