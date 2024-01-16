@@ -76,7 +76,7 @@ public class EmailSender {
                 sqlSession.commit();
 
                 // 发送邮件
-                Transport.send(message);
+                //Transport.send(message);
             } catch (Exception e) {
                 e.printStackTrace();
             }
