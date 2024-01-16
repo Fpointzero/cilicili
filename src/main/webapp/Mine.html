@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="css/mineCss.css">
+</head>
+<body>
+<!--导航栏-->
+<div class="nav">
+    <div class="nav-left">
+        <a href="Index.html"><img src="images/哔哩哔哩.png" class="nav-img">首页</a>
+        <a href="AnimeCenter.html">番剧</a>
+        <a>直播</a>
+        <a href="GameCenter.html">游戏中心</a>
+        <a href="VShopping.html">会员购</a>
+        <a>漫画</a>
+        <a>赛事</a>
+        <a><img src="images/下载.png" class="nav-img">下载客户端</a>
+    </div>
+    <div class="nav-center">
+        <form id="nav-search-form">
+            <input type="text" placeholder="请输入搜索内容">
+            <img src="images/搜索.png" id="search-icon">
+        </form>
+    </div>
+    <div class="nav-right">
+        <!--头像部分-->
+        <div class="head-box">
+            <img src="images/虹夏.jpg" id="head-img">
+            <div id="head-more-box">
+                <a href="Mine.html" target="_blank" id="head-more-box-title">吃松鼠的松子</a>
+                <div id="head-more-box-money">
+                    <a href="#"><span>硬币:</span><span>776.6</span></a>
+                    <a href="#"><span>B币:</span><span>0</span></a>
+                </div>
+                <img src="images/level.png">
+                <div id="fans">
+                    <a href="#"><span>258</span>关注</a>
+                    <a href="#"><span>33</span>粉丝</a>
+                    <a href="#"><span>139</span>动态</a>
+                </div>
+                <div id="recommend">
+                    <a><span>成为大会员</span><br/>了解更多权益</a>
+                    <div>立即开通</div>
+                </div>
+                <div id="more-options">
+                    <a href="Mine.html" target="_blank"><img src="images/个人中心.png" width="18">个人中心
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                    <a href="#"><img src="images/视频管理.png" width="18">投稿管理
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                    <a href="#"><img src="images/推荐.png" width="18">推荐服务
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                </div>
+                <div id="line"></div>
+                <div id="logout">
+                    <a href="LoginAndRegist.html"><img src="images/退出登录.png" width="18">退出登录</a>
+                </div>
+            </div>
+        </div>
+        <a><img src="images/大会员.png" class="nav-right-icon">大会员</a>
+        <a><img src="images/消息通知.png" class="nav-right-icon">消息</a>
+        <a><img src="images/动态.png" class="nav-right-icon">动态</a>
+        <a><img src="images/收藏.png" class="nav-right-icon">收藏</a>
+        <a><img src="images/历史.png" class="nav-right-icon">历史</a>
+        <a><img src="images/创作中心.png" class="nav-right-icon">创作中心</a>
+        <button id="upload"><img src="images/上传.png" class="nav-right-icon">投稿</button>
+    </div>
+</div>
+<!--主体部分-->
+<div class="main-box">
+    <!--主体内容-->
+    <div class="main-content">
+        <!--隐藏部分nav-->
+        <div class="hidden-nav">
+            <div class="hiddenNav-left">
+                <div class="border-bottom"></div>
+                <a><img src="images/虹夏.jpg">吃松鼠的松子</a>
+                <a><img src="images/个人动态.png">动态</a>
+                <a><img src="images/投稿.png">投稿</a>
+                <a><img src="images/合集.png">合集和列表</a>
+                <a><img src="images/黄色收藏.png">收藏</a>
+                <a><img src="images/订阅.png">订阅</a>
+                <a><img src="images/设置.png">设置</a>
+            </div>
+            <div class="hiddenNav-search">
+                <input type="text" placeholder="搜索视频、动态">
+                <img src="images/搜索.png">
+            </div>
+            <div class="hiddenNav-right">
+                <a><p>关注数</p><p>258</p></a>
+                <a><p>粉丝数</p><p>33</p></a>
+                <a><p>获赞数</p><p>965</p></a>
+                <a><p>播放数</p><p>6.6万</p></a>
+                <a><p>阅读数</p><p>5467</p></a>
+            </div>
+        </div>
+        <!--头部背景部分-->
+        <div class="header">
+            <img src="images/mineBg.png" class="main-bg">
+            <div class="mine-info">
+                <div>
+                    <img src="images/虹夏.jpg">
+                    <div></div>
+                    <a>更换头像</a>
+                </div>
+                <div>
+                    <div>
+                        <span>吃松鼠的松子</span>
+                        <img src="images/男.png">
+                        <img src="images/等级.png">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="编辑个性签名" value="欸嘿~">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--头部下方固定导航栏-->
+        <div class="content-nav">
+            <div class="hiddenNav-left">
+                <div class="border-bottom"></div>
+                <a><img src="images/虹夏.jpg">主页</a>
+                <a><img src="images/个人动态.png">动态</a>
+                <a><img src="images/投稿.png">投稿</a>
+                <a><img src="images/合集.png">合集和列表</a>
+                <a><img src="images/黄色收藏.png">收藏</a>
+                <a><img src="images/订阅.png">订阅</a>
+                <a><img src="images/设置.png">设置</a>
+            </div>
+            <div class="hiddenNav-search">
+                <input type="text" placeholder="搜索视频、动态">
+                <img src="images/搜索.png">
+            </div>
+            <div class="hiddenNav-right">
+                <a><p>关注数</p><p>258</p></a>
+                <a><p>粉丝数</p><p>33</p></a>
+                <a><p>获赞数</p><p>965</p></a>
+                <a><p>播放数</p><p>6.6万</p></a>
+                <a><p>阅读数</p><p>5467</p></a>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="mine-video-box">
+                <span>我的视频</span>
+                <div class="mine-video-content">
+                    <div class="video-card">
+                        <img src="images/v1.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="images/v2.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="images/v2.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="images/v2.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="images/v2.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="images/v2.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="images/v2.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="images/v2.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <img src="images/v2.png">
+                        <p>标题</p>
+                        <div class="video-card-info">
+                            <img src="images/投稿.png">
+                            <p>92</p>
+                            <p>2022-12-26</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mine-article-box">
+                <span>我的专栏</span>
+                <div class="mine-article-content">
+                    <a>编写我的专栏</a>
+                </div>
+            </div>
+            <div class="mine-videoList-box">
+                <span>我的合集和视频列表</span>
+                <div class="mine-videoList-content">
+                    <span>投稿视频可以分类展示了</span>
+                    <a>创建视频列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="user-ad">
+                <img src="images/认证.png">
+                <div>
+                    <a href="#">点此申请bilibili认证</a>
+                    <span>获得bilibili认证，享受多重认证福利！</span>
+                </div>
+            </div>
+            <div class="upload-center">
+                <div>
+                    <img src="images/创作中心蓝色.png">
+                    <a>创作中心</a>
+                    <img src="images/右箭头.png">
+                </div>
+                <div>
+                    <a>视频投稿</a>
+                    <a>内容管理</a>
+                </div>
+            </div>
+            <div class="mine-notice">
+                <span>公告</span>
+                <textarea placeholder="编辑我的公告"></textarea>
+            </div>
+            <div class="mine-stream-live">
+                <span>直播间</span>
+                <div>
+                    <span>前往我的直播间</span>
+                    <img src="images/右箭头.png">
+                </div>
+            </div>
+            <div class="mine-about">
+                <div>
+                    <span>个人资料</span>
+                    <a>修改资料</a>
+                </div>
+                <div>
+                    <div>
+                        <span>UID</span>
+                        <span>230144014</span>
+                    </div>
+                    <div>
+                        <span>生日</span>
+                        <span>03-22</span>
+                    </div>
+                    <div>
+                        <span>学校</span>
+                        <span>江苏理工学院</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="js/mineJs.js"></script>
+</body>
+</html>
