@@ -30,7 +30,7 @@ searchClose.addEventListener('click', () => {
 
 /*=============== LOGIN ===============*/
 const login = document.getElementById('login'),
-    loginBtn = document.getElementById('login-btn'),
+    loginBtn = document.getElementById('login_btn'),
     loginClose = document.getElementById('login-close')
 loginSignup = document.getElementById('login-signup')
 loginForget = document.getElementById('login-forget')
@@ -87,3 +87,77 @@ forgetLogin.addEventListener('click', () => {
 forgetClose.addEventListener('click', () => {
     forget.classList.remove('show-action')
 })
+
+/* 自定义函数 */
+function actionPasswordLogin(username, password) {
+    let data = {
+        // "username": "Ogawa Yota",
+        // "password": "T1q8aWio1U"
+        "type": "pwd",
+        "username": username,
+        "password": password
+    };
+    var settings = {
+        url: "http://localhost:8080/cilicili_war/login",
+        method: "POST",
+        dataType: 'json',
+        contentType: 'application/json;charset=UTF-8',
+        data: JSON.stringify(data)
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        if (response.code == 200) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+            window.location.href = "./Index.html";
+        } else {
+            alert("用户名或者密码错误！");
+        }
+    });
+}
+
+function sendVerifyCode(email) {
+    let data = {
+        "email": email
+    };
+    var settings = {
+        url: "http://localhost:8080/cilicili_war/sendEmail",
+        method: "POST",
+        dataType: 'json',
+        contentType: 'application/json;charset=UTF-8',
+        data: JSON.stringify(data)
+    };
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        if (response.code == 200) {
+            console.log("发送验证码成功");
+        } else {
+            console.log("发送失败");
+        }
+    });
+}
+
+
+function actionVerifyCodeLogin(email, code) {
+    let data = {
+        "type": "code",
+        "email": email,
+        "code": code
+    };
+    var settings = {
+        url: "http://localhost:8080/cilicili_war/login",
+        method: "POST",
+        dataType: 'json',
+        contentType: 'application/json;charset=UTF-8',
+        data: JSON.stringify(data)
+    };
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        if (response.code == 200) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+            window.location.href = "./Index.html";
+        } else {
+            alert("用户名或者密码错误！");
+        }
+    });
+}

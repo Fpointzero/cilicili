@@ -1,0 +1,115 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录注册</title>
+    <link rel="stylesheet" href="css/loginCss.css">
+    <!-- <script src="js/loginJs.js"></script> -->
+</head>
+
+<body>
+<div class="main-box">
+    <div class="login-box">
+        <div class="login-left">
+            <p>扫描二维码登录</p>
+            <img src="images/code.png">
+            <span>请使用<a>哔哩哔哩客户端</a></span>
+            <span>扫码登录或扫码下载APP</span>
+        </div>
+        <div id="line"></div>
+        <div class="login-right">
+            <div>
+                <a onclick="pwdLogin()">密码登录</a>
+                <a onclick="phoneLogin()">邮箱登录</a>
+            </div>
+            <div class="input-msg">
+                <!--密码登录-->
+                <div class="login-pwd">
+                    <div>
+                        <span>账号</span>
+                        <input type="text" id="username" name="username" placeholder="请输入账号">
+                    </div>
+                    <div>
+                        <span>密码</span>
+                        <input type="password" id="password" name="password" placeholder="请输入密码">
+                        <a href="#">忘记密码？</a>
+                    </div>
+                    <div>
+                        <a>注册</a>
+                        <a onclick="actionPasswordLogin($('#username').val(), $('#password').val())">登录</a>
+                    </div>
+                </div>
+                <!--短信登录-->
+                <div class="login-phone">
+                    <div>
+                        <span>邮箱</span>
+                        <input type="text" name="email" id="email" placeholder="请输入邮箱">
+                        <a onclick="sendVerifyCode($('#email').val())">获取验证码</a>
+                    </div>
+                    <div>
+                        <span>验证码</span>
+                        <input type="text" name="code" id="code" placeholder="请输入验证码">
+                    </div>
+                    <a href="#" onclick="actionVerifyCodeLogin($('#email').val(), $('#code').val())">登录/注册</a>
+                </div>
+            </div>
+            <a href="#">其他方式登录</a>
+            <div class="other-login">
+                <div>
+                    <img src="images/微信.png">
+                    <a>微信登录</a>
+                </div>
+                <div>
+                    <img src="images/微博.png">
+                    <a>微博登录</a>
+                </div>
+                <div>
+                    <img src="images/QQ.png">
+                    <a>QQ登录</a>
+                </div>
+            </div>
+        </div>
+        <div class="login-info">
+            <p>未注册过哔哩哔哩的手机号，我们将自动帮你注册账号</p>
+            <p>登录或完成注册即代表你同意<a>用户协议</a>和<a>隐私政策</a></p>
+        </div>
+        <img src="images/左闭眼.png">
+        <img src="images/左睁眼.png">
+        <img src="images/右闭眼.png">
+        <img src="images/右睁眼.png">
+    </div>
+    <div class="fall-rain">
+        <span style="--speed: 12"></span>
+        <span style="--speed: 16"></span>
+        <span style="--speed: 18"></span>
+        <span style="--speed: 14"></span>
+        <span style="--speed: 10"></span>
+        <span style="--speed: 20"></span>
+        <span style="--speed: 22"></span>
+        <span style="--speed: 31"></span>
+        <span style="--speed: 15"></span>
+        <span style="--speed: 20"></span>
+        <span style="--speed: 24"></span>
+        <span style="--speed: 15"></span>
+        <span style="--speed: 18"></span>
+        <span style="--speed: 12"></span>
+        <span style="--speed: 20"></span>
+        <span style="--speed: 25"></span>
+        <span style="--speed: 22"></span>
+        <span style="--speed: 28"></span>
+        <span style="--speed: 17"></span>
+        <span style="--speed: 12"></span>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript" src="js/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="js/loginJs.js"></script>
+</body>
+
+</html>

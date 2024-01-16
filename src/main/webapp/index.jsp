@@ -7,7 +7,7 @@
 
     <!--=============== REMIXICONS ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-    <script src="https://unpkg.com/vue@next"></script>
+    <%--    <script src="https://unpkg.com/vue@next"></script>--%>
     <link rel="stylesheet" href="static/css/index.css">
 
     <title>C哩C哩</title>
@@ -87,7 +87,7 @@
                     You forgot your password
                 </a>
 
-                <button type="submit" class="action_button">Log In</button>
+                <button type="submit" class="action_button" id="login_btn">Log In</button>
             </div>
         </form>
 
@@ -177,22 +177,5 @@
 </div>
 
 <script src="static/js/index.js"></script>
-
-<script>
-    const {createApp} = Vue;
-
-    createApp({
-        data() {
-            return {
-            };
-        },
-        mounted() {
-
-        },
-        methods: {
-
-        }
-    }).mount('#app');
-</script>
 </body>
 </html>
