@@ -21,7 +21,7 @@ import java.util.List;
 @WebServlet("/api/creation/upload")
 public class UploadServlet extends MyHttpServlet {
 //    public static String UPLOAD_PATH = "/WEB-INF/upload";
-    private static final String[] videoExtensions = {"mp4", "avi", "mkv", "mov", "wmv"};
+    private static final String[] videoExtensions = {".mp4", ".avi", ".mkv", ".mov", ".wmv"};
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user= (User) req.getSession().getAttribute("user");
