@@ -1,5 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.fpointzero.mapper.VideoMapper">
+
     <select id="getByTitle" resultType="xyz.fpointzero.model.Video">
         SELECT *
         FROM video
@@ -10,10 +11,6 @@
         FROM video v left join user u on v.uid = u.id
         WHERE v.id = #{id}
     </select>
-    <insert id="insertVideo" parameterType="xyz.fpointzero.model.Video">
-        INSERT INTO `video` (videoPath, uid)
-        VALUES (#{videoPath}, #{uid})
-    </insert>
     <select id="getAllVideoList" parameterType="xyz.fpointzero.model.Video">
         SELECT *
         FROM video v left join user u on v.uid = u.id
@@ -23,4 +20,18 @@
         FROM video v left join user u on v.uid = u.id
         WHERE v.uid = #{uid}
     </select>
+    <insert id="insertVideo" parameterType="xyz.fpointzero.model.Video">
+        INSERT INTO `video` (videoPath, uid)
+        VALUES (#{videoPath}, #{uid})
+    </insert>
+    <update id="updateAll" parameterType="xyz.fpointzero.model.Video">
+        UPDATE video SET video.title = #{title}, video.subtitle = #{subtitle}
+        WHERE video.id = #{id}
+    </update>
+    <update id="updateCover" parameterType="xyz.fpointzero.model.Video">
+        UPDATE video SET video.coverPath = #{coverPath}
+        WHERE video.id = #{id} and video.uid = #{uid}
+    </update>
+
+
 </mapper>

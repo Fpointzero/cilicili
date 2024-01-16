@@ -9,7 +9,9 @@ import java.util.List;
 public interface VideoMapper {
     List<Video> getByTitle(@Param("keyword") String keyword);
     Video getById(@Param("id") String id);
-    void insertVideo(Video video);
     List<Video> getAllVideoList();
     List<Video> getVideoListByUid(@Param("uid") Integer uid);
+    void insertVideo(Video video);
+    void updateAll(Video video);
+    void updateCover(Video video);
 }

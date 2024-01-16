@@ -21,6 +21,19 @@ public class Video {
     // User表内容
     public String username;
 
+    public boolean updateAll(Video video) {
+        boolean result = false;
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            this.setVideo(video);
+            sqlSession.getMapper(VideoMapper.class).updateAll(this);
+            sqlSession.commit();
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static List<Video> getAllVideoList() {
         List<Video> result = null;
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
@@ -41,31 +54,43 @@ public class Video {
         return result;
     }
 
-    public List<Video> search(){
+    public List<Video> search() {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
             List<Video> videoList = null;
-            videoList = mapper.getByTitle("%"+title+"%");
-            if (videoList.size() != 0){
+            videoList = mapper.getByTitle("%" + title + "%");
+            if (videoList.size() != 0) {
                 return videoList;
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
         return null;
     }
 
-    public void play(){
+    public void play() {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
             Video video = new Video();
             video = mapper.getById(String.valueOf(id));
             setVideo(video);
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean updateCover() {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            mapper.updateCover(this);
+            sqlSession.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public boolean uploadVideo() {
@@ -74,7 +99,7 @@ public class Video {
             mapper.insertVideo(this);
             sqlSession.commit();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -84,19 +109,35 @@ public class Video {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
             return mapper.getById(String.valueOf(vid));
-        }catch (Exception e) {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Video getVideoByUser(Integer vid, Integer uid) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            return mapper.getById(String.valueOf(vid));
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
     private void setVideo(Video video) {
-        this.id=video.id;
-        this.videoPath = video.videoPath;
-        this.coverPath = video.coverPath;
-        this.title = video.title;
-        this.subtitle = video.subtitle;
-        this.starNumber = video.starNumber;
+        if (video.id != null)
+            this.id = video.id;
+        if (video.videoPath != null)
+            this.videoPath = video.videoPath;
+        if (video.coverPath != null)
+            this.coverPath = video.coverPath;
+        if (video.title != null)
+            this.title = video.title;
+        if (video.subtitle != null)
+            this.subtitle = video.subtitle;
+        if (video.starNumber != null)
+            this.starNumber = video.starNumber;
     }
 
     public String getVideoPath() {
