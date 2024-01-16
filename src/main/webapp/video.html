@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/video.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="nav">
+    <div class="nav-left">
+        <a><img src="images/哔哩哔哩.png" class="nav-img">首页</a>
+        <a href="AnimeCenter.html">番剧</a>
+        <a>直播</a>
+        <a href="GameCenter.html">游戏中心</a>
+        <a href="VShopping.html">会员购</a>
+        <a>漫画</a>
+        <a>赛事</a>
+        <a><img src="images/下载.png" class="nav-img">下载客户端</a>
+    </div>
+    <div class="nav-center">
+        <form id="nav-search-form">
+            <input type="text" placeholder="请输入搜索内容">
+            <img src="images/搜索.png" id="search-icon">
+        </form>
+    </div>
+    <div class="nav-right">
+        <div class="head-box">
+            <a href="Mine.html"><img src="images/虹夏.jpg" id="head-img"></a>
+            <div id="head-more-box">
+                <a href="Mine.html" target="_blank" id="head-more-box-title">吃松鼠的松子</a>
+                <div id="head-more-box-money">
+                    <a href="#"><span>硬币:</span><span>776.6</span></a>
+                    <a href="#"><span>B币:</span><span>0</span></a>
+                </div>
+                <img src="images/level.png">
+                <div id="fans">
+                    <a href="#"><span>258</span>关注</a>
+                    <a href="#"><span>33</span>粉丝</a>
+                    <a href="#"><span>139</span>动态</a>
+                </div>
+                <div id="recommend">
+                    <a><span>成为大会员</span><br/>了解更多权益</a>
+                    <div>立即开通</div>
+                </div>
+                <div id="more-options">
+                    <a href="Mine.html" target="_blank"><img src="images/个人中心.png" width="18">个人中心
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                    <a href="#"><img src="images/视频管理.png" width="18">投稿管理
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                    <a href="#"><img src="images/推荐.png" width="18">推荐服务
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                </div>
+                <div id="line"></div>
+                <div id="logout">
+                    <a href="LoginAndRegist.html"><img src="images/退出登录.png" width="18">退出登录</a>
+                </div>
+            </div>
+        </div>
+        <a><img src="images/大会员.png" class="nav-right-icon">大会员</a>
+        <a><img src="images/消息通知.png" class="nav-right-icon">消息</a>
+        <a><img src="images/动态.png" class="nav-right-icon">动态</a>
+        <a><img src="images/收藏.png" class="nav-right-icon">收藏</a>
+        <a><img src="images/历史.png" class="nav-right-icon">历史</a>
+        <a><img src="images/创作中心.png" class="nav-right-icon">创作中心</a>
+        <button id="upload"><img src="images/上传.png" class="nav-right-icon">投稿</button>
+    </div>
+</div>
+<div class="video-container">
+    <!-- 左侧 -->
+    <div class="left-container">
+        <div class="viewbox-report">
+            <h1 class="video-title">视频标题</h1>
+        </div>
+        <video preload="none"  width="668" height="376" controls="controls" src="http://124.220.20.83:8080/assets/static/video/users/videoContribution/9c7e60124636992b0e23d7e85b13451e981d2262073e7aa553d47ba26736174f.mp4"></video>
+        <div class="arc_toolbar_report">
+            <div class="toolbar-left">
+                <div class="toolbar-span blue" >100</div>
+                <div class="toolbar-span blue">100</div>
+            </div>
+        </div>
+        <div class="introduction-container">
+            <div class="desc-info-text" ref="icontainer">视频简介</div>
+        </div>
+
+        <div class="conmment-container">
+            <div class="reply-header">
+                <span class="nav-title-text">评论</span>
+                <span class="total-reply">3</span>
+            </div>
+            <div class="reply-wrap">
+                <div class="main-reply-box">
+                    <div class="reply-box-avatar">
+                        <div class="bili-avatar"  style="width: 40px;height: 40px;"></div>
+                    </div>
+                    <div class="reply-box-wrap">
+                        <textarea class="reply-box-textarea" placeholder="发一条友善的评论" v-model="comment"></textarea>
+                        <div class="no-login-mask" >
+                            <span class="no-login-span">请先</span>
+                            <span class="no-login-btn">登录</span>
+                            <span class="no-login-span">后发表评论 (・ω・)</span>
+                        </div>
+                    </div>
+<!--                    <Button type="primary">发布</Button>-->
+                </div>
+                <div class="reply-list">
+                    <div class="root-reply-item" >
+                        <div class="root-reply-container">
+                            <div class="root-reply-avatar">
+                                <div class="bili-avatar">
+                                    <img style="width: 40px;height: 40px;" alt="">
+                                </div>
+                            </div>
+                            <div class="content-wrap">
+                                <div class="user-info">
+                                    <div class="user-name" >用户1</div>
+                                </div>
+                                <div class="root-reply">评论1</div>
+<!--                                <div class="reply-info">时间</div>-->
+                            </div>
+                        </div>
+                        <div class="bottom-line"></div>
+                    </div>
+                    <div class="reply-end">没有更多评论</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右侧 -->
+    <div class="right-container">
+        <div class="up-info">
+            <div class="u-face">
+                <img class="bili-avatar" style="width: 48px;height: 48px;">
+            </div>
+            <div class="up-info-right">
+                <div class="name">
+                    <span>upName</span>
+                </div>
+                <div class="btn-panel">
+                    <Button type="primary" class="follow">+关注</Button>
+                </div>
+            </div>
+        </div>
+        <div class="rec-list">
+            <p>视频推荐</p>
+            <div class="video-page-card">
+                <div class="video-card-box">
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-3.7.0.js"></script>
+<script src="js/videoIntroduce.js"></script>
+</body>
+</html>
