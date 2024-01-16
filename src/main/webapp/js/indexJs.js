@@ -93,8 +93,6 @@ function addSlideImages(path) {
 }
 
 function createVideoCard(imagePath, title, subtitle, time, flag) {
-    // 获取父元素
-
     // 创建 video-card 容器
     let card = document.createElement('div');
     card.className = 'video-card';
@@ -146,7 +144,7 @@ function timeSince(dateString) {
         const hours = Math.floor(timeDiff / (1000 * 60 * 60));
         return `${hours}小时前`;
     }
-    // 如果时间差异大于或等于24小时，返回月日
+    // 如果时间差异大于或等于24小时，返回年月日
     else {
         return pastDate.toLocaleDateString(undefined, {year: 'numeric', month: 'numeric', day: 'numeric'});
     }
