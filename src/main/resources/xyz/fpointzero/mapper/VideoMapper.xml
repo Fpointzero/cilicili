@@ -7,11 +7,20 @@
     </select>
     <select id="getById" resultType="xyz.fpointzero.model.Video">
         SELECT *
-        FROM video
-        WHERE id = #{id}
+        FROM video v left join user u on v.uid = u.id
+        WHERE v.id = #{id}
     </select>
     <insert id="insertVideo" parameterType="xyz.fpointzero.model.Video">
         INSERT INTO `video` (videoPath, uid)
         VALUES (#{videoPath}, #{uid})
     </insert>
+    <select id="getAllVideoList" parameterType="xyz.fpointzero.model.Video">
+        SELECT *
+        FROM video v left join user u on v.uid = u.id
+    </select>
+    <select id="getVideoListByUid" parameterType="xyz.fpointzero.model.Video">
+        SELECT *
+        FROM video v left join user u on v.uid = u.id
+        WHERE v.uid = #{uid}
+    </select>
 </mapper>

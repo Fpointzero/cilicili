@@ -18,6 +18,29 @@ public class Video {
     public Integer uid;
     public String createTime;
 
+    // User表内容
+    public String username;
+
+    public static List<Video> getAllVideoList() {
+        List<Video> result = null;
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            result = sqlSession.getMapper(VideoMapper.class).getAllVideoList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static List<Video> getVideoListByUid(Integer uid) {
+        List<Video> result = null;
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            result = sqlSession.getMapper(VideoMapper.class).getVideoListByUid(uid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public List<Video> search(){
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);

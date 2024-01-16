@@ -17,16 +17,6 @@ import java.net.URLEncoder;
 public class VideoServlet extends MyHttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        JSONObject json = JSONUtil.getParamsJSON(req);
-//        String filePath = null;
-//        try {
-//            ResultSet rs = FileUtil.getFilePath(fileId);
-//            if (rs.next()) { // 确保结果集不为空
-//                filePath = rs.getString("path");
-//            }
-//        } catch (SQLException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
         Integer vid = Integer.valueOf(req.getParameter("vid"));
         Video video = Video.getVideo(vid);
         String filePath = video.getVideoPath();

@@ -34,7 +34,7 @@ function actionPasswordLogin(username, password) {
         "password": password
     };
     var settings = {
-        url: "http://localhost:8080/cilicili_war/login",
+        url: "http://localhost:8080/cilicili_war/api/login",
         method: "POST",
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
@@ -57,7 +57,7 @@ function sendVerifyCode(email) {
         "email": email
     };
     var settings = {
-        url: "http://localhost:8080/cilicili_war/sendEmail",
+        url: "http://localhost:8080/cilicili_war/api/sendEmail",
         method: "POST",
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
@@ -81,7 +81,7 @@ function actionVerifyCodeLogin(email, code){
         "code": code
     };
     var settings = {
-        url: "http://localhost:8080/cilicili_war/login",
+        url: "http://localhost:8080/cilicili_war/api/login",
         method: "POST",
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
