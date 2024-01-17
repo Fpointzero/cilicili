@@ -27,9 +27,9 @@ window.onload = function () {
             videoList = res["data"]["videoList"];
             for (let i = 0; i < videoList.length; i++) {
                 if (i > 5) {
-                    createVideoCard(videoList[i]["cover"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], false)
+                    createVideoCard(videoList[i]["cover"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], false)
                 } else {
-                    createVideoCard(videoList[i]["cover"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], true)
+                    createVideoCard(videoList[i]["cover"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], true)
                 }
             }
         },
@@ -46,7 +46,7 @@ window.onload = function () {
             data = res["data"];
             videoList = data["videoList"];
             for (let i = 0; i < videoList.length; i++) {
-                createVideoCard(videoList[i]["cover"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], false)
+                createVideoCard(videoList[i]["cover"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], false)
             }
         },
     });
@@ -92,10 +92,11 @@ function addSlideImages(path) {
     $('.banner-img-container').append(img);
 }
 
-function createVideoCard(imagePath, title, subtitle, time, flag) {
+function createVideoCard(imagePath, id, title, subtitle, time, flag) {
     // 创建 video-card 容器
     let card = document.createElement('div');
     card.className = 'video-card';
+    card.id = id;
 
     // 创建图片元素
     let img = document.createElement('img');
@@ -155,10 +156,10 @@ const input = document.getElementById('keyword');
 const searchIcon = document.getElementById('search-icon');
 
 // 监听输入框的keydown事件
-input.addEventListener('keydown', function(e) {
+input.addEventListener('keydown', function (e) {
 
     // 检测是否按下了Enter键
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
         // 防止默认行为
         e.preventDefault();
         // 模拟点击搜索按钮
@@ -169,7 +170,7 @@ input.addEventListener('keydown', function(e) {
 // 为搜索图标添加点击事件监听
 searchIcon.addEventListener('click', async () => {
     // 判断输入框是否有内容
-    if(input.value.trim()) {
+    if (input.value.trim()) {
         // 跳转到search页面,同时传递搜索关键词
         window.location.href = `Search.html?keyword=${input.value.trim()}`;
     } else {
