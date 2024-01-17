@@ -93,9 +93,14 @@ public class UploadServlet extends MyHttpServlet {
                         video.setVideoPath(user.getId() + FileUtil.urlSeparator + newFileName);
 //                        video.setVideoPath(filePath);
                         video.uid = user.getId();
-                        if (video.uploadVideo())
+
+
+                        if (video.uploadVideo()) {
 //                        FileUtil.saveFileToDatabase(fileName, filePath);
+                            video = Video.getLatestVideoByUser(video.uid);
                             msg = new Msg<Video>(Msg.SUCCESS, video);
+
+                        }
                     }
                 }
             }

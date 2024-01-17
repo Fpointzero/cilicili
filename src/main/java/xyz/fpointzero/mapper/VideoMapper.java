@@ -10,8 +10,11 @@ public interface VideoMapper {
     List<Video> getByTitle(@Param("keyword") String keyword);
     Video getById(@Param("id") String id);
     List<Video> getAllVideoList();
+    Video getLatestVideoByUid(Integer uid);
     List<Video> getVideoListByUid(@Param("uid") Integer uid);
+
     void insertVideo(Video video);
     void updateAll(Video video);
     void updateCover(Video video);
+
 }

@@ -8,16 +8,19 @@
     </select>
     <select id="getById" resultType="xyz.fpointzero.model.Video">
         SELECT *
-        FROM video v left join user u on v.uid = u.id
+        FROM video v
+                 left join user u on v.uid = u.id
         WHERE v.id = #{id}
     </select>
     <select id="getAllVideoList" parameterType="xyz.fpointzero.model.Video">
         SELECT *
-        FROM video v left join user u on v.uid = u.id
+        FROM video v
+                 left join user u on v.uid = u.id
     </select>
     <select id="getVideoListByUid" parameterType="xyz.fpointzero.model.Video">
         SELECT *
-        FROM video v left join user u on v.uid = u.id
+        FROM video v
+                 left join user u on v.uid = u.id
         WHERE v.uid = #{uid}
     </select>
     <insert id="insertVideo" parameterType="xyz.fpointzero.model.Video">
@@ -25,13 +28,21 @@
         VALUES (#{videoPath}, #{uid})
     </insert>
     <update id="updateAll" parameterType="xyz.fpointzero.model.Video">
-        UPDATE video SET video.title = #{title}, video.subtitle = #{subtitle}
+        UPDATE video
+        SET video.title    = #{title},
+            video.subtitle = #{subtitle}
         WHERE video.id = #{id}
     </update>
     <update id="updateCover" parameterType="xyz.fpointzero.model.Video">
-        UPDATE video SET video.coverPath = #{coverPath}
-        WHERE video.id = #{id} and video.uid = #{uid}
+        UPDATE video
+        SET video.coverPath = #{coverPath}
+        WHERE video.id = #{id}
+          and video.uid = #{uid}
     </update>
 
-
+    <select id="getLatestVideoByUid" resultType="xyz.fpointzero.model.Video">
+        SELECT * FROM video
+        WHERE video.uid = #{uid}
+        ORDER BY video.id DESC LIMIT 0,1
+    </select>
 </mapper>
