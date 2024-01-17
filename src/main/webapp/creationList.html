@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创作中心</title>
+    <link rel="stylesheet" href="css/creationListCss.css">
+</head>
+<body>
+<!--导航栏-->
+<div class="nav">
+    <div class="nav-left">
+        <a href="Index.html"><img src="images/哔哩哔哩.png" class="nav-img">首页</a>
+        <a><img src="images/下载.png" class="nav-img">下载客户端</a>
+    </div>
+    <div class="nav-center">
+    </div>
+    <div class="nav-right">
+        <!--头像部分-->
+        <div class="head-box">
+            <img src="images/虹夏.jpg" id="head-img">
+            <div id="head-more-box">
+                <a href="Mine.html" target="_blank" id="head-more-box-title">吃松鼠的松子</a>
+                <div id="head-more-box-money">
+                    <a href="#"><span>硬币:</span><span>776.6</span></a>
+                    <a href="#"><span>B币:</span><span>0</span></a>
+                </div>
+                <img src="images/level.png">
+                <div id="fans">
+                    <a href="#"><span>258</span>关注</a>
+                    <a href="#"><span>33</span>粉丝</a>
+                    <a href="#"><span>139</span>动态</a>
+                </div>
+                <div id="recommend">
+                    <a><span>成为大会员</span><br/>了解更多权益</a>
+                    <div>立即开通</div>
+                </div>
+                <div id="more-options">
+                    <a href="Mine.html" target="_blank"><img src="images/个人中心.png" width="18">个人中心
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                    <a href="#"><img src="images/视频管理.png" width="18">投稿管理
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                    <a href="#"><img src="images/推荐.png" width="18">推荐服务
+                        <img src="images/右箭头.png" width="18" style="margin-left: 130px">
+                    </a>
+                </div>
+                <div id="line"></div>
+                <div id="logout">
+                    <a href="LoginAndRegist.html"><img src="images/退出登录.png" width="18">退出登录</a>
+                </div>
+            </div>
+        </div>
+        <a><img src="images/大会员.png" class="nav-right-icon">大会员</a>
+        <a><img src="images/消息通知.png" class="nav-right-icon">消息</a>
+        <a><img src="images/动态.png" class="nav-right-icon">动态</a>
+        <a><img src="images/收藏.png" class="nav-right-icon">收藏</a>
+        <a><img src="images/历史.png" class="nav-right-icon">历史</a>
+        <a><img src="images/创作中心.png" class="nav-right-icon">创作中心</a>
+        <button id="upload"><img src="images/上传.png" class="nav-right-icon">投稿</button>
+    </div>
+</div>
+<!--主体部分-->
+<div class="main">
+    <div class="sidebar">
+        <div class="nav-upload-logo">
+            <img src="images/upload-cloud.png"/>
+        </div>
+        <ul class="main-menu">
+            <li>
+                <a href="#"><img src="images/搜索.png" class="nav-img">创作</a></li>
+            <li><a href="#" id="select"><img src="images/搜索.png" class="nav-img">创作列表</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="upload-wrp">
+            <div class="bcc-upload-wrapper">
+                <img src="images/upload-cloud.png" alt="" class="icon-upload">
+                <div class="upload-btn">上传视频</div>
+                <div class="upload-audit-progress">
+                    <span>当前审核队列</span>
+                    <span class="tag" style="">快速</span>
+                </div>
+                <input id="file" accept=".mp4,.flv,.avi,.wmv,.mov,.webm,.mpeg4,.ts,.mpg,.rm,.rmvb,.mkv,.m4v"
+                       multiple="multiple" name="file" type="file" style="display: none;">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="js/creationListJs.js"></script>
+</body>
+</html>
