@@ -36,7 +36,7 @@ public class GetVideoServlet extends MyHttpServlet {
         } else if (reqPath.equals("/api/video/getVideo")) {
             // 用于视频播放器播放获取视频
             JSONObject json = JSONUtil.getParamsJSON(req);
-            Integer vid = Integer.valueOf(json.getString("video_id"));
+            Integer vid = Integer.valueOf(json.getString("vid"));
             User user = (User) req.getSession().getAttribute("user");
             try {
                 Video video = Video.getVideo(vid);

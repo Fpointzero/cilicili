@@ -18,15 +18,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/api/creation/upload")
-public class UploadServlet extends MyHttpServlet {
-    //    public static String UPLOAD_PATH = "/WEB-INF/upload";
-    private static final String[] videoExtensions = {".mp4", ".avi", ".mkv", ".mov", ".wmv"};
+@WebServlet("/api/creation/uploadCover")
+public class UploadCoverServlet extends MyHttpServlet {
+    private static final String[] imageExtensions = {".jpg", ".png", ".gif"};
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         msg = new Msg<Video>(Msg.ERROR, null);
+        Integer vid = Integer.valueOf(req.getParameter("vid"));
         // 配置上传参数
         DiskFileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -42,8 +42,8 @@ public class UploadServlet extends MyHttpServlet {
         }
         factory.setRepository(tempDirectory);
 
-        upload.setSizeMax(1024L * 1024 * 1024); // 允许最大上传1G视频
-        String uploadPath = Setting.VIDEO_PATH + "/" + user.getId(); // 设置用户文件上传路径
+        upload.setSizeMax(1024L * 1024 * 20); // 允许最大上传20M图片
+        String uploadPath = Setting.COVER_PATH + "/" + user.getId(); // 设置用户文件上传路径
         // 设置上传路径
 //        String uploadPath = req.getServletContext().getRealPath(userUploadPath);
 //        System.out.println(uploadPath);
@@ -57,29 +57,28 @@ public class UploadServlet extends MyHttpServlet {
                     // 处理在表单中的字段
                     if (!item.isFormField()) {
                         Video video = new Video();
-//                        String fileName = new File(item.getName()).getName();
                         String fileName = new File(item.getName()).getName();
-
                         long timestamp = System.currentTimeMillis();
-
                         File uploadDir = new File(uploadPath);
                         if (!uploadDir.exists()) {
                             if (!uploadDir.mkdirs())
                                 return;
                         }
+
 //                        String filePath = uploadPath + File.separator + timestamp + File.separator + fileName;
                         String ext = FileUtil.getFileExtension(fileName);
 
-                        boolean isVideo = false;
-                        for (String v : videoExtensions) {
+                        boolean isImg = false;
+                        for (String v : imageExtensions) {
                             if (ext.equalsIgnoreCase(v)) {
-                                isVideo = true;
+                                isImg = true;
                                 break;
                             }
                         }
-                        if (!isVideo) {
-                            throw new RuntimeException("上传文件非视频文件");
+                        if (!isImg) {
+                            throw new RuntimeException("上传文件非图片文件");
                         }
+
                         String newFileName = timestamp + ext; // 上传新文件名字
                         String filePath = uploadPath + FileUtil.urlSeparator + newFileName; // 上传完以后全部名字
                         // 在控制台输出文件的上传路径
@@ -89,18 +88,11 @@ public class UploadServlet extends MyHttpServlet {
                         // 保存文件到硬盘
                         item.write(storeFile);
 
-//                        video.setVideoPath(userUploadPath + FileUtil.urlSeparator + newFileName);
-                        video.setVideoPath(user.getId() + FileUtil.urlSeparator + newFileName);
-//                        video.setVideoPath(filePath);
+                        video.setId(vid);
+                        video.setCoverPath(user.getId() + FileUtil.urlSeparator + newFileName);
                         video.uid = user.getId();
-
-
-                        if (video.uploadVideo()) {
-//                        FileUtil.saveFileToDatabase(fileName, filePath);
-                            video = Video.getLatestVideoByUser(video.uid);
+                        if (video.updateCover())
                             msg = new Msg<Video>(Msg.SUCCESS, video);
-
-                        }
                     }
                 }
             }

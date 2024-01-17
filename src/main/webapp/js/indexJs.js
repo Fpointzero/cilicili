@@ -179,4 +179,8 @@ searchIcon.addEventListener('click', async () => {
     }
 });
 
+$("#upload").on("click", function () {
+    window.location.href = "creation.html";
+});
+
 

@@ -21,6 +21,80 @@ public class Video {
     // User表内容
     public String username;
 
+    // =============================功能 start==============================
+    public List<Video> search() {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            List<Video> videoList = null;
+            videoList = mapper.getByTitle("%" + title + "%");
+            if (videoList.size() != 0) {
+                return videoList;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
+    public void play() {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            Video video = new Video();
+            video = mapper.getById(String.valueOf(id));
+            setVideo(video);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // =============================功能 end==============================
+
+    /**
+     * 根据 ${vid} 获取视频
+     * @param vid
+     * @return
+     */
+    public static Video getVideo(Integer vid) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            return mapper.getById(String.valueOf(vid));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 根据 ${uid} 获取最新的视频
+     * @param uid
+     * @return
+     */
+    public static Video getLatestVideoByUser(Integer uid) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            return mapper.getLatestVideoByUid(uid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+//    public static Video getVideoByUser(Integer vid, Integer uid) {
+//        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+//            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+//            return mapper.getById(String.valueOf(vid));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+
+    /**
+     * 获取全站视频
+     * @return
+     */
     public static List<Video> getAllVideoList() {
         List<Video> result = null;
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
@@ -31,6 +105,11 @@ public class Video {
         return result;
     }
 
+    /**
+     * 获取 ${uid} 的所有视频
+     * @param uid
+     * @return
+     */
     public static List<Video> getVideoListByUid(Integer uid) {
         List<Video> result = null;
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
@@ -41,62 +120,71 @@ public class Video {
         return result;
     }
 
-    public List<Video> search(){
+    // update ----------------
+
+    /**
+     * 更新视频封面
+     * @return
+     */
+    public boolean updateCover() {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
-            List<Video> videoList = null;
-            videoList = mapper.getByTitle("%"+title+"%");
-            if (videoList.size() != 0){
-                return videoList;
-            }
-
-        }catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return null;
-    }
-
-    public void play(){
-        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
-            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
-            Video video = new Video();
-            video = mapper.getById(String.valueOf(id));
-            setVideo(video);
-        }catch (Exception e) {
+            mapper.updateCover(this);
+            sqlSession.commit();
+            return true;
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 
+    /**
+     * 上传视频以后创建一个视频
+     * @return
+     */
     public boolean uploadVideo() {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
             mapper.insertVideo(this);
             sqlSession.commit();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    public static Video getVideo(Integer vid) {
+    /**
+     * 更新视频的信息
+     * @param video
+     * @return
+     */
+    public boolean updateAll(Video video) {
+        boolean result = false;
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
-            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
-            return mapper.getById(String.valueOf(vid));
-        }catch (Exception e) {
+            this.setVideo(video);
+            sqlSession.getMapper(VideoMapper.class).updateAll(this);
+            sqlSession.commit();
+            result = true;
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return result;
     }
 
     private void setVideo(Video video) {
-        this.id=video.id;
-        this.videoPath = video.videoPath;
-        this.coverPath = video.coverPath;
-        this.title = video.title;
-        this.subtitle = video.subtitle;
-        this.starNumber = video.starNumber;
+        if (video.id != null)
+            this.id = video.id;
+        if (video.videoPath != null)
+            this.videoPath = video.videoPath;
+        if (video.coverPath != null)
+            this.coverPath = video.coverPath;
+        if (video.title != null)
+            this.title = video.title;
+        if (video.subtitle != null)
+            this.subtitle = video.subtitle;
+        if (video.starNumber != null)
+            this.starNumber = video.starNumber;
     }
 
     public String getVideoPath() {
