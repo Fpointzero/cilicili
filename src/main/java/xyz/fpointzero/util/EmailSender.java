@@ -68,15 +68,16 @@ public class EmailSender {
                 try{
                     mapper.setEmail(email);
                 } catch (Exception e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
+                    mapper.setVery(String.valueOf(randomNumber), email);
+
+
+
+                    // 发送邮件
+                    Transport.send(message);
                 }
-
-                mapper.setVery(String.valueOf(randomNumber), email);
-
                 sqlSession.commit();
 
-                // 发送邮件
-                //Transport.send(message);
             } catch (Exception e) {
                 e.printStackTrace();
             }
