@@ -258,13 +258,13 @@
     border: 1px solid #cccccc;
 }
 
-#head-more-box #logout {
+#head-more-box .user {
     width: 100%;
     display: flex;
     border-radius: 10px;
 }
 
-#head-more-box #logout > a {
+#head-more-box .user > a {
     width: 100%;
     text-decoration: none;
     color: #18191C;
@@ -274,9 +274,10 @@
     align-items: center;
 }
 
-#head-more-box #logout:hover {
+#head-more-box .user:hover {
     background: #cccccc;
 }
+
 
 /*头像框右边的icon*/
 .nav-right > a {

@@ -1,8 +1,8 @@
 UrlParam = function() { // url参数
     var data, index;
     (function init() {
-        data = []; //值，如[["1","2"],["zhangsan"],["lisi"]]
-        index = {}; //键:索引，如{a:0,b:1,c:2}
+        data = [];
+        index = {};
         var u = window.location.search.substr(1);
         if (u !== '') {
             var params = decodeURIComponent(u).split('&');
