@@ -45,6 +45,7 @@ window.onload = function () {
             $('#introduction').html(video['subtitle']);
             $('#playNum').append(video['playNumber']);
             $('#starNum').append(video['starNumber']);
+            $('.name').text(video['username']);
             starNum = video['starNumber'];
         },
     });
