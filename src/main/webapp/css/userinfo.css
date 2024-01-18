@@ -1,0 +1,93 @@
+.info {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--info-bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info .form-box {
+    animation-duration: 0.5s;
+}
+
+.info .form-group {
+    margin-bottom: 15px;
+}
+
+.info label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info input[type="text"],
+.info input[type="date"],
+.info select,
+.info textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.info input[type="text"]:focus,
+.info input[type="date"]:focus,
+.info select:focus,
+.info textarea:focus {
+    outline: none;
+    border-color: #7ab0d2;
+}
+
+.info .submit-button {
+    background-color: #5c90d2;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.info .submit-button:hover {
+    background-color: #3b6ea5;
+}
+.info .figure-box {
+    overflow: hidden;
+    padding: 20px;
+}
+.info .figure-box .figure {
+    width: 100%;
+    height: 340px;
+    background-image: url("../images/charector.png");
+    background-position: 0 0;
+    animation: k 0.8s step-end infinite;
+}
+@keyframes k {
+    0% {
+        background-position: 0 0;
+    }
+    14.3% {
+        background-position: -180px 0;
+    }
+    28.6% {
+        background-position: -360px 0;
+    }
+    42.9% {
+        background-position: -540px 0;
+    }
+    57.2% {
+        background-position: -720px 0;
+    }
+    71.5% {
+        background-position: -900px 0;
+    }
+    85.8% {
+        background-position: -1080px 0;
+    }
+
+}
+
+/*# sourceMappingURL=userInfo.css.map */
