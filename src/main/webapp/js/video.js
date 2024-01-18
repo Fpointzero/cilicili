@@ -1,5 +1,6 @@
 window.onload = function () {
     let vid = UrlParam.paramValues("vid")[0];
+    console.log(vid)
     let data = {
         "vid": vid
     }

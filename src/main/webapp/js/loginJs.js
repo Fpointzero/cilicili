@@ -27,8 +27,6 @@ function closeEye() {
 
 function actionPasswordLogin(username, password) {
     let data = {
-        // "username": "Ogawa Yota",
-        // "password": "T1q8aWio1U"
         "type": "pwd",
         "username": username,
         "password": password
