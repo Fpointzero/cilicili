@@ -44,10 +44,10 @@ function createArchiveCard(coverPath,createTime,vid,title){
                         </div>
                         <div class="r-text">
                             <a class="videoTitle" target="_blank" href="./video.html?vid=${vid}">${title}</a>
-                            <p class="Subtitle">这是子标题</p>
+                            <p class="Subtitle"></p>
                             <div class="upInfo">
                                 <a class="up-info" target="_blank" href="./video.html?vid=${vid}">
-                                    <span class="up-info-text">up主信息</span>
+                                    <span class="up-info-text"></span>
                                 </a>
                             </div>
                         </div>
