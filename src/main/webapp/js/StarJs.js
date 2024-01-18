@@ -47,8 +47,8 @@ function changeNav(t) {
         //设置工具栏可见
         $('.tools').css('display', 'inline');
     } else {
-        $('.nav-left>a').css('color', 'white');
-        $('.nav-right>a').css('color', 'white');
+        $('.nav-left>a').css('color', 'black');
+        $('.nav-right>a').css('color', 'black');
         $('.nav').css('border-bottom', 'none');
         $('.nav').css('background', 'none');
         $('.nav').css('box-shadow', '');
