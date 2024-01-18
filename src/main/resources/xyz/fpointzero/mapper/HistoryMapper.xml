@@ -4,6 +4,7 @@
         SELECT *
         FROM history left join video as v on history.vid = v.id
         WHERE history.uid = #{uid}
+        ORDER BY `time` desc
     </select>
     <insert id="setHistory">
         INSERT INTO history (uid,vid,time) VALUES (#{uid},#{vid},CURRENT_TIMESTAMP());

@@ -9,9 +9,11 @@ try {
     console.log(error);
     redirectLogin();
 }
+
 function redirectLogin() {
     location.href = "LoginAndRegist.html";
 }
+
 window.onload = function () {
     var a1 = $('.hidden-nav .hiddenNav-left>a:nth-of-type(1)');
     var a2 = $('.content-nav .hiddenNav-left>a:nth-of-type(1)');
@@ -25,12 +27,13 @@ window.onload = function () {
 // 隐藏nav的滑动监听事件
 window.onscroll = function () {
     var t = document.documentElement.scrollTop || document.body.scrollTop;
-    if (t > 323){
+    if (t > 323) {
         $('.hidden-nav').css('transform', 'translateY(70px)');
-    }else {
+    } else {
         $('.hidden-nav').css('transform', 'translateY(-70px)');
     }
 }
+
 // 导航栏选项样式切换
 function hiddenNavItems() {
     var a = $('.hiddenNav-left>a');
@@ -68,6 +71,7 @@ function hiddenNavItems() {
         a2.css('color', '#00A1D6');
     })
 }
+
 function creatItem(cover, title, createTime, playNum, starNum, vid, subtitle) {
     // console.log(cover);
     let str = "";
@@ -96,10 +100,11 @@ function creatItem(cover, title, createTime, playNum, starNum, vid, subtitle) {
             </div>`
     let node = $(str);
     node.find(".btn-edt").click(function () {
-        location.href = "manuscriptEdit.html?vid=" + vid +"&title=" + title + "&subtitle=" + subtitle;
+        location.href = "manuscriptEdit.html?vid=" + vid + "&title=" + title + "&subtitle=" + subtitle;
     });
     return node;
 }
+
 function init() {
     let data = {
         "uid": json.id,
@@ -120,13 +125,13 @@ function init() {
             return;
         }
         videoData = response.data;
-        for (let i = 0; i < videoData.length; ++i) {
+        for (let i = videoData.length - 1; i >= 0; --i) {
             let video = videoData[i];
             $(".list-container").append(creatItem(video.coverPath, video.title, video.createTime, video.playNumber, video.starNumber, video.id, video.subtitle));
         }
         $("#list-number").html(videoData.length);
         $("");
-    }).fail(function(jqXHR, textStatus, errorThrown) {
+    }).fail(function (jqXHR, textStatus, errorThrown) {
         // 处理错误响应
         console.log("请求失败：" + errorThrown);
         redirectLogin();
