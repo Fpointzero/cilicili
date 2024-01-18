@@ -28,18 +28,18 @@ public class UserInfoServlet extends MyHttpServlet {
         JSONObject json = JSONUtil.getParamsJSON(req);
 
         String username = json.getString("username");
-        String phoneNumber = json.getString("phoneNumber");
+        //String phoneNumber = json.getString("phoneNumber");
 //        String avatar = json.getString("avatar");
         User user = (User) req.getSession().getAttribute("user");
 
         User userChange = new User();
         userChange.setUsername(username);
-        userChange.setPhoneNumber(phoneNumber);
+        //userChange.setPhoneNumber(phoneNumber);
 //        userChange.setAvatar(avatar);
 
         if (user != null && user.updateAll(userChange)) {
             req.getSession().setAttribute("user", user);
-            msg.setAll(200, user,  "修改失败，用户名或者邮箱已存在");
+            msg.setAll(200, user,  "修改成功");
         }
         msg.send(resp);
     }
