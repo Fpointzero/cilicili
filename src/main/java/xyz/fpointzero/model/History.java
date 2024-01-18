@@ -1,7 +1,9 @@
 package xyz.fpointzero.model;
 
 import org.apache.ibatis.session.SqlSession;
+import xyz.fpointzero.Setting;
 import xyz.fpointzero.mapper.HistoryMapper;
+import xyz.fpointzero.util.FileUtil;
 import xyz.fpointzero.util.MyBatisUtil;
 
 import java.util.List;
@@ -23,6 +25,10 @@ public class History {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             HistoryMapper HistoryMapper = sqlSession.getMapper(HistoryMapper.class);
             List<History> HistoryList = HistoryMapper.getHistoryList(user.getId());
+            for (History history : HistoryList) {
+                history.setCoverPath(Setting.FILE_SERVER_COVER + FileUtil.urlSeparator + history.getCoverPath());
+                history.setVideoPath(Setting.FILE_SERVER_VIDEO + FileUtil.urlSeparator + history.getVideoPath());
+            }
             return HistoryList;
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,7 +1,9 @@
 package xyz.fpointzero.model;
 
 import org.apache.ibatis.session.SqlSession;
+import xyz.fpointzero.Setting;
 import xyz.fpointzero.mapper.StarMapper;
+import xyz.fpointzero.util.FileUtil;
 import xyz.fpointzero.util.MyBatisUtil;
 
 import java.util.List;
@@ -54,6 +56,10 @@ public class Star {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             StarMapper starMapper = sqlSession.getMapper(StarMapper.class);
             List<Star> starList = starMapper.getStarList(user.getId(), group);
+            for (Star star : starList) {
+                star.setCoverPath(Setting.FILE_SERVER_COVER + FileUtil.urlSeparator + star.getCoverPath());
+                star.setVideoPath(Setting.FILE_SERVER_VIDEO + FileUtil.urlSeparator + star.getVideoPath());
+            }
             return starList;
         } catch (Exception e) {
             e.printStackTrace();
