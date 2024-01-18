@@ -55,8 +55,8 @@ function hiddenNavItems() {
     })
 }
 
-// const vid = getCookie('vid');
-const vid = 8;
+const params = new URLSearchParams(location.search);
+const vid = params.get('vid');
 
 $('.btn-upload-cover').click(function(){
     $("#cover").trigger("click");

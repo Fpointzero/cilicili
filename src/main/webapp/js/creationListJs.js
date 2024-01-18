@@ -22,13 +22,12 @@ window.onload = function () {
 // 隐藏nav的滑动监听事件
 window.onscroll = function () {
     var t = document.documentElement.scrollTop || document.body.scrollTop;
-    if (t > 323) {
+    if (t > 323){
         $('.hidden-nav').css('transform', 'translateY(70px)');
-    } else {
+    }else {
         $('.hidden-nav').css('transform', 'translateY(-70px)');
     }
 }
-
 // 导航栏选项样式切换
 function hiddenNavItems() {
     var a = $('.hiddenNav-left>a');
@@ -73,7 +72,7 @@ function init() {
         "uid": json.id,
     };
     var settings = {
-        url: "http://localhost:8080/cilicili_war/api/video/getUserVideo",
+        url: "/cilicili_war/api/creation/upload",
         method: "POST",
         contentType: 'application/json;charset=UTF-8',
         dataType: 'json',

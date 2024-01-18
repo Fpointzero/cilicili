@@ -1,26 +1,25 @@
-window.onload = function () {
-    let data = {"page_info": {"page": 1, "size": 15}}
+function init() {
     $.ajax({
-        url: "http://124.220.20.83:8080/home/getHomeInfo",
-        method: "POST",
-        data: JSON.stringify(data),
+        url: "/cilicili_war/api/video/getVideos",
+        method: "GET",
         dataType: "json",
-        contentType: "application/json",
+        sync: false,
         success: function (res) {
             console.log(res)
-            data = res["data"];
-            videoList = data["videoList"];
-            for (let i = 0; i < 6; i++) {
-                createVideoCard(videoList[i]["cover"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"])
+            videoList = res["data"];
+            for (let i = 0; i < videoList.length; i++) {
+                createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"])
             }
+            initClick();
         },
     });
 }
 
-function createVideoCard(imagePath, title, subtitle, time) {
+function createVideoCard(imagePath, id, title, subtitle, time) {
     // 创建 video-card 容器
     let card = document.createElement('div');
     card.className = 'video-card';
+    card.id = id;
 
     // 创建图片元素
     let img = document.createElement('img');
@@ -71,3 +70,17 @@ function timeSince(dateString) {
         return pastDate.toLocaleDateString(undefined, {year: 'numeric', month: 'numeric', day: 'numeric'});
     }
 }
+
+function initClick() {
+    const videoCards = document.querySelectorAll('.video-card');
+    console.log(videoCards.length)
+    videoCards.forEach(card => {
+        card.addEventListener('click', function () {
+            // 获取 data-video-id 属性值
+            const videoId = card.getAttribute('id');
+            console.log(videoId)
+            window.location.href = `video.html?vid=${videoId}`;
+        });
+    });
+}
+init()
