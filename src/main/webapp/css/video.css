@@ -404,6 +404,10 @@
     transition: color .2s ease;
 }
 
+.toolbar-span img{
+    width: 25px;
+}
+
 .blue:hover{
     color: rgb(0,174,236);
 }

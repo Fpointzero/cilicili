@@ -24,5 +24,7 @@ function isUserLoggedIn() {
 
 function logoutUser() {
     localStorage.removeItem("user");
+    document.getElementById('logout').style.display = 'none';
+    document.getElementById('login').style.display = 'block';
     window.location.href = 'LoginAndRegist.html'
 }
