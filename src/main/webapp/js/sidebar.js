@@ -1,10 +1,11 @@
 user = localStorage.getItem("user");
 try {
     user = JSON.parse(user);
+    $('.name').text(user['username']);
 } catch (e) {
-    console.log(e);
+    alert('请先登入');
+    window.location.href = 'index.html';
 }
-$('.name').text(user['username']);
 
 const body = document.querySelector('body'),
     shell = body.querySelector('div'),
