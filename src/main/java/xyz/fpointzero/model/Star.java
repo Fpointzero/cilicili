@@ -3,6 +3,7 @@ package xyz.fpointzero.model;
 import org.apache.ibatis.session.SqlSession;
 import xyz.fpointzero.Setting;
 import xyz.fpointzero.mapper.StarMapper;
+import xyz.fpointzero.mapper.VideoMapper;
 import xyz.fpointzero.util.FileUtil;
 import xyz.fpointzero.util.MyBatisUtil;
 
@@ -22,7 +23,7 @@ public class Star {
     public Integer playNumber;
     public String videoTime;
 
-    public static boolean setStar(Star star) {
+    public static synchronized boolean setStar(Star star) {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             StarMapper starMapper = sqlSession.getMapper(StarMapper.class);
             if (star.group == null) {
@@ -30,6 +31,10 @@ public class Star {
             }
             else
                 starMapper.insertStar(star);
+
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            Video video = mapper.getById(String.valueOf(star.vid));
+            mapper.updateStarNumber(video.getId(), video.getStarNumber() + 1);
             sqlSession.commit();
             return true;
         } catch (Exception e) {
@@ -39,10 +44,14 @@ public class Star {
         return false;
     }
 
-    public static boolean unsetStar(Star star) {
+    public static synchronized boolean unsetStar(Star star) {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             StarMapper starMapper = sqlSession.getMapper(StarMapper.class);
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
             starMapper.delete(star);
+            sqlSession.getMapper(VideoMapper.class);
+            Video video = mapper.getById(String.valueOf(star.vid));
+            mapper.updateStarNumber(video.getId(), video.getStarNumber() - 1);
             sqlSession.commit();
             return true;
         } catch (Exception e) {

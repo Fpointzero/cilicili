@@ -56,6 +56,17 @@ public class Video {
         }
     }
 
+    public synchronized void updateStarNumber(Integer starNumber) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
+            mapper.updateStarNumber(this.id, starNumber);
+            sqlSession.commit();
+            this.starNumber = starNumber;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // =============================功能 end==============================
 
     /**

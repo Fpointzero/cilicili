@@ -54,3 +54,15 @@ function hiddenNavItems() {
         a2.css('color','#00A1D6');
     })
 }
+
+user = localStorage.getItem("user");
+try {
+    user = JSON.parse(user);
+} catch (e){
+    console.log(e);
+}
+if (user != null) {
+    $(".username").html(user.username);
+} else {
+    $(".username").html("请登录");
+}

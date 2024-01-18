@@ -33,6 +33,11 @@
         SET video.playNumber = #{playNumber}
         WHERE video.id = #{id}
     </update>
+    <update id="updateStarNumber">
+        UPDATE video
+        SET video.starNumber = #{starNumber}
+        WHERE video.id = #{vid}
+    </update>
     <update id="updateAll" parameterType="xyz.fpointzero.model.Video">
         UPDATE video
         SET video.title    = #{title},

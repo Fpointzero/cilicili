@@ -23,8 +23,22 @@ function isUserLoggedIn() {
 }
 
 function logoutUser() {
-    localStorage.removeItem("user");
-    document.getElementById('logout').style.display = 'none';
-    document.getElementById('login').style.display = 'block';
-    window.location.href = 'LoginAndRegist.html'
+    $.ajax({
+        url: '/cilicili_war/api/logout',
+        dataType: 'json',
+        type: 'post',
+        success: function (res) {
+            console.log(res);
+            if (res.code === 200) {
+                console.log('logout success');
+                document.getElementById('logout').style.display = 'none';
+                document.getElementById('login').style.display = 'block';
+                window.location.replace('LoginAndRegist.html');
+                localStorage.removeItem("user");
+            }
+        }
+    })
+    // document.getElementById('logout').style.display = 'none';
+    // document.getElementById('login').style.display = 'block';
+    // window.location.replace('LoginAndRegist.html');
 }
