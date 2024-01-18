@@ -64,27 +64,28 @@
 <div class="main">
     <div class="sidebar">
         <div class="nav-upload-logo">
-            <img src="images/--依露希尔：星晓.png"/>
+            <img src="images/upload-cloud.png"/>
         </div>
         <ul class="main-menu">
             <li>
-                <a href="#"><img src="images/搜索.png" class="nav-img">创作</a></li>
-            <li><a href="#"><img src="images/搜索.png" class="nav-img">创作列表</a></li>
+                <a href="#" id="select"><img src="images/搜索.png" class="nav-img">创作</a>
+            </li>
+            <li>
+                <a href="#"><img src="images/搜索.png" class="nav-img">创作列表</a>
+            </li>
         </ul>
     </div>
     <div class="content">
         <div class="upload-wrp">
             <div class="bcc-upload-wrapper">
-                <div>
-                    <div class="upload-text no-events">拖拽到此处也可上传</div>
-                    <div class="upload-btn">上传视频</div>
-                    <div class="upload-audit-progress">
-                        <span>当前审核队列</span>
-                        <span class="tag" style="background-color: rgb(69, 129, 142);">快速</span>
-                    </div>
+                <img src="images/upload-cloud.png" alt="" class="icon-upload">
+                <div class="upload-btn">上传视频</div>
+                <div class="upload-audit-progress">
+                    <span>当前审核队列</span>
+                    <span class="tag" style="">快速</span>
                 </div>
-                <input accept=".mp4,.flv,.avi,.wmv,.mov,.webm,.mpeg4,.ts,.mpg,.rm,.rmvb,.mkv,.m4v"
-                       multiple="multiple" type="file" style="display: none;">
+                <input id="file" accept=".mp4,.flv,.avi,.wmv,.mov,.webm,.mpeg4,.ts,.mpg,.rm,.rmvb,.mkv,.m4v"
+                       multiple="multiple" name="file" type="file" style="display: none;">
             </div>
         </div>
     </div>
