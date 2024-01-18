@@ -37,4 +37,27 @@ public class SearchServlet extends MyHttpServlet{
             resp.getWriter().println(msg.toJSONString());
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        msg = new Msg<List<Video>>(400, null, "搜索失败");
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = req.getReader().readLine()) != null) {
+            content.append(line);
+        }
+        JSONObject json = JSONObject.parseObject(content.toString());
+        String keyword = json.getString("keyword");
+
+        Video video = new Video();
+        video.setTitle(keyword);
+        List<Video> videoList = null;
+        videoList = video.search();
+        if(videoList != null){
+            msg.setAll(200, videoList, "搜索成功");
+            resp.getWriter().println(msg.toJSONString());
+        } else {
+            resp.getWriter().println(msg.toJSONString());
+        }
+    }
 }

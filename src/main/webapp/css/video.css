@@ -261,13 +261,13 @@
     border: 1px solid #cccccc;
 }
 
-#head-more-box #logout {
+#head-more-box .user {
     width: 100%;
     display: flex;
     border-radius: 10px;
 }
 
-#head-more-box #logout > a {
+#head-more-box .user > a {
     width: 100%;
     text-decoration: none;
     color: #18191C;
@@ -277,7 +277,7 @@
     align-items: center;
 }
 
-#head-more-box #logout:hover {
+#head-more-box .user:hover {
     background: #cccccc;
 }
 
@@ -501,7 +501,7 @@
     width: 100%;
     height: 100%;
     padding: 5px 10px;
-    border: 1px solid var(--Ga1);
+    border: 1px solid;
     border-radius: 6px;
     background-color: rgb(241,242,243);
     font-family: inherit;
