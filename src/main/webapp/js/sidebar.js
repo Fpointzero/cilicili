@@ -1,3 +1,11 @@
+user = localStorage.getItem("user");
+try {
+    user = JSON.parse(user);
+} catch (e) {
+    console.log(e);
+}
+$('.name').text(user['username']);
+
 const body = document.querySelector('body'),
     shell = body.querySelector('div'),
     toggle = body.querySelector(".toggle"),
