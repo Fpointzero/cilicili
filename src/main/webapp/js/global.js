@@ -1,9 +1,10 @@
-user = localStorage.getItem("user");
-try {
-    user = JSON.parse(user);
-} catch (e){
-    console.log(e);
-}
+// user = localStorage.getItem("user");
+// try {
+//     user = JSON.parse(user);
+// } catch (e){
+//     console.log(e);
+// }
+let user;
 
 $("#upload").on("click", function () {
     location.href = "creation.html";
@@ -28,6 +29,7 @@ $(".nav-left > a").click(function () {
 $.ajax({
     url: "/cilicili_war/api/user/userInfo",
     dataType: "json",
+    async: false,
     type: "get",
     success: function (res) {
         if (res.code === 200) {
@@ -39,5 +41,6 @@ $.ajax({
     error: function (err) {
         localStorage.removeItem("user");
         $("#head-more-box > a").html("请登录");
+        user = null;
     }
 });
