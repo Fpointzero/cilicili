@@ -56,8 +56,11 @@
                     </a>
                 </div>
                 <div id="line"></div>
-                <div id="logout">
-                    <a href="LoginAndRegist.html"><img src="images/退出登录.png" width="18">退出登录</a>
+                <div class="user" id="logout" style="display: none;" onclick="logoutUser()">
+                    <a><img src="images/退出登录.png" width="18">退出登录</a>
+                </div>
+                <div class="user" id="login" style="display: none;">
+                    <a href="LoginAndRegist.html">登录</a>
                 </div>
             </div>
         </div>
@@ -145,55 +148,55 @@
 
         <h2 class="Mycollection">我的收藏</h2>
         <div class="Collection-list">
-<!--            <div class="video-item">-->
-<!--                <a class="video-box" target="_blank" href="Your file path">-->
-<!--                    <img  class="video-img" src="images/v1.png">-->
-<!--                </a>-->
-<!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
-<!--                <span class="time-stamp">收藏于：1-22</span>-->
-<!--            </div>-->
-<!--            <div class="video-item">-->
-<!--                <a class="video-box" target="_blank" href="Your file path">-->
-<!--                    <img  class="video-img" src="images/v1.png">-->
-<!--                </a>-->
-<!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
-<!--                <span class="time-stamp">收藏于：1-22</span>-->
-<!--            </div>-->
-<!--            <div class="video-item">-->
-<!--                <a class="video-box" target="_blank" href="Your file path">-->
-<!--                    <img  class="video-img" src="images/v1.png">-->
-<!--                </a>-->
-<!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
-<!--                <span class="time-stamp">收藏于：1-22</span>-->
-<!--            </div>-->
-<!--            <div class="video-item">-->
-<!--                <a class="video-box" target="_blank" href="Your file path">-->
-<!--                    <img  class="video-img" src="images/v1.png">-->
-<!--                </a>-->
-<!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
-<!--                <span class="time-stamp">收藏于：1-22</span>-->
-<!--            </div>-->
-<!--            <div class="video-item">-->
-<!--                <a class="video-box" target="_blank" href="Your file path">-->
-<!--                    <img  class="video-img" src="images/v1.png">-->
-<!--                </a>-->
-<!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
-<!--                <span class="time-stamp">收藏于：1-22</span>-->
-<!--            </div>-->
-<!--            <div class="video-item">-->
-<!--                <a class="video-box" target="_blank" href="Your file path">-->
-<!--                    <img  class="video-img" src="images/v1.png">-->
-<!--                </a>-->
-<!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
-<!--                <span class="time-stamp">收藏于：1-22</span>-->
-<!--            </div>-->
-<!--            <div class="video-item">-->
-<!--                <a class="video-box" target="_blank" href="Your file path">-->
-<!--                    <img  class="video-img" src="images/v1.png">-->
-<!--                </a>-->
-<!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
-<!--                <span class="time-stamp">收藏于：1-22</span>-->
-<!--            </div>-->
+            <!--            <div class="video-item">-->
+            <!--                <a class="video-box" target="_blank" href="Your file path">-->
+            <!--                    <img  class="video-img" src="images/v1.png">-->
+            <!--                </a>-->
+            <!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
+            <!--                <span class="time-stamp">收藏于：1-22</span>-->
+            <!--            </div>-->
+            <!--            <div class="video-item">-->
+            <!--                <a class="video-box" target="_blank" href="Your file path">-->
+            <!--                    <img  class="video-img" src="images/v1.png">-->
+            <!--                </a>-->
+            <!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
+            <!--                <span class="time-stamp">收藏于：1-22</span>-->
+            <!--            </div>-->
+            <!--            <div class="video-item">-->
+            <!--                <a class="video-box" target="_blank" href="Your file path">-->
+            <!--                    <img  class="video-img" src="images/v1.png">-->
+            <!--                </a>-->
+            <!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
+            <!--                <span class="time-stamp">收藏于：1-22</span>-->
+            <!--            </div>-->
+            <!--            <div class="video-item">-->
+            <!--                <a class="video-box" target="_blank" href="Your file path">-->
+            <!--                    <img  class="video-img" src="images/v1.png">-->
+            <!--                </a>-->
+            <!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
+            <!--                <span class="time-stamp">收藏于：1-22</span>-->
+            <!--            </div>-->
+            <!--            <div class="video-item">-->
+            <!--                <a class="video-box" target="_blank" href="Your file path">-->
+            <!--                    <img  class="video-img" src="images/v1.png">-->
+            <!--                </a>-->
+            <!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
+            <!--                <span class="time-stamp">收藏于：1-22</span>-->
+            <!--            </div>-->
+            <!--            <div class="video-item">-->
+            <!--                <a class="video-box" target="_blank" href="Your file path">-->
+            <!--                    <img  class="video-img" src="images/v1.png">-->
+            <!--                </a>-->
+            <!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
+            <!--                <span class="time-stamp">收藏于：1-22</span>-->
+            <!--            </div>-->
+            <!--            <div class="video-item">-->
+            <!--                <a class="video-box" target="_blank" href="Your file path">-->
+            <!--                    <img  class="video-img" src="images/v1.png">-->
+            <!--                </a>-->
+            <!--                <a class="video-info" target="_blank" href="Your video file path">视频信息</a>-->
+            <!--                <span class="time-stamp">收藏于：1-22</span>-->
+            <!--            </div>-->
         </div>
 
     </div>
@@ -204,5 +207,6 @@
 <script type="text/javascript" src="js/jquery-3.7.0.js"></script>
 <script src="js/global.js" type="text/javascript"></script>
 <script src="js/StarJs.js" type="text/javascript"></script>
+<script src="./js/User.js"></script>
 </body>
 </html>
