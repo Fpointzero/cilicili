@@ -11,6 +11,7 @@ function phoneLogin() {
     $('.login-right>div>a:nth-child(1)').css('color', '#505050')
     $('.login-right>div>a:nth-child(2)').css('color', '#4FA5D9')
 }
+
 // 获取密码输入框 得到焦点/失去焦点 执行不同方法
 $('.login-pwd div:nth-child(2)>input').on('focus', openEye);
 $('.login-pwd div:nth-child(2)>input').on('blur', closeEye);
@@ -71,8 +72,36 @@ function sendVerifyCode(email) {
     });
 }
 
+// 获取链接元素
+var link = $("#send-verify-code");
+// 设置初始倒计时时间
+var countdown = 60;
+// 启动倒计时
+var timer;
+let sendVerifyCodeEvent = function () {
+    sendVerifyCode($("#email").val());
+    link.off("click", sendVerifyCodeEvent);
+    timer = setInterval(function () {
+        // 更新倒计时显示
+        link.html(countdown + " 秒后可点击");
 
-function actionVerifyCodeLogin(email, code){
+        // 倒计时减少
+        countdown--;
+
+        // 倒计时结束后，启用链接点击并清除计时器
+        if (countdown < 0) {
+            link.on("click", sendVerifyCodeEvent)
+            link.html("发送验证码");
+            clearInterval(timer);
+        }
+    }, 1000)
+};
+
+link.on("click", sendVerifyCodeEvent);
+
+
+
+function actionVerifyCodeLogin(email, code) {
     let data = {
         "type": "code",
         "email": email,

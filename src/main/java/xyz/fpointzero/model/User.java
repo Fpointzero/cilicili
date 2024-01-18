@@ -121,14 +121,13 @@ public class User {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             User user = userMapper.getByEmail(email);
 
-            if (code.equals(user.verification) && DateUtil.getDurationTime(user.verificationTime).toMinutes() < 5) {
+            if (verify(code)) {
                 userMapper.setPassword(password, email);
                 ret = true;
             }
 
             sqlSession.commit();
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return ret;
