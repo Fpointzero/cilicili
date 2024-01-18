@@ -68,7 +68,7 @@ function hiddenNavItems() {
         a2.css('color', '#00A1D6');
     })
 }
-function creatItem(cover, title, createTime, playNum, starNum, vid) {
+function creatItem(cover, title, createTime, playNum, starNum, vid, subtitle) {
     // console.log(cover);
     let str = "";
     str += `            <div class="list-item">
@@ -96,7 +96,7 @@ function creatItem(cover, title, createTime, playNum, starNum, vid) {
             </div>`
     let node = $(str);
     node.find(".btn-edt").click(function () {
-        location.href = "manuscriptEdit.html?vid=" + vid;
+        location.href = "manuscriptEdit.html?vid=" + vid +"&title=" + title + "&subtitle=" + subtitle;
     });
     return node;
 }
@@ -122,7 +122,7 @@ function init() {
         videoData = response.data;
         for (let i = 0; i < videoData.length; ++i) {
             let video = videoData[i];
-            $(".list-container").append(creatItem(video.coverPath, video.title, video.createTime, video.playNumber, video.starNumber, video.id));
+            $(".list-container").append(creatItem(video.coverPath, video.title, video.createTime, video.playNumber, video.starNumber, video.id, video.subtitle));
         }
         $("#list-number").html(videoData.length);
         $("");

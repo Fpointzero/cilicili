@@ -82,6 +82,7 @@ file.on("change", function () {
         console.log(response);
         if (response.code === 200) {
             alert("上传成功");
+            location.href = "manuscriptEdit.html?vid=" + response.data.id;
         } else{
             alert("文件上传失败");
         }

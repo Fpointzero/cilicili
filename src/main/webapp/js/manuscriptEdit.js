@@ -57,6 +57,14 @@ function hiddenNavItems() {
 
 const params = new URLSearchParams(location.search);
 const vid = params.get('vid');
+const title = params.get('title');
+const subtitle = params.get('subtitle');
+
+// 初始化
+if (title != null)
+    $(".title-input").val(title);
+if (subtitle != null)
+    $(".introduction-input").val(subtitle);
 
 $('.btn-upload-cover').click(function(){
     $("#cover").trigger("click");
