@@ -37,22 +37,23 @@ window.onload = function () {
                     createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], true)
                 }
             }
-        },
-    });
-    $.ajax({
-        url: "/cilicili_war/api/video/getVideos",
-        method: "GET",
-        dataType: "json",
-        sync: false,
-        success: function (res) {
-            console.log(res)
-            videoList = res["data"];
-            for (let i = 6; i < videoList.length; i++) {
-                createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], false)
-            }
             initClick();
         },
     });
+    // $.ajax({
+    //     url: "/cilicili_war/api/video/getVideos",
+    //     method: "GET",
+    //     dataType: "json",
+    //     sync: false,
+    //     success: function (res) {
+    //         console.log(res)
+    //         videoList = res["data"];
+    //         for (let i = 6; i < videoList.length; i++) {
+    //             createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], false)
+    //         }
+    //
+    //     },
+    // });
 }
 
 // 改变nav样式
