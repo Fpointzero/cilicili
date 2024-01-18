@@ -1,0 +1,38 @@
+.Collection-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.video-img{
+    width: 200px;
+    height: auto;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.video-item{
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+ a{
+    text-decoration: none;
+    color: #3cccfc;
+}
+
+.time-stamp{
+     color: darkgray;
+     font-size: 12px;
+}
+
+.Mycollection{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-style: revert;
+    font-size: 20px;
+    border-bottom: 1px solid darkgray;
+}
+

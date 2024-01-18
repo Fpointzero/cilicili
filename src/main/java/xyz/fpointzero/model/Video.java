@@ -20,7 +20,6 @@ public class Video {
     public String videoTime;
     public Integer uid;
     public String createTime;
-
     // User表内容
     public String username;
 
