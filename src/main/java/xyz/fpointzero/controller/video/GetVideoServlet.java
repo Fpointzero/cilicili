@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static xyz.fpointzero.Setting.FILE_SERVER_COVER;
+import static xyz.fpointzero.Setting.FILE_SERVER_VIDEO;
+
 @WebServlet(urlPatterns = {
         "/api/video/getVideo",
         "/api/video/getVideos",
@@ -40,7 +43,6 @@ public class GetVideoServlet extends MyHttpServlet {
             User user = (User) req.getSession().getAttribute("user");
             try {
                 Video video = Video.getVideo(vid);
-                video.setVideoPath(FILE_SERVER + FileUtil.urlSeparator + video.getVideoPath());
                 msg.setAll(Msg.SUCCESS, video, "视频获取成功");
                 if (user != null)
                     History.setHistory(user, vid);

@@ -2,9 +2,12 @@ package xyz.fpointzero.model;
 
 import org.apache.ibatis.session.SqlSession;
 import xyz.fpointzero.mapper.VideoMapper;
+import xyz.fpointzero.util.FileUtil;
 import xyz.fpointzero.util.MyBatisUtil;
 
 import java.util.List;
+
+import static xyz.fpointzero.Setting.*;
 
 public class Video {
     private Integer id;
@@ -59,7 +62,10 @@ public class Video {
     public static Video getVideo(Integer vid) {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
-            return mapper.getById(String.valueOf(vid));
+            Video video = mapper.getById(String.valueOf(vid));
+            video.setVideoPath(FILE_SERVER_VIDEO + FileUtil.urlSeparator + video.getVideoPath());
+            video.setCoverPath(FILE_SERVER_COVER + FileUtil.urlSeparator + video.getCoverPath());
+            return video;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,6 +105,10 @@ public class Video {
         List<Video> result = null;
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             result = sqlSession.getMapper(VideoMapper.class).getAllVideoList();
+            for (Video video : result) {
+                video.setVideoPath(FILE_SERVER_VIDEO + FileUtil.urlSeparator + video.getVideoPath());
+                video.setCoverPath(FILE_SERVER_COVER + FileUtil.urlSeparator + video.getCoverPath());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,6 +124,10 @@ public class Video {
         List<Video> result = null;
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             result = sqlSession.getMapper(VideoMapper.class).getVideoListByUid(uid);
+            for (Video video : result) {
+                video.setVideoPath(FILE_SERVER_VIDEO + FileUtil.urlSeparator + video.getVideoPath());
+                video.setCoverPath(FILE_SERVER_COVER + FileUtil.urlSeparator + video.getCoverPath());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
