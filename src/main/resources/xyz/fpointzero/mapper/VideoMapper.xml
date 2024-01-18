@@ -3,7 +3,8 @@
 
     <select id="getByTitle" resultType="xyz.fpointzero.model.Video">
         SELECT *
-        FROM video
+        FROM video v
+                 left join user u on v.uid = u.id
         WHERE title like #{keyword}
     </select>
     <select id="getById" resultType="xyz.fpointzero.model.Video">

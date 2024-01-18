@@ -30,6 +30,10 @@ public class Video {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
             List<Video> videoList = null;
             videoList = mapper.getByTitle("%" + title + "%");
+            for (Video video : videoList) {
+                video.setVideoPath(FILE_SERVER_VIDEO + FileUtil.urlSeparator + video.getVideoPath());
+                video.setCoverPath(FILE_SERVER_COVER + FileUtil.urlSeparator + video.getCoverPath());
+            }
             if (videoList.size() != 0) {
                 return videoList;
             }
