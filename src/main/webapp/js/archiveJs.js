@@ -18,7 +18,7 @@ window.onload = function (){
             }
             videoList = res.data;
             for (let i = 0; i < videoList.length; i++) {
-                $(".history-list").append(createArchiveCard(videoList[i]["coverPath"], videoList[i]["createTime"],
+                $(".history-list").append(createArchiveCard(videoList[i]["coverPath"], videoList[i]["time"],
                     videoList[i]["vid"],videoList[i]["title"]));
             }
         },
@@ -30,7 +30,7 @@ function createArchiveCard(coverPath,createTime,vid,title){
     str += `<li class="history-record">
                     <div class="l-info">
                         <div class="timeStamp">
-                            <span class="time">0:22</span>
+                            <span class="time">${createTime}</span>
                         </div>
                     </div>
 
