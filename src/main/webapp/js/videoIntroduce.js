@@ -7,7 +7,7 @@ function init() {
         success: function (res) {
             console.log(res)
             videoList = res["data"];
-            for (let i = 0; i < videoList.length; i++) {
+            for (let i = 0; i < 6; i++) {
                 createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"])
             }
             initClick();
