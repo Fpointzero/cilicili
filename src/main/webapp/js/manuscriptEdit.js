@@ -54,3 +54,65 @@ function hiddenNavItems() {
         a2.css('color','#00A1D6');
     })
 }
+
+// const vid = getCookie('vid');
+const vid = 8;
+
+$('.btn-upload-cover').click(function(){
+    $("#cover").trigger("click");
+});
+
+$("#cover").on("change", function () {
+    let file = this.files[0];
+    console.log(file);
+    // ajax
+    var form = new FormData();
+    form.append("file", file);
+
+    var settings = {
+        url: "http://localhost:8080/cilicili_war/api/creation/uploadCover?vid="+vid,
+        method: "POST",
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        "data": form
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        if (response.code == 200) {
+            alert("上传成功");
+        } else{
+            alert("文件上传失败");
+        }
+    });
+});
+
+$('.btn-cancel').click(function(){
+    window.location.href = `creationList.html`;
+});
+
+$('.btn-upload').click(function () {
+
+    var title = $(".title-input").val();
+    var introduction = $(".introduction-input").val();
+
+    let data = {"action": "set","vid":vid,"title":title,"subtitle":introduction}
+    $.ajax({
+        url: "http://localhost:8080/cilicili_war/api/creation/creationInfo",
+        method: "POST",
+        data: JSON.stringify(data),
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
+            console.log(res)
+            if (res.code == 200) {
+                alert("修改成功");
+                window.location.href = `creationList.html`;
+            } else{
+                alert("修改失败");
+            }
+        },
+    });
+})
+

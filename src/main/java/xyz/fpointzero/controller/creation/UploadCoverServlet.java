@@ -20,7 +20,7 @@ import java.util.List;
 
 @WebServlet("/api/creation/uploadCover")
 public class UploadCoverServlet extends MyHttpServlet {
-    private static final String[] imageExtensions = {".jpg", ".png", ".gif"};
+    private static final String[] imageExtensions = {".jpg", ".png", ".gif",".bmp",".jpeg",".tiff"};
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
