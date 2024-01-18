@@ -24,7 +24,7 @@ public class UserInfoServlet extends MyHttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        msg = new Msg<User>(Msg.ERROR, null);
+        msg = new Msg<User>(Msg.ERROR, null, "修改失败，用户名或者邮箱已存在");
         JSONObject json = JSONUtil.getParamsJSON(req);
 
         String username = json.getString("username");
@@ -39,7 +39,7 @@ public class UserInfoServlet extends MyHttpServlet {
 
         if (user != null && user.updateAll(userChange)) {
             req.getSession().setAttribute("user", user);
-            msg.setAll(200, user,  "修改失败，用户名或者邮箱已存在");
+            msg.setAll(200, user,  "修改成功");
         }
         msg.send(resp);
     }

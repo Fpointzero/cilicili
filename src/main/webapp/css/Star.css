@@ -26,15 +26,15 @@
     white-space: nowrap;
 }
 
- a{
+a {
     text-decoration: none;
-     text-overflow: ellipsis;
+    text-overflow: ellipsis;
     color: #3cccfc;
 }
 
-.time-stamp{
-     color: darkgray;
-     font-size: 12px;
+.time-stamp {
+    color: darkgray;
+    font-size: 12px;
 }
 
 .Mycollection{

@@ -528,12 +528,14 @@
 .col-1 .mine-video-box .mine-video-content {
     width: 100%;
     margin-top: 15px;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     column-gap: 20px;
     border-bottom: 1px solid #99a2aa;
 }
 .col-1 .mine-video-box .mine-video-content .video-card {
+    width: 200px;
     height: 185px;
     margin-bottom: 3px;
     padding: 10px 0;
