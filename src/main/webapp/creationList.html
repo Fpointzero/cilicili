@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>创作中心</title>
     <link rel="stylesheet" href="css/creationListCss.css">
+    <link href="css/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
 <!--导航栏-->
@@ -73,18 +74,35 @@
         </ul>
     </div>
     <div class="content">
-        <div class="upload-wrp">
-            <div class="bcc-upload-wrapper">
-                <img src="images/upload-cloud.png" alt="" class="icon-upload">
-                <div class="upload-btn">上传视频</div>
-                <div class="upload-audit-progress">
-                    <span>当前审核队列</span>
-                    <span class="tag" style="">快速</span>
-                </div>
-                <input id="file" accept=".mp4,.flv,.avi,.wmv,.mov,.webm,.mpeg4,.ts,.mpg,.rm,.rmvb,.mkv,.m4v"
-                       multiple="multiple" name="file" type="file" style="display: none;">
-            </div>
+        <div class="content-menu">
+            <span>全部稿件<span id="list-number">1</span></span>
         </div>
+        <div class="list-container"></div>
+<!--        <div class="list-container">-->
+<!--            <div class="list-item">-->
+<!--                <div class="list-item-left">-->
+<!--                    <img class="cover" src="images/goods1.png" alt="">-->
+<!--                </div>-->
+<!--                <div class="list-item-right">-->
+<!--                    <span class="list-item-title">测试的标题</span>-->
+<!--                    <div class="list-item-middle">-->
+<!--                        <p>2023年11月23日 20:28:18</p>-->
+<!--                        <a class="btn-edt">编辑</a>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                    <p class="">2023年11月23日 20:28:18</p>&ndash;&gt;-->
+<!--                    <div class="list-item-icons">-->
+<!--                        <div class="list-item-show">-->
+<!--                            <img src="images/video-line.png" class="list-item-icon" alt="">-->
+<!--                            <span>1</span>-->
+<!--                        </div>-->
+<!--                        <div class="list-item-show">-->
+<!--                            <img src="images/star-line.png" class="list-item-icon" alt="">-->
+<!--                            <span style="color: gray;font-size: 10px">1</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 <script type="text/javascript" src="js/jquery-3.7.0.js"></script>

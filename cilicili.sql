@@ -11,7 +11,7 @@
  Target Server Version : 80032
  File Encoding         : 65001
 
- Date: 12/01/2024 15:59:59
+ Date: 18/01/2024 18:01:16
 */
 
 SET NAMES utf8mb4;
@@ -49,13 +49,13 @@ CREATE TABLE `history`  (
   PRIMARY KEY (`uid`, `vid`) USING BTREE,
   INDEX `vid`(`vid` ASC) USING BTREE,
   CONSTRAINT `history_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `history_ibfk_2` FOREIGN KEY (`vid`) REFERENCES `video` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `history_ibfk_2` FOREIGN KEY (`vid`) REFERENCES `video` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of history
 -- ----------------------------
-INSERT INTO `history` VALUES (5, 1, '2024-01-12 13:35:18');
+INSERT INTO `history` VALUES (1, 19, '2024-01-13 17:52:36');
 
 -- ----------------------------
 -- Table structure for star
@@ -69,13 +69,13 @@ CREATE TABLE `star`  (
   PRIMARY KEY (`uid`, `vid`) USING BTREE,
   INDEX `vid`(`vid` ASC, `uid` ASC) USING BTREE,
   CONSTRAINT `uid` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `vid` FOREIGN KEY (`vid`) REFERENCES `video` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `vid` FOREIGN KEY (`vid`) REFERENCES `video` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_bin ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of star
 -- ----------------------------
-INSERT INTO `star` VALUES (2, 2, '2024-01-04 00:00:00', 'default');
+INSERT INTO `star` VALUES (73, 20, '2024-01-18 17:42:09', 'default');
 
 -- ----------------------------
 -- Table structure for user
@@ -94,7 +94,7 @@ CREATE TABLE `user`  (
   UNIQUE INDEX `USERNAME`(`username` ASC) USING BTREE,
   UNIQUE INDEX `EMAIL`(`email` ASC) USING BTREE,
   INDEX `id`(`id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 72 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_bin ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 81 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_bin ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
@@ -110,6 +110,10 @@ INSERT INTO `user` VALUES (8, 'Loui Hok Yau', 'pff8fNQ6Ev', 'lohokyau@gmail.com'
 INSERT INTO `user` VALUES (9, 'Chin Hok Yau', 'oKfU4LTMUk', 'chin1993@yahoo.com', '(1223) 09 5718', NULL, '1111', NULL);
 INSERT INTO `user` VALUES (10, 'Angela Richardson', 'AQbH1yelAP', 'richa@gmail.com', '80-3316-5719', NULL, '1111', NULL);
 INSERT INTO `user` VALUES (69, '2', '1', '1@qq.com', NULL, NULL, 'null', '2024-01-05 15:19:49');
+INSERT INTO `user` VALUES (72, NULL, NULL, '', NULL, NULL, '285784', '2024-01-16 13:51:43');
+INSERT INTO `user` VALUES (73, 'fpoint666', 'fpoint', '1367637939@qq.com', '110', NULL, 'null', '2024-01-16 14:53:37');
+INSERT INTO `user` VALUES (75, 'fpoint1', 'fpoint1', NULL, NULL, NULL, '331811', '2024-01-16 14:29:01');
+INSERT INTO `user` VALUES (78, NULL, NULL, '111', NULL, NULL, '673711', '2024-01-16 14:40:42');
 
 -- ----------------------------
 -- Table structure for video
@@ -127,16 +131,26 @@ CREATE TABLE `video`  (
   `uid` int UNSIGNED NULL DEFAULT NULL,
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `uid`(`uid` ASC) USING BTREE,
-  CONSTRAINT `video_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_bin ROW_FORMAT = DYNAMIC;
+  INDEX `video_ibfk_1`(`uid` ASC) USING BTREE,
+  CONSTRAINT `video_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_bin ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of video
 -- ----------------------------
-INSERT INTO `video` VALUES (1, '/flLvU7fL9Y.mp4', '/ot0QwTQ6uK.jpg', 'Mrs.', 'How we spend our days is, of course, how we spend our lives. In the Objects tab, you can use the List List, Detail Detail and ER Diagram ER Diagram buttons to change the object view. Always keep your eyes open. Keep watching. Because whatever you see can inspire you. If it scares you, it might be a good thing to try. Navicat provides powerful tools for working with queries: Query Editor for editing the query text directly, and Query Builder, Find Builder or Aggregate Builder for building queries visually. The Synchronize to Database function will give you a full picture of all database differences. A man’s best friends are his ten fingers. You can select any connections, objects or projects, and then select the corresponding buttons on the Information Pane. The repository database can be an existing MySQL, MariaDB, PostgreSQL, SQL Server, or Amazon RDS instance. If the plan doesn’t work, change the plan, but never the goal. Difficult circumstances serve as a textbook of life for people. The first step is as good as half over. Navicat Monitor can be installed on any local computer or virtual machine and does not require any software installation on the servers being monitored. SSH serves to prevent such vulnerabilities and allows you to access a remote server\'s shell without compromising security. You cannot save people, you can just love them. Difficult circumstances serve as a textbook of life for people. To get a secure connection, the first thing you need to do is to install OpenSSL Library and download Database Source. In other words, Navicat provides the ability for data in different databases and/or schemas to be kept up-to-date so that each repository contains the same information. I destroy my enemies when I make them my friends. A query is used to extract data from the database in a readable format according to the user\'s request. If the Show objects under schema in navigation pane option is checked at the Preferences window, all database objects are also displayed in the pane. Always keep your eyes open. Keep watching. Because whatever you see can inspire you. The Main Window consists of several toolbars and panes for you to work on connections, database objects and advanced tools. SQL Editor allows you to create and edit SQL text, prepare and execute selected queries. Navicat Monitor can be installed on any local computer or virtual machine and does not require any software installation on the servers being monitored. To connect to a database or schema, simply double-click it in the pane. If your Internet Service Provider (ISP) does not provide direct access to its server, Secure Tunneling Protocol (SSH) / HTTP is another solution. SSH serves to prevent such vulnerabilities and allows you to access a remote server\'s shell without compromising security. Difficult circumstances serve as a textbook of life for people. The Main Window consists of several toolbars and panes for you to work on connections, database objects and advanced tools. Navicat provides powerful tools for working with queries: Query Editor for editing the query text directly, and Query Builder, Find Builder or Aggregate Builder for building queries visually. Such sessions are also susceptible to session hijacking, where a malicious user takes over your session once you have authenticated.', 0, 0, '00:03:22', 1, '2024-01-12 14:28:51');
-INSERT INTO `video` VALUES (2, '/cFL2eaUKLW.mp4', '/zo8Sp7E21N.jpg', 'Miss.', 'The reason why a great man is great is that he resolves to be a great man. You must be the change you wish to see in the world. Navicat Data Modeler enables you to build high-quality conceptual, logical and physical data models for a wide variety of audiences. A man’s best friends are his ten fingers. If the plan doesn’t work, change the plan, but never the goal. To successfully establish a new connection to local/remote server - no matter via SSL, SSH or HTTP, set the database login information in the General tab. Genius is an infinite capacity for taking pains. Navicat Cloud could not connect and access your databases. By which it means, it could only store your connection settings, queries, model files, and virtual group; your database passwords and data (e.g. tables, views, etc) will not be stored to Navicat Cloud. To get a secure connection, the first thing you need to do is to install OpenSSL Library and download Database Source. After comparing data, the window shows the number of records that will be inserted, updated or deleted in the target. Navicat provides a wide range advanced features, such as compelling code editing capabilities, smart code-completion, SQL formatting, and more. After comparing data, the window shows the number of records that will be inserted, updated or deleted in the target. Navicat Cloud could not connect and access your databases. By which it means, it could only store your connection settings, queries, model files, and virtual group; your database passwords and data (e.g. tables, views, etc) will not be stored to Navicat Cloud. To open a query using an external editor, control-click it and select Open with External Editor. You can set the file path of an external editor in Preferences. Export Wizard allows you to export data from tables, collections, views, or query results to any available formats. SQL Editor allows you to create and edit SQL text, prepare and execute selected queries. The Synchronize to Database function will give you a full picture of all database differences. Sometimes you win, sometimes you learn. Navicat Cloud could not connect and access your databases. By which it means, it could only store your connection settings, queries, model files, and virtual group; your database passwords and data (e.g. tables, views, etc) will not be stored to Navicat Cloud. It is used while your ISPs do not allow direct connections, but allows establishing HTTP connections. Sometimes you win, sometimes you learn. A man’s best friends are his ten fingers. A man’s best friends are his ten fingers. SQL Editor allows you to create and edit SQL text, prepare and execute selected queries. It wasn’t raining when Noah built the ark. Anyone who has ever made anything of importance was disciplined. You must be the change you wish to see in the world. I destroy my enemies when I make them my friends. The Navigation pane employs tree structure which allows you to take action upon the database and their objects through their pop-up menus quickly and easily. The reason why a great man is great is that he resolves to be a great man. After comparing data, the window shows the number of records that will be inserted, updated or deleted in the target. You can select any connections, objects or projects, and then select the corresponding buttons on the Information Pane. In the Objects tab, you can use the List List, Detail Detail and ER Diagram ER Diagram buttons to change the object view. Sometimes you win, sometimes you learn. Navicat is a multi-connections Database Administration tool allowing you to connect to MySQL, Oracle, PostgreSQL, SQLite, SQL Server, MariaDB and/or MongoDB databases, making database administration to multiple kinds of database so easy. Anyone who has never made a mistake has never tried anything new. If opportunity doesn’t knock, build a door. Navicat allows you to transfer data from one database and/or schema to another with detailed analytical process. All journeys have secret destinations of which the traveler is unaware. Flexible settings enable you to set up a custom key for comparison and synchronization. Creativity is intelligence having fun. Navicat Data Modeler is a powerful and cost-effective database design tool which helps you build high-quality conceptual, logical and physical data models. SQL Editor allows you to create and edit SQL text, prepare and execute selected queries. A comfort zone is a beautiful place, but nothing ever grows there. What you get by achieving your goals is not as important as what you become by achieving your goals. The past has no power over the present moment. Genius is an infinite capacity for taking pains. The first step is as good as half over. Navicat Cloud could not connect and access your databases. By which it means, it could only store your connection settings, queries, model files, and virtual group; your database passwords and data (e.g. tables, views, etc) will not be stored to Navicat Cloud. In a Telnet session, all communications, including username and password, are transmitted in plain-text, allowing anyone to listen-in on your session and steal passwords and other information. Navicat Cloud could not connect and access your databases. By which it means, it could only store your connection settings, queries, model files, and virtual group; your database passwords and data (e.g. tables, views, etc) will not be stored to Navicat Cloud. The Information Pane shows the detailed object information, project activities, the DDL of database objects, object dependencies, membership of users/roles and preview. Navicat allows you to transfer data from one database and/or schema to another with detailed analytical process. If the Show objects under schema in navigation pane option is checked at the Preferences window, all database objects are also displayed in the pane. A query is used to extract data from the database in a readable format according to the user\'s request. To get a secure connection, the first thing you need to do is to install OpenSSL Library and download Database Source. I may not have gone where I intended to go, but I think I have ended up where I needed to be. The Information Pane shows the detailed object information, project activities, the DDL of database objects, object dependencies, membership of users/roles and preview. I may not have gone where I intended to go, but I think I have ended up where I needed to be. Navicat Monitor can be installed on any local computer or virtual machine and does not require any software installation on the servers being monitored. Export Wizard allows you to export data from tables, collections, views, or query results to any available formats. Optimism is the one quality more associated with success and happiness than any other. The Information Pane shows the detailed object information, project activities, the DDL of database objects, object dependencies, membership of users/roles and preview. Monitored servers include MySQL, MariaDB and SQL Server, and compatible with cloud databases like Amazon RDS, Amazon Aurora, Oracle Cloud, Google Cloud and Microsoft Azure.', 0, 0, '00:03:22', 1, '2024-01-12 14:28:56');
-INSERT INTO `video` VALUES (7, 'D:\\1Project\\Java\\Tomcat\\apache-tomcat-8.5.90\\webapps\\cilicili_war\\WEB-INF\\upload\\1\\1705044689235.mp4', NULL, NULL, NULL, 0, 0, NULL, 1, '2024-01-12 15:31:29');
-INSERT INTO `video` VALUES (8, '/WEB-INF/upload/11705045137555.mp4', NULL, NULL, NULL, 0, 0, NULL, 1, '2024-01-12 15:38:57');
+INSERT INTO `video` VALUES (16, '11705139151271.mp4', NULL, NULL, NULL, 0, 0, NULL, 1, '2024-01-13 17:45:51');
+INSERT INTO `video` VALUES (17, '11705139242006.mp4', NULL, NULL, NULL, 0, 0, NULL, 1, '2024-01-13 17:47:22');
+INSERT INTO `video` VALUES (18, '11705139382147.mp4', NULL, NULL, NULL, 0, 0, NULL, 1, '2024-01-13 17:51:43');
+INSERT INTO `video` VALUES (19, '1/1705139536768.mp4', NULL, NULL, NULL, 0, 0, NULL, 1, '2024-01-13 17:52:16');
+INSERT INTO `video` VALUES (20, '73/1705400859502.mp4', '73/1705416464579.jpg', 'Te1st', 'test2111', 0, 0, NULL, 73, '2024-01-16 18:27:39');
+INSERT INTO `video` VALUES (21, '73/1705414368821.mp4', NULL, NULL, NULL, 0, 0, NULL, 73, '2024-01-16 22:12:48');
+INSERT INTO `video` VALUES (22, '73/1705416027143.mp4', '73/1705416571078.jpg', 'Te1st', 'test2111', 0, 0, NULL, 73, '2024-01-16 22:40:27');
+INSERT INTO `video` VALUES (23, '73/1705416030476.mp4', NULL, NULL, NULL, 0, 0, NULL, 73, '2024-01-16 22:40:30');
+INSERT INTO `video` VALUES (24, '73/1705416498833.mp4', NULL, NULL, NULL, 0, 0, NULL, 73, '2024-01-16 22:48:18');
+INSERT INTO `video` VALUES (25, '73/1705416547875.mp4', NULL, NULL, NULL, 0, 0, NULL, 73, '2024-01-16 22:49:07');
+INSERT INTO `video` VALUES (26, '73/1705502403439.mp4', NULL, NULL, NULL, 0, 0, NULL, 73, '2024-01-17 22:40:03');
+INSERT INTO `video` VALUES (27, '73/1705512839564.mp4', NULL, NULL, NULL, 0, 0, NULL, 73, '2024-01-18 01:34:06');
+INSERT INTO `video` VALUES (28, '73/1705512986442.mp4', NULL, NULL, NULL, 0, 0, NULL, 73, '2024-01-18 01:36:26');
+INSERT INTO `video` VALUES (29, '73/1705515546133.mp4', NULL, NULL, NULL, 0, 0, NULL, 73, '2024-01-18 02:19:06');
 
 SET FOREIGN_KEY_CHECKS = 1;
