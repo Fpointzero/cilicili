@@ -16,6 +16,8 @@ $(".nav-right > a").click(function () {
         location.href = "archive.html"
     } else if (_this.html().includes("收藏")) {
         location.href = "Star.html"
+    } else if (_this.html().includes("个人中心")) {
+        location.href = "person.html"
     }
 });
 
@@ -42,5 +44,34 @@ $.ajax({
         localStorage.removeItem("user");
         $("#head-more-box > a").html("请登录");
         user = null;
+    }
+});
+
+
+// 获取输入框和搜索图标
+let input = document.getElementById('keyword');
+let searchIcon = document.getElementById('search-icon');
+
+// 监听输入框的keydown事件
+input.addEventListener('keydown', function (e) {
+
+    // 检测是否按下了Enter键
+    if (e.key === 'Enter') {
+        // 防止默认行为
+        e.preventDefault();
+        // 模拟点击搜索按钮
+        searchIcon.click();
+    }
+});
+
+// 为搜索图标添加点击事件监听
+searchIcon.addEventListener('click', async () => {
+    // 判断输入框是否有内容
+    if (input.value.trim()) {
+        // 跳转到search页面,同时传递搜索关键词
+        window.location.href = `Search.html?keyword=${input.value.trim()}`;
+    } else {
+        // 输入框无内容,提示用户输入
+        alert('请输入搜索内容');
     }
 });

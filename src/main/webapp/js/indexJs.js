@@ -138,9 +138,6 @@ function timeSince(dateString) {
     }
 }
 
-// 获取输入框和搜索图标
-const input = document.getElementById('keyword');
-const searchIcon = document.getElementById('search-icon');
 
 // 监听输入框的keydown事件
 input.addEventListener('keydown', function (e) {
