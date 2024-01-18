@@ -1,6 +1,4 @@
-// 获取输入框和搜索图标
-const input = document.getElementById('keyword');
-const searchIcon = document.getElementById('search-icon');
+
 
 // 界面滚动事件
 let videoList = {};
