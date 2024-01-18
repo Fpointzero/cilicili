@@ -7,7 +7,9 @@ function init() {
         success: function (res) {
             console.log(res)
             videoList = res["data"];
-            for (let i = 0; i < videoList.length; i++) {
+            shuffleArray(videoList);
+            const selectedVideos = videoList.slice(0, 6);
+            for (let i = 0; i < selectedVideos.length; i++) {
                 createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"])
             }
             initClick();
@@ -82,5 +84,11 @@ function initClick() {
             window.location.href = `video.html?vid=${videoId}`;
         });
     });
+}
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
 init()
