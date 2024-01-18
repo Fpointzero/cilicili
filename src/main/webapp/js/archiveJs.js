@@ -36,7 +36,7 @@ function createArchiveCard(coverPath,createTime,vid,title){
 
                     <div class="r-info">
                         <div class="cover-container">
-                            <a class="preview" target="_blank" href="Your video path">
+                            <a class="preview" target="_blank" href="./video.html?vid=${vid}">
                                 <div class="videoImage">
                                     <img src="${coverPath}" class="videoimg">
                                 </div>

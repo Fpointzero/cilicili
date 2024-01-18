@@ -56,3 +56,5 @@ function changeNav(t) {
         $('.tools').css('display', 'none');
     }
 }
+
+$(".username").html(user.username);
