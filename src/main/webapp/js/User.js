@@ -12,7 +12,7 @@ function isUserLoggedIn() {
     if (userInfo) {
         try {
             var userObj = JSON.parse(userInfo);
-            if (userObj && userObj.email && userObj.id && userObj.username) {
+            if (userObj.id) {
                 return true;
             }
         } catch (e) {
