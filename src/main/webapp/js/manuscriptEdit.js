@@ -78,7 +78,7 @@ $("#cover").on("change", function () {
     form.append("file", file);
 
     var settings = {
-        url: "http://localhost:8080/cilicili_war/api/creation/uploadCover?vid="+vid,
+        url: "/cilicili_war/api/creation/uploadCover?vid="+vid,
         method: "POST",
         processData: false,
         contentType: false,
@@ -107,7 +107,7 @@ $('.btn-upload').click(function () {
 
     let data = {"action": "set","vid":vid,"title":title,"subtitle":introduction}
     $.ajax({
-        url: "http://localhost:8080/cilicili_war/api/creation/creationInfo",
+        url: "/cilicili_war/api/creation/creationInfo",
         method: "POST",
         data: JSON.stringify(data),
         dataType: "json",

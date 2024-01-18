@@ -6,11 +6,27 @@ window.onscroll = function () {
     changeNav(t);
 }
 window.onload = function () {
+    let data = {"page_info": {"page": 3, "size": 15}}
+    $.ajax({
+        url: "http://124.220.20.83:8080/home/getHomeInfo",
+        method: "POST",
+        dataType: "json",
+        contentType: 'application/json;',
+        data: JSON.stringify(data),
+        sync: false,
+        success: function (res) {
+            console.log(res)
+            slideList = res["data"]['rotograph'];
+            for (let i = 0; i < slideList.length; i++) {
+                addSlideImages(slideList[i]['cover']);
+            }
+        },
+    });
     $.ajax({
         url: "/cilicili_war/api/video/getVideos",
         method: "GET",
         dataType: "json",
-        sync:false,
+        sync: false,
         success: function (res) {
             console.log(res)
             videoList = res["data"];
@@ -21,22 +37,23 @@ window.onload = function () {
                     createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], true)
                 }
             }
-        },
-    });
-    $.ajax({
-        url: "/cilicili_war/api/video/getVideos",
-        method: "GET",
-        dataType: "json",
-        sync:false,
-        success: function (res) {
-            console.log(res)
-            videoList = res["data"];
-            for (let i = 6; i < videoList.length; i++) {
-                createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], false)
-            }
             initClick();
         },
     });
+    // $.ajax({
+    //     url: "/cilicili_war/api/video/getVideos",
+    //     method: "GET",
+    //     dataType: "json",
+    //     sync: false,
+    //     success: function (res) {
+    //         console.log(res)
+    //         videoList = res["data"];
+    //         for (let i = 6; i < videoList.length; i++) {
+    //             createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], false)
+    //         }
+    //
+    //     },
+    // });
 }
 
 // 改变nav样式
@@ -138,39 +155,15 @@ function timeSince(dateString) {
     }
 }
 
-
-// 监听输入框的keydown事件
-input.addEventListener('keydown', function (e) {
-
-    // 检测是否按下了Enter键
-    if (e.key === 'Enter') {
-        // 防止默认行为
-        e.preventDefault();
-        // 模拟点击搜索按钮
-        searchIcon.click();
-    }
-});
-
-// 为搜索图标添加点击事件监听
-searchIcon.addEventListener('click', async () => {
-    // 判断输入框是否有内容
-    if (input.value.trim()) {
-        // 跳转到search页面,同时传递搜索关键词
-        window.location.href = `Search.html?keyword=${input.value.trim()}`;
-    } else {
-        // 输入框无内容,提示用户输入
-        alert('请输入搜索内容');
-    }
-});
-
 $("#upload").on("click", function () {
     window.location.href = "creation.html";
 });
+
 function initClick() {
     const videoCards = document.querySelectorAll('.video-card');
     console.log(videoCards.length)
     videoCards.forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function () {
             // 获取 data-video-id 属性值
             const videoId = card.getAttribute('id');
             console.log(videoId)

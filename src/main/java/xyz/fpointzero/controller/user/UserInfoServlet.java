@@ -28,13 +28,13 @@ public class UserInfoServlet extends MyHttpServlet {
         JSONObject json = JSONUtil.getParamsJSON(req);
 
         String username = json.getString("username");
-        String phoneNumber = json.getString("phoneNumber");
+        //String phoneNumber = json.getString("phoneNumber");
 //        String avatar = json.getString("avatar");
         User user = (User) req.getSession().getAttribute("user");
 
         User userChange = new User();
         userChange.setUsername(username);
-        userChange.setPhoneNumber(phoneNumber);
+        //userChange.setPhoneNumber(phoneNumber);
 //        userChange.setAvatar(avatar);
 
         if (user != null && user.updateAll(userChange)) {
