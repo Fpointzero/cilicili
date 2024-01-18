@@ -4,7 +4,7 @@
         SELECT *
         FROM star
                  left join video as v on star.vid = v.id
-        WHERE star.uid = #{uid} AND star.`group` = #{group}
+        WHERE star.uid = #{uid} AND star.`group` = #{group} ORDER BY star.`createTime` desc
     </select>
     <insert id="insertStar" parameterType="xyz.fpointzero.model.Star">
         INSERT INTO star (star.uid, star.vid, star.group)
