@@ -19,13 +19,13 @@ window.onload = function (){
             videoList = res.data;
             for (let i = 0; i < videoList.length; i++) {
                 $(".history-list").append(createArchiveCard(videoList[i]["coverPath"], videoList[i]["createTime"],
-                    videoList[i]["videoPath"],videoList[i]["Title"],videoList[i]["subtitle"]));
+                    videoList[i]["vid"],videoList[i]["title"]));
             }
         },
     });
 }
 
-function createArchiveCard(coverPath,createTime,videoPath,Title,subTitle){
+function createArchiveCard(coverPath,createTime,vid,title){
     let str = "";
     str += `<li class="history-record">
                     <div class="l-info">
@@ -43,10 +43,10 @@ function createArchiveCard(coverPath,createTime,videoPath,Title,subTitle){
                             </a>
                         </div>
                         <div class="r-text">
-                            <a class="videoTitle" target="_blank" href="${videoPath}">${Title}</a>
-                            <p class="Subtitle">${subTitle}</p>
+                            <a class="videoTitle" target="_blank" href="./video.html?vid=${vid}">${title}</a>
+                            <p class="Subtitle">这是子标题</p>
                             <div class="upInfo">
-                                <a class="up-info" target="_blank" href="${videoPath}">
+                                <a class="up-info" target="_blank" href="./video.html?vid=${vid}">
                                     <span class="up-info-text">up主信息</span>
                                 </a>
                             </div>

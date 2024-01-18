@@ -19,19 +19,19 @@ window.onload = function (){
             }
             videoList = res.data;
             for (let i = 0; i < videoList.length; i++) {
-                $(".Collection-list").append(createStarCard(videoList[i].coverPath, videoList[i].createTime,videoList[i].videoPath));
+                $(".Collection-list").append(createStarCard(videoList[i].coverPath, videoList[i].createTime,videoList[i].vid,videoList[i].title));
             }
         },
     });
 }
 
-function createStarCard(coverPath,starTime,videoPath){
+function createStarCard(coverPath,starTime,vid,title){
     let str = "";
     str += `<div class="video-item">
-                <a class="video-box" target="_blank" href="${videoPath}">
+                <a class="video-box" target="_blank" href="./video.html?vid=${vid}">
                     <img  class="video-img" src="${coverPath}">
                 </a>
-                <a class="video-info" target="_blank" href="${videoPath}">视频信息</a>
+                <a class="video-info" target="_blank" href="./video.html?vid=${vid}">${title}</a>
                 <span class="time-stamp">收藏于：${starTime}</span>
             </div>`;
     let node = $(str);
