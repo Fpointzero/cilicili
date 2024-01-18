@@ -1,0 +1,52 @@
+.changePwd {
+    max-width: 420px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: var(--info-bg-color);
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    flex-basis: 100%;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.form-group button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.form-group button:disabled {
+    background-color: #ccc;
+}
+
+.verification-group input[type="text"] {
+    flex-basis: auto;
+    flex-grow: 2;
+    margin-right: 8px;
+}
+
+.verification-group button {
+    flex-grow: 1;
+}
