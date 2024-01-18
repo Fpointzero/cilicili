@@ -1,10 +1,10 @@
 user = localStorage.getItem("user");
+let email
 try {
     user = JSON.parse(user);
+    email = user['email'];
 } catch (e) {
-    console.log(e);
 }
-let email = user['email'];
 console.log(email)
 $('#sendCode').on('click', function () {
     $(this).prop('disabled', true);
@@ -51,8 +51,8 @@ $('#changePasswordForm').on('submit', function (e) {
     }
     data = {
         'email': email,
-        'code':code,
-        'password':pwd
+        'code': code,
+        'password': pwd
     }
     // 发送ajax请求到服务器
     $.ajax({
