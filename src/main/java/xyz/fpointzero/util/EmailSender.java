@@ -70,9 +70,6 @@ public class EmailSender {
                 } catch (Exception e) {
 //                    e.printStackTrace();
                     mapper.setVery(String.valueOf(randomNumber), email);
-
-
-
                     // 发送邮件
                     Transport.send(message);
                 }
