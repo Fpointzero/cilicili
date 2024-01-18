@@ -46,6 +46,7 @@ public class GetVideoServlet extends MyHttpServlet {
                 msg.setAll(Msg.SUCCESS, video, "视频获取成功");
                 if (user != null)
                     History.setHistory(user, vid);
+                video.play();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -77,6 +78,7 @@ public class GetVideoServlet extends MyHttpServlet {
                 msg.setAll(Msg.SUCCESS, video, "视频获取成功");
                 if (user != null)
                     History.setHistory(user, vid);
+                video.play();
             } catch (Exception e) {
                 e.printStackTrace();
             }

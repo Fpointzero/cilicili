@@ -15,8 +15,8 @@ public class Video {
     private String coverPath;
     private String title;
     private String subtitle;
-    private String starNumber;
-    private String playNumber;
+    private Integer starNumber;
+    private Integer playNumber;
     public String videoTime;
     public Integer uid;
     public String createTime;
@@ -44,14 +44,15 @@ public class Video {
         return null;
     }
 
-    public void play() {
+    public synchronized void play() {
         try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VideoMapper mapper = sqlSession.getMapper(VideoMapper.class);
-            Video video = new Video();
-            video = mapper.getById(String.valueOf(id));
-            setVideo(video);
+            this.playNumber += 1;
+            mapper.updatePlayerNumber(this);
+            sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();
+            this.playNumber -= 1;
         }
     }
 
@@ -236,19 +237,11 @@ public class Video {
         this.subtitle = subtitle;
     }
 
-    public String getLikeNumber() {
+    public Integer getStarNumber() {
         return starNumber;
     }
 
-    public void setLikeNumber(String likeNumber) {
-        this.starNumber = likeNumber;
-    }
-
-    public String getStarNumber() {
-        return starNumber;
-    }
-
-    public void setStarNumber(String starNumber) {
+    public void setStarNumber(Integer starNumber) {
         this.starNumber = starNumber;
     }
 
@@ -260,11 +253,11 @@ public class Video {
         this.id = id;
     }
 
-    public String getPlayNumber() {
+    public Integer getPlayNumber() {
         return playNumber;
     }
 
-    public void setPlayNumber(String playNumber) {
+    public void setPlayNumber(Integer playNumber) {
         this.playNumber = playNumber;
     }
 }

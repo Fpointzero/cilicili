@@ -18,8 +18,8 @@ public class Star {
     private String videoPath;
     private String coverPath;
     private String title;
-    private String starNumber;
-    public String playNumber;
+    private Integer starNumber;
+    public Integer playNumber;
     public String videoTime;
 
     public static boolean setStar(Star star) {
@@ -115,11 +115,11 @@ public class Star {
         this.videoPath = videoPath;
     }
 
-    public void setStarNumber(String starNumber) {
+    public void setStarNumber(Integer starNumber) {
         this.starNumber = starNumber;
     }
 
-    public String getStarNumber() {
+    public Integer getStarNumber() {
         return starNumber;
     }
 }

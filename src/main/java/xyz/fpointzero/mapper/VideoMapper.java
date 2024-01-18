@@ -12,7 +12,7 @@ public interface VideoMapper {
     List<Video> getAllVideoList();
     Video getLatestVideoByUid(Integer uid);
     List<Video> getVideoListByUid(@Param("uid") Integer uid);
-
+    int updatePlayerNumber(Video video);
     void insertVideo(Video video);
     void updateAll(Video video);
     void updateCover(Video video);

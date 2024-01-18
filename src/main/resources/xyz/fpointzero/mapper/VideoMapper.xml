@@ -28,6 +28,11 @@
         INSERT INTO `video` (videoPath, uid)
         VALUES (#{videoPath}, #{uid})
     </insert>
+    <update id="updatePlayerNumber" parameterType="xyz.fpointzero.model.Video">
+        UPDATE video
+        SET video.playNumber = #{playNumber}
+        WHERE video.id = #{id}
+    </update>
     <update id="updateAll" parameterType="xyz.fpointzero.model.Video">
         UPDATE video
         SET video.title    = #{title},
