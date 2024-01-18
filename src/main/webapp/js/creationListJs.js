@@ -3,10 +3,13 @@ json = localStorage.getItem("user");
 try {
     json = JSON.parse(json);
     if (json == null)
-        location.href = "LoginAndRegist.html";
+        redirectLogin();
     console.log(json);
 } catch (error) {
     console.log(error);
+    redirectLogin();
+}
+function redirectLogin() {
     location.href = "LoginAndRegist.html";
 }
 window.onload = function () {
@@ -65,32 +68,6 @@ function hiddenNavItems() {
         a2.css('color', '#00A1D6');
     })
 }
-
-
-function init() {
-    let data = {
-        "uid": json.id,
-    };
-    var settings = {
-        url: "/cilicili_war/api/creation/upload",
-        method: "POST",
-        contentType: 'application/json;charset=UTF-8',
-        dataType: 'json',
-        data: JSON.stringify(data)
-    };
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-        videoData = response.data;
-        for (let i = 0; i < videoData.length; ++i) {
-            let video = videoData[i];
-            $(".list-container").append(creatItem(video.coverPath, video.title, video.createTime, video.playNumber, video.starNumber, video.id));
-        }
-        $("#list-number").html(videoData.length);
-        $("");
-    });
-}
-
 function creatItem(cover, title, createTime, playNum, starNum, vid) {
     // console.log(cover);
     let str = "";
@@ -123,3 +100,36 @@ function creatItem(cover, title, createTime, playNum, starNum, vid) {
     });
     return node;
 }
+function init() {
+    let data = {
+        "uid": json.id,
+    };
+    var settings = {
+        url: "/cilicili_war/api/video/getUserVideo",
+        method: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        dataType: 'json',
+        data: JSON.stringify(data)
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        if (response.code != 200) {
+            alert(response.msg);
+            redirectLogin();
+            return;
+        }
+        videoData = response.data;
+        for (let i = 0; i < videoData.length; ++i) {
+            let video = videoData[i];
+            $(".list-container").append(creatItem(video.coverPath, video.title, video.createTime, video.playNumber, video.starNumber, video.id));
+        }
+        $("#list-number").html(videoData.length);
+        $("");
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        // 处理错误响应
+        console.log("请求失败：" + errorThrown);
+        redirectLogin();
+    });
+}
+

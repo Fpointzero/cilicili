@@ -11,7 +11,7 @@
  Target Server Version : 80032
  File Encoding         : 65001
 
- Date: 18/01/2024 18:01:16
+ Date: 18/01/2024 19:22:43
 */
 
 SET NAMES utf8mb4;
@@ -56,6 +56,7 @@ CREATE TABLE `history`  (
 -- Records of history
 -- ----------------------------
 INSERT INTO `history` VALUES (1, 19, '2024-01-13 17:52:36');
+INSERT INTO `history` VALUES (73, 20, '2024-01-18 18:59:40');
 
 -- ----------------------------
 -- Table structure for star
