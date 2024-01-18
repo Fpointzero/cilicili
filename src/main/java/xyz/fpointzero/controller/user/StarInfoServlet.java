@@ -21,7 +21,8 @@ public class StarInfoServlet extends MyHttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         msg = new Msg<List<Star>>(Msg.ERROR, null, "请求收藏列表失败");
         User user = (User) req.getSession().getAttribute("user");
-        String group = req.getParameter("group");
+//        String group = req.getParameter("group");
+        String group = "default";
 
         List<Star> starList = Star.getStarList(user, group);
 
@@ -43,7 +44,7 @@ public class StarInfoServlet extends MyHttpServlet {
         Star star = new Star();
         star.vid = Integer.valueOf(json.getString("vid"));
         star.uid = user.getId();
-        star.group = json.getString("group");
+        star.group = "default";
 
         if (action.equals("set")) {
             if (Star.setStar(star)) {
