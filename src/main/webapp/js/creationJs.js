@@ -54,3 +54,36 @@ function hiddenNavItems() {
         a2.css('color','#00A1D6');
     })
 }
+
+const file = $("#file");
+const upload_btn = $(".upload-btn");
+
+upload_btn.on("click", function () {
+    file.click();
+});
+
+file.on("change", function () {
+   let file = this.files[0];
+   console.log(file);
+   // ajax
+    var form = new FormData();
+    form.append("file", file);
+
+    var settings = {
+        url: "http://localhost:8080/cilicili_war/api/creation/upload",
+        method: "POST",
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        "data": form
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        if (response.code == 200) {
+            alert("上传成功");
+        } else{
+            alert("文件上传失败");
+        }
+    });
+});
