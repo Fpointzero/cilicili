@@ -23,7 +23,9 @@ $('#userInfoForm').on('submit', function (e) {
             console.log(res);
             alert(res['msg']);
             $('#username').val('');
-            window.location.reload();
+            $('#signature').val('');
+            $("#birth_date").val(defaultDate);
+            $("#gender").val("0");
         },
         error: function (xhr, status, error) {
             alert('修改时发生错误：' + error);
