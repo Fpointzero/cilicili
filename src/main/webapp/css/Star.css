@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-
+    text-overflow: ellipsis;
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -11,15 +11,24 @@
     height: auto;
     border-radius: 10px 10px 10px 10px;
 }
-
+.video-title{
+    display: inline-block;
+    /*width: 200px;*/
+}
 .video-item{
+    width: 200px;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin-right: 40px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
  a{
     text-decoration: none;
+     text-overflow: ellipsis;
     color: #3cccfc;
 }
 
