@@ -77,9 +77,9 @@ searchIcon.addEventListener('click', function() {
 });
 
 function search(keyword) {
-    let data = {"page_info": {"keyword":keyword},"type":"video"}
+    let data = {"keyword":keyword};
     $.ajax({
-        url: "http://124.220.20.83:8080/commonality/search",
+        url: "/cilicili_war/api/search",
         method: "POST",
         data: JSON.stringify(data),
         dataType: "json",
@@ -88,19 +88,19 @@ function search(keyword) {
             console.log(res)
             videoList = res["data"];
             for (let i = 0; i < videoList.length; i++) {
-                createVideoCard(videoList[i]["cover"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"])
+                createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"])
             }
+            initClick();
         },
     });
 }
 
 
-function createVideoCard(imagePath, title, subtitle, time) {
-    // 获取父元素
-
+function createVideoCard(imagePath, id, title, subtitle, time) {
     // 创建 video-card 容器
     let card = document.createElement('div');
     card.className = 'video-card';
+    card.id = id;
 
     // 创建图片元素
     let img = document.createElement('img');
@@ -127,9 +127,7 @@ function createVideoCard(imagePath, title, subtitle, time) {
     card.appendChild(img);
     card.appendChild(cardInfo);
 
-
     $('.video-card-box').append(card);
-
 
 }
 
@@ -151,4 +149,17 @@ function timeSince(dateString) {
     else {
         return pastDate.toLocaleDateString(undefined, {year: 'numeric', month: 'numeric', day: 'numeric'});
     }
+}
+
+function initClick() {
+    const videoCards = document.querySelectorAll('.video-card');
+    console.log(videoCards.length)
+    videoCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // 获取 data-video-id 属性值
+            const videoId = card.getAttribute('id');
+            console.log(videoId)
+            window.location.href = `video.html?vid=${videoId}`;
+        });
+    });
 }
