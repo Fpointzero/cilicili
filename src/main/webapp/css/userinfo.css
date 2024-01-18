@@ -54,11 +54,11 @@
 .info .submit-button:hover {
     background-color: #3b6ea5;
 }
-.info .figure-box {
+.figure-box {
     overflow: hidden;
     padding: 20px;
 }
-.info .figure-box .figure {
+.figure-box .figure {
     width: 100%;
     height: 340px;
     background-image: url("../images/charector.png");
