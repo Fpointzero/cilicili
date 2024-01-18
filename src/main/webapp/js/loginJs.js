@@ -34,7 +34,7 @@ function actionPasswordLogin(username, password) {
         "password": password
     };
     var settings = {
-        url: "http://localhost:8080/cilicili_war/api/login",
+        url: "/cilicili_war/api/login",
         method: "POST",
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
@@ -45,7 +45,7 @@ function actionPasswordLogin(username, password) {
         console.log(response);
         if (response.code == 200) {
             localStorage.setItem("user", JSON.stringify(response.data));
-            window.location.href = "Index.html";
+            window.location.href = "index.html";
         } else {
             alert("用户名或者密码错误！");
         }
@@ -57,7 +57,7 @@ function sendVerifyCode(email) {
         "email": email
     };
     var settings = {
-        url: "http://localhost:8080/cilicili_war/api/sendEmail",
+        url: "/cilicili_war/api/sendEmail",
         method: "POST",
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
@@ -81,7 +81,7 @@ function actionVerifyCodeLogin(email, code){
         "code": code
     };
     var settings = {
-        url: "http://localhost:8080/cilicili_war/api/login",
+        url: "/cilicili_war/api/login",
         method: "POST",
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
@@ -91,7 +91,7 @@ function actionVerifyCodeLogin(email, code){
         console.log(response);
         if (response.code == 200) {
             localStorage.setItem("user", JSON.stringify(response.data));
-            window.location.href = "Index.html";
+            window.location.href = "index.html";
         } else {
             alert("用户名或者密码错误！");
         }

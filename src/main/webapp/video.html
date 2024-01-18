@@ -75,17 +75,17 @@
     <!-- 左侧 -->
     <div class="left-container">
         <div class="viewbox-report">
-            <h1 class="video-title">视频标题</h1>
+            <h1 class="video-title" id="video-title"></h1>
         </div>
-        <video preload="none"  width="668" height="376" controls="controls" src="http://124.220.20.83:8080/assets/static/video/users/videoContribution/9c7e60124636992b0e23d7e85b13451e981d2262073e7aa553d47ba26736174f.mp4"></video>
+        <video preload="none" width="668" height="376" controls="controls" id="video" muted="muted"></video>
         <div class="arc_toolbar_report">
             <div class="toolbar-left">
-                <div class="toolbar-span blue" >100</div>
+                <div class="toolbar-span blue">100</div>
                 <div class="toolbar-span blue">100</div>
             </div>
         </div>
         <div class="introduction-container">
-            <div class="desc-info-text" ref="icontainer">视频简介</div>
+            <div class="desc-info-text" id="introduction"></div>
         </div>
 
         <div class="conmment-container">
@@ -96,20 +96,20 @@
             <div class="reply-wrap">
                 <div class="main-reply-box">
                     <div class="reply-box-avatar">
-                        <div class="bili-avatar"  style="width: 40px;height: 40px;"></div>
+                        <div class="bili-avatar" style="width: 40px;height: 40px;"></div>
                     </div>
                     <div class="reply-box-wrap">
                         <textarea class="reply-box-textarea" placeholder="发一条友善的评论" v-model="comment"></textarea>
-                        <div class="no-login-mask" >
+                        <div class="no-login-mask">
                             <span class="no-login-span">请先</span>
                             <span class="no-login-btn">登录</span>
                             <span class="no-login-span">后发表评论 (・ω・)</span>
                         </div>
                     </div>
-<!--                    <Button type="primary">发布</Button>-->
+                    <!--                    <Button type="primary">发布</Button>-->
                 </div>
                 <div class="reply-list">
-                    <div class="root-reply-item" >
+                    <div class="root-reply-item">
                         <div class="root-reply-container">
                             <div class="root-reply-avatar">
                                 <div class="bili-avatar">
@@ -118,10 +118,10 @@
                             </div>
                             <div class="content-wrap">
                                 <div class="user-info">
-                                    <div class="user-name" >用户1</div>
+                                    <div class="user-name">用户1</div>
                                 </div>
                                 <div class="root-reply">评论1</div>
-<!--                                <div class="reply-info">时间</div>-->
+                                <!--                                <div class="reply-info">时间</div>-->
                             </div>
                         </div>
                         <div class="bottom-line"></div>
@@ -153,11 +153,13 @@
 
                 </div>
             </div>
-            </div>
         </div>
     </div>
 </div>
+</div>
 <script type="text/javascript" src="js/jquery-3.7.0.js"></script>
-<script src="js/videoIntroduce.js"></script>
+<script src="./js/getUrlParam.js"></script>
+<script src="./js/videoIntroduce.js"></script>
+<script src="./js/video.js"></script>
 </body>
 </html>

@@ -70,7 +70,7 @@ file.on("change", function () {
     form.append("file", file);
 
     var settings = {
-        url: "http://localhost:8080/cilicili_war/api/creation/upload",
+        url: "/cilicili_war/api/creation/upload",
         method: "POST",
         processData: false,
         contentType: false,
@@ -80,7 +80,7 @@ file.on("change", function () {
 
     $.ajax(settings).done(function (response) {
         console.log(response);
-        if (response.code == 200) {
+        if (response.code === 200) {
             alert("上传成功");
         } else{
             alert("文件上传失败");

@@ -6,48 +6,35 @@ window.onscroll = function () {
     changeNav(t);
 }
 window.onload = function () {
-    let data = {
-        "page_info": {
-            "page": 1,
-            "size": 15
-        }
-    };
     $.ajax({
-        url: "http://124.220.20.83:8080/home/getHomeInfo",
-        method: "POST",
-        data: JSON.stringify(data),
+        url: "/cilicili_war/api/video/getVideos",
+        method: "GET",
         dataType: "json",
-        contentType: "application/json",
+        sync:false,
         success: function (res) {
             console.log(res)
-            slideList = res["data"]["rotograph"];
-            for (let i = 0; i < slideList.length; i++) {
-                addSlideImages(slideList[i]["cover"]);
-            }
-            videoList = res["data"]["videoList"];
+            videoList = res["data"];
             for (let i = 0; i < videoList.length; i++) {
                 if (i > 5) {
-                    createVideoCard(videoList[i]["cover"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], false)
+                    createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], false)
                 } else {
-                    createVideoCard(videoList[i]["cover"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], true)
+                    createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], true)
                 }
             }
         },
     });
-    data["page_info"]["page"]++;
     $.ajax({
-        url: "http://124.220.20.83:8080/home/getHomeInfo",
-        method: "POST",
-        data: JSON.stringify(data),
+        url: "/cilicili_war/api/video/getVideos",
+        method: "GET",
         dataType: "json",
-        contentType: "application/json",
+        sync:false,
         success: function (res) {
             console.log(res)
-            data = res["data"];
-            videoList = data["videoList"];
-            for (let i = 0; i < videoList.length; i++) {
-                createVideoCard(videoList[i]["cover"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["created_at"], false)
+            videoList = res["data"];
+            for (let i = 6; i < videoList.length; i++) {
+                createVideoCard(videoList[i]["coverPath"], videoList[i]["id"], videoList[i]["title"], videoList[i]["username"], videoList[i]["createTime"], false)
             }
+            initClick();
         },
     });
 }
@@ -182,5 +169,19 @@ searchIcon.addEventListener('click', async () => {
 $("#upload").on("click", function () {
     window.location.href = "creation.html";
 });
+function initClick() {
+    const videoCards = document.querySelectorAll('.video-card');
+    console.log(videoCards.length)
+    videoCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // 获取 data-video-id 属性值
+            const videoId = card.getAttribute('id');
+            console.log(videoId)
+            window.location.href = `video.html?vid=${videoId}`;
+        });
+    });
+}
+
+
 
 

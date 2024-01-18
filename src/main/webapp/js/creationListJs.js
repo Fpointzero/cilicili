@@ -70,7 +70,7 @@ file.on("change", function () {
     form.append("file", file);
 
     var settings = {
-        url: "http://localhost:8080/cilicili_war/api/creation/upload",
+        url: "/cilicili_war/api/creation/upload",
         method: "POST",
         processData: false,
         contentType: false,
