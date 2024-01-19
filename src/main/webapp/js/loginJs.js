@@ -30,7 +30,7 @@ function actionPasswordLogin(username, password) {
     let data = {
         "type": "pwd",
         "username": username,
-        "password": password
+        "password": CryptoJS.MD5(password).toString()
     };
     var settings = {
         url: "/cilicili_war/api/login",
@@ -79,6 +79,7 @@ var countdown = 60;
 // 启动倒计时
 var timer;
 let sendVerifyCodeEvent = function () {
+    countdown = 60;
     sendVerifyCode($("#email").val());
     link.off("click", sendVerifyCodeEvent);
     timer = setInterval(function () {
@@ -90,7 +91,7 @@ let sendVerifyCodeEvent = function () {
 
         // 倒计时结束后，启用链接点击并清除计时器
         if (countdown < 0) {
-            link.on("click", sendVerifyCodeEvent)
+            link.on("click", sendVerifyCodeEvent);
             link.html("发送验证码");
             clearInterval(timer);
         }

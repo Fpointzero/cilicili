@@ -52,8 +52,9 @@ $('#changePasswordForm').on('submit', function (e) {
     data = {
         'email': email,
         'code': code,
-        'password': pwd
+        'password': CryptoJS.MD5(pwd).toString()
     }
+    console.log(data);
     // 发送ajax请求到服务器
     $.ajax({
         url: '/cilicili_war/api/changePassword',

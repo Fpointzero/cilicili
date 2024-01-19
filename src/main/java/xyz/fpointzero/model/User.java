@@ -121,7 +121,7 @@ public class User {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             User user = userMapper.getByEmail(email);
 
-            if (verify(code)) {
+            if (user.verify(code)) {
                 userMapper.setPassword(password, email);
                 ret = true;
             }
