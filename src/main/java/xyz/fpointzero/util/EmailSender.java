@@ -3,6 +3,7 @@ package xyz.fpointzero.util;
 import org.apache.ibatis.session.SqlSession;
 import xyz.fpointzero.mapper.UserMapper;
 import xyz.fpointzero.model.User;
+import xyz.fpointzero.Setting.*;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -11,15 +12,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.Random;
 
+import static xyz.fpointzero.Setting.*;
+
 public class EmailSender {
-    // 邮箱账户信息
-    private static String senderEmail = "781381449@qq.com";
-    private static String senderPassword = "wsnazaxxnkalbfeb";
-
-    // 邮件服务器配置
-    private static String smtpHost = "smtp.qq.com";
-    private static int smtpPort = 587;
-
     // 验证码范围
     private static int min = 100000; // 最小值
     private static int max = 999999; // 最大值
